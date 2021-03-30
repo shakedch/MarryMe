@@ -56,17 +56,17 @@
                 <?php
                 while ($row = $result->fetch_assoc()) : ?>
                 <tr>
-                    <td><?php echo $row['t_name']; ?></td>
-                    <td><?php echo $row['t_start_date']; ?></td>
-                    <td><?php echo $row['t_due_date']; ?></td>
-                    <td><?php echo $row['t_cost']; ?></td>
-                    <td><?php echo $row['t_description']; ?></td>
-                    <td><?php echo $row['t_status']; ?></td>
-                    <td><?php echo $row['t_attached_files']; ?></td>
+                    <td><?php echo $row['name']; ?></td>
+                    <td><?php echo $row['start_date']; ?></td>
+                    <td><?php echo $row['due_date']; ?></td>
+                    <td><?php echo $row['cost']; ?></td>
+                    <td><?php echo $row['description']; ?></td>
+                    <td><?php echo $row['status']; ?></td>
+                    <td><?php echo $row['attached_file']; ?></td>
                     <td>
                         <!--Need rewrite the ID's in the links buttons to the PK's when it will be done. -->
-                        <a href="myTasks.php?edit=<?php echo $row["tr_id"]; ?>" class="btn btn-info">Edit</a>
-                        <a href="process.php?delete=<?php echo $row["tr_id"]; ?>" class="btn btn-danger">Delete</a>
+                        <a href="myTasks.php?" class="btn btn-info">Edit</a>
+                        <a href="process.php? " class="btn btn-danger" name="delete">Delete</a>
                         <!--Need rewrite the ID's in the links buttons to the PK's when it will be done. -->
                     </td>
                 </tr>
@@ -80,25 +80,25 @@
             print_r($array);
             echo "</pre>";
         }
-        ?> <div class='d-flex justify-content-center'>
+        ?>
+        <div class='d-flex justify-content-center'>
             <form action="process.php" method="POST">
-                <input type="hidden" name="id" value="<?php echo $id; ?>">
                 <div class='mb-3'>
                     <label class="form-label" for='name'>Task Name</label>
                     <input class="form-control" type="text" name="name" value="<?php echo $name; ?>"
                         placeholder="Enter Task name">
                 </div>
                 <div class="form-group row">
-                    <label for="startDate" class="col-2 col-form-label">Start Date</label>
+                    <label for="start_date" class="col-2 col-form-label">Start Date</label>
                     <div class="col-10">
-                        <input class="form-control" type="datetime-local" name="startDate" value="">
+                        <input class="form-control" type="datetime-local" name="start_date" value="">
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label for="dueDate" class="col-2 col-form-label">Due Date</label>
+                    <label for="due_date" class="col-2 col-form-label">Due Date</label>
                     <div class="col-10">
-                        <input class="form-control" type="datetime-local" name="dueDate" value="">
+                        <input class="form-control" type="datetime-local" name="due_date" value="">
                     </div>
                 </div>
                 <div class='mb-3'>
@@ -112,14 +112,14 @@
                 </div>
                 <select name='status' class="form-select" aria-label="Default select example">
                     <option selected disabled>Status</option>
-                    <option value="1">To Do</option>
-                    <option value="2">In Progress</option>
-                    <option value="3">Completed</option>
+                    <option value="toDo">To Do</option>
+                    <option value="inProgress">In Progress</option>
+                    <option value="completed">Completed</option>
                 </select>
                 <br>
                 <div class="input-group mb-3">
-                    <label class="input-group-text" for="attachedFile">Upload</label>
-                    <input type="file" name="attachedFile" class="form-control" id="inputGroupFile02">
+                    <label class="input-group-text" for="attached_file">Upload</label>
+                    <input type="file" name="attached_file" class="form-control" id="inputGroupFile02">
                 </div>
                 <?php
                 if ($update == true) :

@@ -2,7 +2,7 @@
 session_start();
 $mysqli = new mysqli("localhost", "root", "", "marryme") or die(mysqli_error(($mysqli)));
 
-// $id = 0;
+$id = " ";
 $update = false;
 $name = "";
 $startDate = "";
@@ -14,24 +14,17 @@ $attachedFile = "";
 
 if (isset($_POST["save"])) {
     $name = $_POST["name"];
-    $startDate = $_POST["startDate"];
-    $dueDate = $_POST["dueDate"];
+    $startDate = $_POST["start_date"];
+    $dueDate = $_POST["due_date"];
     $cost = $_POST["cost"];
     $description = $_POST["description"];
     $status = $_POST["status"];
-    $attachedFile = $_POST["attachedFile"];
+    $attachedFile = $_POST["attached_file"];
 
     // Add Query => insert into table (the TABLE name is `data`)
     // Insert :name,location values
 
-    $mysqli->query("INSERT INTO tasks (t_name,t_due_date,
-    tr_id,
-    t_start_date,
-    t_cost,
-    t_description,
-    t_status,
-    t_attached_files
-    ) VALUES('$name','$dueDate','someId','$startDate','$cost','$description','$status','$attachedFile')") or
+    $mysqli->query("INSERT INTO `tasks`(`user_id`, `name`, `start_date`, `due_date`, `cost`, `description`, `status`, `attached_file`) VALUES (1,'$name','$startDate','$dueDate','$cost','$description','$status','$attachedFile')") or
         die($mysqli->error);
 
     $_SESSION['message'] = "Record has been saved!";
@@ -41,14 +34,16 @@ if (isset($_POST["save"])) {
 }
 
 if (isset($_GET['delete'])) {
-    $id = $_GET['delete'];
-    $mysqli->query("DELETE FROM data WHERE id =$id") or
+    $name = $_GET['name'];
+    $dueDate = $_GET['dueDate'];
+    $mysqli->query("DELETE FROM tasks WHERE`tasks`.`t_name`=$name AND `tasks`.`t_due_date`=$dueDate") or
         die($mysqli->error);
+
 
     $_SESSION['message'] = "Record has been deleted!";
     $_SESSION['msg_type'] = "danger";
 
-    header("location:tasks.php");
+    header("location:myTasks.php");
 }
 
 if (isset($_GET['edit'])) {
