@@ -64,9 +64,10 @@
                     <td><?php echo $row['t_status']; ?></td>
                     <td><?php echo $row['t_attached_files']; ?></td>
                     <td>
+                        <!--Need rewrite the ID's in the links buttons to the PK's when it will be done. -->
                         <a href="myTasks.php?edit=<?php echo $row["tr_id"]; ?>" class="btn btn-info">Edit</a>
-
                         <a href="process.php?delete=<?php echo $row["tr_id"]; ?>" class="btn btn-danger">Delete</a>
+                        <!--Need rewrite the ID's in the links buttons to the PK's when it will be done. -->
                     </td>
                 </tr>
                 <?php endwhile; ?>
