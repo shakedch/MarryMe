@@ -62,10 +62,8 @@
                         <td><?php echo $row['status']; ?></td>
                         <td><?php echo $row['attached_file']; ?></td>
                         <td>
-                            <!--Need rewrite the ID's in the links buttons to the PK's when it will be done. -->
-                            <a href="myTasks.php?" class="btn btn-info">Edit</a>
-                            <a href="process.php?delete=<?php echo $row['task_id']; ?>" class="btn btn-danger" name="delete">Delete</a>
-                            <!--Need rewrite the ID's in the links buttons to the PK's when it will be done. -->
+                        <a href="myTasks.php?edit=<?php echo $row['task_id']; ?>" class="btn btn-info">Edit</a>
+                        <a href="process.php?delete=<?php echo $row['task_id']; ?>" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 <?php endwhile; ?>
@@ -81,6 +79,7 @@
         ?>
         <div class='d-flex justify-content-center'>
             <form action="process.php" method="POST">
+                <input type="hidden" name="task_id" value="<?php echo $task_id; ?>">
                 <div class='mb-3'>
                     <label class="form-label" for='name'>Task Name</label>
                     <input class="form-control" type="text" name="name" value="<?php echo $name; ?>" placeholder="Enter Task name">
@@ -106,11 +105,13 @@
                     <label for="description" class="form-label">Description</label>
                     <textarea class="form-control" name="description" rows="3"></textarea>
                 </div>
-                <select name='status' class="form-select" aria-label="Default select example">
-                    <option selected disabled>Status</option>
-                    <option value="toDo">To Do</option>
-                    <option value="inProgress">In Progress</option>
-                    <option value="completed">Completed</option>
+                    <option value='' selected disabled hidden>Status</option>
+                    <option value="To Do" <?php if ($status == 'To Do') { ?> selected="selected" <?php } ?>>To Do
+                    </option>
+                    <option value="In Progress" <?php if ($status == 'In Progress') { ?> selected="selected" <?php } ?>>
+                        In Progress</option>
+                    <option value="Completed" <?php if ($status == 'Completed') { ?> selected="selected" <?php } ?>>
+                        Completed</option>
                 </select>
                 <br>
                 <div class="input-group mb-3">

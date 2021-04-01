@@ -58,23 +58,34 @@ if (isset($_GET['delete'])) {
 }
 
 if (isset($_GET['edit'])) {
-    $id = $_GET['edit'];
+    $task_id = $_GET['edit'];
     $update = true;
-    $result = $mysqli->query("SELECT * FROM data WHERE id=$id") or die($mysqli->error);
+    $result = $mysqli->query("SELECT * FROM tasks WHERE task_id=$task_id") or die($mysqli->error);
     if (is_iterable($result)) {
         $row = $result->fetch_array();
         $name = $row['name'];
-        $location = $row['location'];
+        $startDate = str_replace(' ', 'T', $row['start_date']);
+        $dueDate = str_replace(' ', 'T', $row['due_date']);
+        $cost = $row['cost'];
+        $description = $row['description'];
+        $status = $row['status'];
+        $attachedFile = $row['attached_file'];
     }
 }
 
 if (isset($_POST['update'])) {
-    $id = $_POST['id'];
+    $task_id = $_POST['task_id'];
     $name = $_POST['name'];
-    $location = $_POST['location'];
+    $startDate = $_POST['start_date'];
+    $dueDate = $_POST['due_date'];
+    $cost = $_POST['cost'];
+    $description = $_POST['description'];
+    $status = $_POST['status'];
+    $attachedFile = $_POST['attached_file'];
 
-    $mysqli->query("UPDATE data SET name='$name',location='$location' WHERE id=$id") or die($mysqli->error);
+
+    $mysqli->query("UPDATE tasks SET name='$name',start_date='$startDate',due_date='$dueDate',cost='$cost',description='$description',status='$status',attached_file='$attachedFile' WHERE task_id=$task_id") or die($mysqli->error);
     $_SESSION['message'] = "Record has been updated!";
     $_SESSION['msg_type'] = "warning";
-    header("location:tasks.php");
+    header("location:myTasks.php");
 }
