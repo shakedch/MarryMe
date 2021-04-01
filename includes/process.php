@@ -13,27 +13,25 @@ function debug_to_console($data)
 session_start();
 $mysqli = new mysqli("localhost", "root", "", "marryme") or die(mysqli_error(($mysqli)));
 
-$id = " ";
+$task_id = " ";
 $update = false;
 $name = "";
-$startDate = "";
-$dueDate = "";
+$startDate = date('Y-m-d\TH:i');
+$minDueDate = date('Y-m-d\TH:i');
+$dueDate = '';
 $cost = "";
 $description = "";
-$status = "";
+$status = '';
 $attachedFile = "";
 
 if (isset($_POST["save"])) {
     $name = $_POST["name"];
     $startDate = $_POST["start_date"];
     $dueDate = $_POST["due_date"];
-    $cost = $_POST["cost"];
+    $cost = $_POST["cost"] == '' ? '0' : $_POST["cost"];
     $description = $_POST["description"];
     $status = $_POST["status"];
     $attachedFile = $_POST["attached_file"];
-
-    // Add Query => insert into table (the TABLE name is `data`)
-    // Insert :name,location values
 
     $mysqli->query("INSERT INTO `tasks`(`user_id`, `name`, `start_date`, `due_date`, `cost`, `description`, `status`, `attached_file`) VALUES (1,'$name','$startDate','$dueDate','$cost','$description','$status','$attachedFile')") or
         die($mysqli->error);

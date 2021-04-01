@@ -6,10 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- BS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <!-- BS -->
+
+    <!-- Helper JS -->
+    <script src="./helper.js"></script>
+    <!-- Helper JS -->
     <title>MarryMe-myTasks</title>
 </head>
 
@@ -20,12 +26,12 @@
     if (isset($_SESSION['message'])) :
     ?>
 
-        <div class="alert alert-<?= $_SESSION['msg_type'] ?>">
-            <?php
+    <div class="alert alert-<?= $_SESSION['msg_type'] ?>">
+        <?php
             echo $_SESSION['message'];
             unset($_SESSION['message']);
             ?>
-        </div>
+    </div>
     <?php endif ?>
 
 
@@ -53,19 +59,19 @@
                 </thead>
                 <?php
                 while ($row = $result->fetch_assoc()) : ?>
-                    <tr>
-                        <td><?php echo $row['name']; ?></td>
-                        <td><?php echo $row['start_date']; ?></td>
-                        <td><?php echo $row['due_date']; ?></td>
-                        <td><?php echo $row['cost']; ?></td>
-                        <td><?php echo $row['description']; ?></td>
-                        <td><?php echo $row['status']; ?></td>
-                        <td><?php echo $row['attached_file']; ?></td>
-                        <td>
+                <tr>
+                    <td><?php echo $row['name']; ?></td>
+                    <td><?php echo $row['start_date']; ?></td>
+                    <td><?php echo $row['due_date']; ?></td>
+                    <td><?php echo $row['cost']; ?></td>
+                    <td><?php echo $row['description']; ?></td>
+                    <td><?php echo $row['status']; ?></td>
+                    <td><?php echo $row['attached_file']; ?></td>
+                    <td>
                         <a href="myTasks.php?edit=<?php echo $row['task_id']; ?>" class="btn btn-info">Edit</a>
                         <a href="process.php?delete=<?php echo $row['task_id']; ?>" class="btn btn-danger">Delete</a>
-                        </td>
-                    </tr>
+                    </td>
+                </tr>
                 <?php endwhile; ?>
             </table>
         </div>
@@ -82,29 +88,35 @@
                 <input type="hidden" name="task_id" value="<?php echo $task_id; ?>">
                 <div class='mb-3'>
                     <label class="form-label" for='name'>Task Name</label>
-                    <input class="form-control" type="text" name="name" value="<?php echo $name; ?>" placeholder="Enter Task name">
+                    <input class="form-control" type="text" name="name" value="<?php echo $name; ?>"
+                        placeholder="Enter Task name" required>
                 </div>
                 <div class="form-group row">
                     <label for="start_date" class="col-2 col-form-label">Start Date</label>
                     <div class="col-10">
-                        <input class="form-control" type="datetime-local" name="start_date" value="">
+                        <input class="form-control" type="datetime-local" name="start_date"
+                            value="<?php echo $startDate; ?>" onchange="getStartDateTask(this.value)" required>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="due_date" class="col-2 col-form-label">Due Date</label>
                     <div class="col-10">
-                        <input class="form-control" type="datetime-local" name="due_date" value="">
+                        <input class="form-control" type="datetime-local" name="due_date" id='due_date'
+                            value="<?php echo $dueDate; ?>" min="<?php echo $minDueDate; ?>" required>
                     </div>
                 </div>
                 <div class='mb-3'>
                     <label class="form-label" for='cost'>Cost</label>
-                    <input class="form-control" type="text" name="cost" value="<?php echo $name; ?>" placeholder="Enter cost">
+                    <input class="form-control" type="text" name="cost" value="<?php echo $cost; ?>"
+                        placeholder="Enter cost">
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea class="form-control" name="description" rows="3"></textarea>
+                    <textarea class="form-control" name="description" rows="3"
+                        value="<?php echo $description; ?>"></textarea>
                 </div>
+                <select name='status' class="form-select" aria-label="Default select example" required>
                     <option value='' selected disabled hidden>Status</option>
                     <option value="To Do" <?php if ($status == 'To Do') { ?> selected="selected" <?php } ?>>To Do
                     </option>
@@ -121,9 +133,9 @@
                 <?php
                 if ($update == true) :
                 ?>
-                    <button type="submit" class="btn btn-info" name="update">Update</button>
+                <button type="submit" class="btn btn-info" name="update">Update</button>
                 <?php else : ?>
-                    <button type="submit" class="btn btn-primary" name="save">save</button>
+                <button type="submit" class="btn btn-primary" name="save">save</button>
                 <?php endif; ?>
             </form>
         </div>
