@@ -6,11 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- BS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <!-- BS -->
     <title>MarryMe-myTasks</title>
 </head>
@@ -22,12 +20,12 @@
     if (isset($_SESSION['message'])) :
     ?>
 
-    <div class="alert alert-<?= $_SESSION['msg_type'] ?>">
-        <?php
+        <div class="alert alert-<?= $_SESSION['msg_type'] ?>">
+            <?php
             echo $_SESSION['message'];
             unset($_SESSION['message']);
             ?>
-    </div>
+        </div>
     <?php endif ?>
 
 
@@ -55,21 +53,21 @@
                 </thead>
                 <?php
                 while ($row = $result->fetch_assoc()) : ?>
-                <tr>
-                    <td><?php echo $row['name']; ?></td>
-                    <td><?php echo $row['start_date']; ?></td>
-                    <td><?php echo $row['due_date']; ?></td>
-                    <td><?php echo $row['cost']; ?></td>
-                    <td><?php echo $row['description']; ?></td>
-                    <td><?php echo $row['status']; ?></td>
-                    <td><?php echo $row['attached_file']; ?></td>
-                    <td>
-                        <!--Need rewrite the ID's in the links buttons to the PK's when it will be done. -->
-                        <a href="myTasks.php?" class="btn btn-info">Edit</a>
-                        <a href="process.php? " class="btn btn-danger" name="delete">Delete</a>
-                        <!--Need rewrite the ID's in the links buttons to the PK's when it will be done. -->
-                    </td>
-                </tr>
+                    <tr>
+                        <td><?php echo $row['name']; ?></td>
+                        <td><?php echo $row['start_date']; ?></td>
+                        <td><?php echo $row['due_date']; ?></td>
+                        <td><?php echo $row['cost']; ?></td>
+                        <td><?php echo $row['description']; ?></td>
+                        <td><?php echo $row['status']; ?></td>
+                        <td><?php echo $row['attached_file']; ?></td>
+                        <td>
+                            <!--Need rewrite the ID's in the links buttons to the PK's when it will be done. -->
+                            <a href="myTasks.php?" class="btn btn-info">Edit</a>
+                            <a href="process.php?delete=<?php echo $row['task_id']; ?>" class="btn btn-danger" name="delete">Delete</a>
+                            <!--Need rewrite the ID's in the links buttons to the PK's when it will be done. -->
+                        </td>
+                    </tr>
                 <?php endwhile; ?>
             </table>
         </div>
@@ -85,8 +83,7 @@
             <form action="process.php" method="POST">
                 <div class='mb-3'>
                     <label class="form-label" for='name'>Task Name</label>
-                    <input class="form-control" type="text" name="name" value="<?php echo $name; ?>"
-                        placeholder="Enter Task name">
+                    <input class="form-control" type="text" name="name" value="<?php echo $name; ?>" placeholder="Enter Task name">
                 </div>
                 <div class="form-group row">
                     <label for="start_date" class="col-2 col-form-label">Start Date</label>
@@ -103,8 +100,7 @@
                 </div>
                 <div class='mb-3'>
                     <label class="form-label" for='cost'>Cost</label>
-                    <input class="form-control" type="text" name="cost" value="<?php echo $name; ?>"
-                        placeholder="Enter cost">
+                    <input class="form-control" type="text" name="cost" value="<?php echo $name; ?>" placeholder="Enter cost">
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
@@ -124,9 +120,9 @@
                 <?php
                 if ($update == true) :
                 ?>
-                <button type="submit" class="btn btn-info" name="update">Update</button>
+                    <button type="submit" class="btn btn-info" name="update">Update</button>
                 <?php else : ?>
-                <button type="submit" class="btn btn-primary" name="save">save</button>
+                    <button type="submit" class="btn btn-primary" name="save">save</button>
                 <?php endif; ?>
             </form>
         </div>

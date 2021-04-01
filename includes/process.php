@@ -1,4 +1,15 @@
 <?php
+
+function debug_to_console($data)
+{
+    $output = $data;
+    if (is_array($output))
+        $output = implode(',', $output);
+
+    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+}
+
+
 session_start();
 $mysqli = new mysqli("localhost", "root", "", "marryme") or die(mysqli_error(($mysqli)));
 
@@ -34,9 +45,9 @@ if (isset($_POST["save"])) {
 }
 
 if (isset($_GET['delete'])) {
-    $name = $_GET['name'];
-    $dueDate = $_GET['dueDate'];
-    $mysqli->query("DELETE FROM tasks WHERE`tasks`.`t_name`=$name AND `tasks`.`t_due_date`=$dueDate") or
+    debug_to_console(($_GET['delete']));
+    $task_id = $_GET['delete'];
+    $mysqli->query("DELETE FROM tasks WHERE`tasks`.`task_id`=$task_id") or
         die($mysqli->error);
 
 
