@@ -24,6 +24,8 @@ $description = "";
 $status = '';
 $attachedFile = "";
 
+// need to add session 
+
 if (isset($_POST["save"])) {
     $name = $_POST["name"];
     $startDate = $_POST["start_date"];
@@ -32,6 +34,10 @@ if (isset($_POST["save"])) {
     $description = $_POST["description"];
     $status = $_POST["status"];
     $attachedFile = $_POST["attached_file"];
+    debug_to_console($attachedFile);
+
+
+
 
     $mysqli->query("INSERT INTO `tasks`(`user_id`, `name`, `start_date`, `due_date`, `cost`, `description`, `status`, `attached_file`) VALUES (1,'$name','$startDate','$dueDate','$cost','$description','$status','$attachedFile')") or
         die($mysqli->error);
@@ -43,7 +49,6 @@ if (isset($_POST["save"])) {
 }
 
 if (isset($_GET['delete'])) {
-    debug_to_console(($_GET['delete']));
     $task_id = $_GET['delete'];
     $mysqli->query("DELETE FROM tasks WHERE`tasks`.`task_id`=$task_id") or
         die($mysqli->error);

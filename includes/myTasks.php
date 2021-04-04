@@ -39,10 +39,6 @@
         <?php
         $mysqli = new mysqli("localhost", "root", "", "marryme") or die(mysqli_error(($mysqli)));
         $result = $mysqli->query("SELECT * FROM tasks") or die($mysqli->error);
-        // show how much records
-        // pre_r($result);
-        // fetch record from db
-        // pre_r($result->fetch_assoc());
         ?> <div class=" d-flex justify-content-center">
             <table class="table">
                 <thead>
@@ -84,7 +80,7 @@
         }
         ?>
         <div class='d-flex justify-content-center'>
-            <form action="process.php" method="POST">
+            <form action="process.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="task_id" value="<?php echo $task_id; ?>">
                 <div class='mb-3'>
                     <label class="form-label" for='name'>Task Name</label>
@@ -128,7 +124,8 @@
                 <br>
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="attached_file">Upload</label>
-                    <input type="file" name="attached_file" class="form-control" id="inputGroupFile02">
+                    <input type="file" name="attached_file" class="form-control" multiple
+                        value="<?php echo $attachedFile; ?>">
                 </div>
                 <?php
                 if ($update == true) :
