@@ -17,6 +17,7 @@ const validateCost = (event) => {
   return true;
 };
 
+//form disabled inputs by click edit
 $(document).ready(function () {
   $(document).on("click", ".information", function (event) {
     var isDisableInput = $("input").prop("disabled");

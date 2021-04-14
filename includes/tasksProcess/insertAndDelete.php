@@ -1,7 +1,7 @@
 <?php
 
 
-
+//remove before production
 function debug_to_console($data)
 {
     $output = $data;
