@@ -1,7 +1,7 @@
 <?php
 //set the variable name
 $task_id = $_POST['task_id'];
-$name = $_POST['name'];
+$name = $_POST['viewName'];
 $start_date = $_POST['start_date'];
 $due_date = $_POST['due_date'];
 $cost = $_POST['cost'];
