@@ -149,7 +149,7 @@
                                             <div class="modal-dialog">
                                                 <div class="modal-content modalBorder">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title taskTitle" id="exampleModalLabel">Task
+                                                        <h5 class="modal-title taskTitle" id="taskNameTypogrpahy">Task
                                                             Name:
                                                             <?php echo $row['name']; ?></h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -250,7 +250,8 @@
                                             <div class="modal-dialog">
                                                 <div class="modal-content modalBorder">
                                                     <div class="modal-header deleteheader">
-                                                        <h5 class="modal-title taskTitle" id="exampleModalLabel">Remove
+                                                        <h5 class="modal-title taskTitle" id="removeTaskTypogrpahy">
+                                                            Remove
                                                             Task
                                                         </h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -295,7 +296,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content modalBorder">
                                 <div class="modal-header">
-                                    <h4 class="modal-title taskTitle " id="exampleModalLabel"> New Task
+                                    <h4 class="modal-title taskTitle " id="newTaskTypogrpahy"> New Task
                                     </h4>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
