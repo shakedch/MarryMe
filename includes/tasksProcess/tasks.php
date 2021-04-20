@@ -155,20 +155,25 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
-                                                    <form id="editForm" action="updateTask.php" method="POST"
-                                                        class="ajax" enctype="multipart/form-data">
+                                                    <form name="editForm" id="editForm"
+                                                        onsubmit="checkInputs(event);event.preventDefault();"
+                                                        action="updateTask.php" method="POST" class="ajax"
+                                                        enctype="multipart/form-data">
                                                         <div class="modal-body">
                                                             <input type="hidden" name="task_id"
                                                                 value="<?php echo $row['task_id']; ?>">
-                                                            <div class='mb-3 nameDiv'>
+                                                            <div class='mb-3 nameDiv form-group'>
                                                                 <label class="form-label lableTask" for='viewName'>Task
                                                                     Name</label>
                                                                 <input id="viewName" class="form-control name inputTask"
                                                                     type="text" name="viewName"
                                                                     value="<?php echo $row['name']; ?>"
                                                                     placeholder="Enter Task name" disabled>
+                                                                <i class="fas fa-check-circle"></i>
+                                                                <i class="fas fa-exclamation-circle"></i>
+                                                                <small id="viewErrorName">Error message</small>
                                                             </div>
-                                                            <div class="mb-3">
+                                                            <div class="mb-3 form-group">
                                                                 <label for="view_start_date"
                                                                     class="form-label lableTask ">Start
                                                                     Date</label>
@@ -176,10 +181,13 @@
                                                                     id="view_start_date" type="datetime-local"
                                                                     name="view_start_date"
                                                                     value="<?php echo str_replace(' ', 'T', $row['start_date']); ?>"
-                                                                    disabled onchange="getStartDateTask(this.value)">
+                                                                    disabled>
+                                                                <i class="fas fa-check-circle"></i>
+                                                                <i class="fas fa-exclamation-circle"></i>
+                                                                <small id="viewErrorStartDate">Error message</small>
                                                             </div>
 
-                                                            <div class="mb-3">
+                                                            <div class="mb-3 form-group">
                                                                 <label for="view_due_date"
                                                                     class="form-label lableTask">Due
                                                                     Date</label>
@@ -188,16 +196,22 @@
                                                                     id='view_due_date'
                                                                     value="<?php echo str_replace(' ', 'T', $row['due_date']); ?>"
                                                                     disabled>
+                                                                <i class="fas fa-check-circle"></i>
+                                                                <i class="fas fa-exclamation-circle"></i>
+                                                                <small id="viewErrorDueDate">Error message</small>
                                                             </div>
-                                                            <div class='mb-3'>
+                                                            <div class='mb-3 form-group'>
                                                                 <label class="form-label lableTask" for='cost'>Cost
                                                                     ($)</label>
                                                                 <input id="cost" class="form-control inputTask "
                                                                     type="text" name="cost"
                                                                     value="<?php echo $row['cost']; ?>" disabled
                                                                     placeholder="Enter cost">
+                                                                <i class="fas fa-check-circle"></i>
+                                                                <i class="fas fa-exclamation-circle"></i>
+                                                                <small id="viewErrorCost">Error message</small>
                                                             </div>
-                                                            <div class="mb-3">
+                                                            <div class="mb-3 form-group">
                                                                 <label for="view_description"
                                                                     class="form-label lableTask">Description</label>
                                                                 <textarea class="form-control descriptionTask"
@@ -205,25 +219,31 @@
                                                                     rows="3"
                                                                     disabled><?php echo $row['description']; ?></textarea>
                                                             </div>
-                                                            <select name='status'
-                                                                class="form-select statusTask lableTask" disabled
-                                                                aria-label="Default select example">
-                                                                <option value='' selected disabled hidden>Status
-                                                                </option>
-                                                                <option value="To Do"
-                                                                    <?php if ($row['status'] == 'To Do') { ?>
-                                                                    selected="selected" <?php } ?>>To Do
-                                                                </option>
-                                                                <option value="In Progress"
-                                                                    <?php if ($row['status'] == 'In Progress') { ?>
-                                                                    selected="selected" <?php } ?>>
-                                                                    In Progress</option>
-                                                                <option value="Completed"
-                                                                    <?php if ($row['status'] == 'Completed') { ?>
-                                                                    selected="selected" <?php } ?>>
-                                                                    Completed</option>
-                                                            </select>
-                                                            <br>
+                                                            <div class="mb-3 form-group">
+                                                                <select id="view_status" name='view_status'
+                                                                    class="form-select statusTask lableTask" disabled
+                                                                    aria-label="Default select example">
+                                                                    <option value='' selected disabled hidden>Status
+                                                                    </option>
+                                                                    <option value="To Do"
+                                                                        <?php if ($row['status'] == 'To Do') { ?>
+                                                                        selected="selected" <?php } ?>>To Do
+                                                                    </option>
+                                                                    <option value="In Progress"
+                                                                        <?php if ($row['status'] == 'In Progress') { ?>
+                                                                        selected="selected" <?php } ?>>
+                                                                        In Progress</option>
+                                                                    <option value="Completed"
+                                                                        <?php if ($row['status'] == 'Completed') { ?>
+                                                                        selected="selected" <?php } ?>>
+                                                                        Completed</option>
+                                                                </select>
+                                                                <i class="fas fa-check-circle"></i>
+                                                                <i class="fas fa-exclamation-circle"></i>
+                                                                <small id="viewErrorStatus">Error message</small>
+                                                            </div>
+
+
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn closeBtn"
@@ -315,11 +335,14 @@
                                             <small id="errorName">Error message</small>
                                         </div>
 
-                                        <div class='mb-3 '>
+                                        <div class='mb-3 form-group'>
                                             <label for="start_date" class="form-label lableTask">Start Date</label>
-                                            <input class="form-control inputTask" type="datetime-local"
-                                                name="start_date" value="<?php echo date('Y-m-d\TH:i'); ?>"
-                                                onchange="getStartDateTask(this.value)">
+                                            <input id="start_date" class="form-control inputTask" type="datetime-local"
+                                                name="start_date" value="<?php echo date('Y-m-d\TH:i'); ?>">
+                                            <i class="fas fa-check-circle"></i>
+                                            <i class="fas fa-exclamation-circle"></i>
+                                            <small id="errorStartDate">Error message</small>
+
                                         </div>
 
                                         <div class='mb-3 form-group '>
@@ -339,14 +362,13 @@
                                             <i class="fas fa-exclamation-circle"></i>
                                             <small id="errorCost">Error message</small>
                                         </div>
-                                        <div class="mb-3">
+                                        <div class="mb-3 form-group">
                                             <label for="description" class="form-label lableTask">Description</label>
                                             <textarea class="form-control descriptionTask" name="description"
                                                 rows="3"></textarea>
                                         </div>
                                         <div class="mb-3 form-group">
-                                            <select id="statusCreate" name='status'
-                                                class="form-select statusTask lableTask"
+                                            <select id="status" name='status' class="form-select statusTask lableTask"
                                                 aria-label="Default select example">
                                                 <option value='' selected disabled hidden>Status</option>
                                                 <option value="To Do">To Do
@@ -387,6 +409,7 @@
                         type="text/javascript"></script>
                     <script src="../general.js"></script>
                     <script src="./taskCreateValidation.js"></script>
+                    <script src="./taskEditValidation.js"></script>
 
 
 

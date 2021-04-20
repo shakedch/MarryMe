@@ -1,6 +1,8 @@
-function getStartDateTask(value) {
-  var x = (document.getElementById("due_date").min = value);
-}
+// function getStartDateTask(value) {
+//   var x = (document.getElementById("view_due_date").min = value);
+//   console.log("date", x);
+// }
+// onchange="getStartDateTask(this.value)"
 
 //form disabled inputs by click edit
 $(document).ready(function () {
@@ -25,6 +27,7 @@ $(document).ready(function () {
   });
 });
 
+// View || Update Modal
 $(document).ready(function () {
   $(".updatetask").hide();
 

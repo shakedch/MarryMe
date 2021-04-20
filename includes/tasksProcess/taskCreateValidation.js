@@ -1,7 +1,7 @@
 const formCreate = document.getElementById("createForm");
 const taskName = document.getElementById("name");
 const taskCost = document.getElementById("createCost");
-const taskStatus = document.getElementById("statusCreate");
+const taskStatus = document.getElementById("status");
 
 const validateCost = (cost) => {
   const regex = /^[+]?\d+([.]\d+)?$/;
@@ -16,20 +16,22 @@ const validateCost = (cost) => {
 };
 
 formCreate.addEventListener("submit", (e) => {
-  checkInputs(e);
+  // e.preventDefault();
+  checkInputsCreate(e);
 });
 
-function checkInputs(e) {
+function checkInputsCreate(e) {
   // trim to remove the whitespaces
   let isValid = true;
   const nameValue = taskName.value.trim();
+  const statusValue = taskStatus.selectedIndex;
+  console.log("status", statusValue);
+
   const cost = e.target[4].value;
   if (!cost) {
     cost = 0;
   }
-
   const costRes = validateCost(cost);
-  const statusValue = taskStatus.selectedIndex;
 
   if (nameValue === "") {
     setErrorFor(taskName, "Task name cannot be blank");
@@ -44,7 +46,7 @@ function checkInputs(e) {
   } else {
     setSuccessFor(taskCost);
   }
-
+  // statusValue <= 0
   if (statusValue <= 0) {
     setErrorFor(taskStatus, "Please choose status");
     isValid = false;
@@ -55,6 +57,7 @@ function checkInputs(e) {
   if (!isValid) {
     e.preventDefault();
   }
+  // e.preventDefault();
 }
 
 function setErrorFor(input, message) {

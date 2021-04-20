@@ -6,7 +6,7 @@ $start_date = $_POST['view_start_date'];
 $due_date = $_POST['view_due_date'];
 $cost = $_POST['cost'];
 $description = $_POST['view_description'];
-$status = $_POST['status'];
+$status = $_POST['view_status'];
 
 if (isset($task_id)) {
 

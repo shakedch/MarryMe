@@ -164,7 +164,7 @@ body::-webkit-scrollbar {
   border: none;
   border-bottom: 2px solid black !important;
   border-radius: 0px;
-  padding: 2.5% !important;
+  padding: 3% !important;
 }
 
 .inputTask:focus {
@@ -244,6 +244,7 @@ select:-webkit-autofill:focus {
 .form-group.error small {
   visibility: visible;
   color: #e74c3c;
+  margin-bottom: 1%;
 }
 
 .form-group.success input {
