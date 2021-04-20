@@ -3,7 +3,7 @@
 $task_id = $_POST['task_id'];
 $name = $_POST['viewName'];
 $start_date = $_POST['view_start_date'];
-$due_date = $_POST['due_date'];
+$due_date = $_POST['view_due_date'];
 $cost = $_POST['cost'];
 $description = $_POST['description'];
 $status = $_POST['status'];

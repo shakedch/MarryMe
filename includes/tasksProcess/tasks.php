@@ -180,10 +180,12 @@
                                                             </div>
 
                                                             <div class="mb-3">
-                                                                <label for="due_date" class="form-label lableTask">Due
+                                                                <label for="view_due_date"
+                                                                    class="form-label lableTask">Due
                                                                     Date</label>
                                                                 <input class="form-control inputTask"
-                                                                    type="datetime-local" name="due_date" id='due_date'
+                                                                    type="datetime-local" name="view_due_date"
+                                                                    id='view_due_date'
                                                                     value="<?php echo str_replace(' ', 'T', $row['due_date']); ?>"
                                                                     disabled>
                                                             </div>
