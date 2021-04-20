@@ -198,10 +198,11 @@
                                                                     placeholder="Enter cost">
                                                             </div>
                                                             <div class="mb-3">
-                                                                <label for="description"
+                                                                <label for="view_description"
                                                                     class="form-label lableTask">Description</label>
                                                                 <textarea class="form-control descriptionTask"
-                                                                    name="description" rows="3"
+                                                                    name="view_description" id='view_description'
+                                                                    rows="3"
                                                                     disabled><?php echo $row['description']; ?></textarea>
                                                             </div>
                                                             <select name='status'
