@@ -169,11 +169,12 @@
                                                                     placeholder="Enter Task name" disabled>
                                                             </div>
                                                             <div class="mb-3">
-                                                                <label for="start_date"
+                                                                <label for="view_start_date"
                                                                     class="form-label lableTask ">Start
                                                                     Date</label>
                                                                 <input class="form-control inputTask"
-                                                                    type="datetime-local" name="start_date"
+                                                                    id="view_start_date" type="datetime-local"
+                                                                    name="view_start_date"
                                                                     value="<?php echo str_replace(' ', 'T', $row['start_date']); ?>"
                                                                     disabled onchange="getStartDateTask(this.value)">
                                                             </div>
