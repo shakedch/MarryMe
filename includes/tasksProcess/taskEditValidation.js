@@ -3,6 +3,7 @@ function checkInputs(event) {
   let isValid = true;
   const nameEditValue = event.target[1].value.trim();
   const startDateEditValue = event.target[2].value;
+  const dueDateEditValue = event.target[3].value;
   const cost = event.target[4].value;
   if (!cost) {
     cost = 0;
@@ -30,6 +31,13 @@ function checkInputs(event) {
     isValid = false;
   } else {
     setSuccessFor(event.target[2]);
+  }
+
+  if (Date.parse(dueDateEditValue) < Date.parse(startDateEditValue)) {
+    setErrorFor(event.target[3], "Due date cannot start before start date");
+    isValid = false;
+  } else {
+    setSuccessFor(event.target[3]);
   }
 
   if (!costRes) {

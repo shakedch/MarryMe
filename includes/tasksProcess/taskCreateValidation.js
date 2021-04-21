@@ -3,6 +3,7 @@ const taskName = document.getElementById("name");
 const taskCost = document.getElementById("createCost");
 const taskStatus = document.getElementById("status");
 const taskStartDate = document.getElementById("start_date");
+const taskDueDate = document.getElementById("due_date");
 
 const validateCost = (cost) => {
   const regex = /^[+]?\d+([.]\d+)?$/;
@@ -27,6 +28,7 @@ function checkInputsCreate(e) {
   const nameValue = taskName.value.trim();
   const statusValue = taskStatus.selectedIndex;
   const startDateValue = taskStartDate.value;
+  const dueDateValue = taskDueDate.value;
 
   const cost = e.target[4].value;
   if (!cost) {
@@ -54,6 +56,13 @@ function checkInputsCreate(e) {
     isValid = false;
   } else {
     setSuccessFor(taskStartDate);
+  }
+
+  if (Date.parse(dueDateValue) < Date.parse(startDateValue)) {
+    setErrorFor(taskDueDate, "Due date cannot start before start date");
+    isValid = false;
+  } else {
+    setSuccessFor(taskDueDate);
   }
 
   if (!costRes) {
