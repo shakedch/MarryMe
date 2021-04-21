@@ -2,6 +2,7 @@ const formCreate = document.getElementById("createForm");
 const taskName = document.getElementById("name");
 const taskCost = document.getElementById("createCost");
 const taskStatus = document.getElementById("status");
+const taskStartDate = document.getElementById("start_date");
 
 const validateCost = (cost) => {
   const regex = /^[+]?\d+([.]\d+)?$/;
@@ -25,7 +26,7 @@ function checkInputsCreate(e) {
   let isValid = true;
   const nameValue = taskName.value.trim();
   const statusValue = taskStatus.selectedIndex;
-  console.log("status", statusValue);
+  const startDateValue = taskStartDate.value;
 
   const cost = e.target[4].value;
   if (!cost) {
@@ -33,11 +34,26 @@ function checkInputsCreate(e) {
   }
   const costRes = validateCost(cost);
 
+  //find today date
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, "0");
+  var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+  var yyyy = today.getFullYear();
+
+  today = mm + "/" + dd + "/" + yyyy;
+
   if (nameValue === "") {
     setErrorFor(taskName, "Task name cannot be blank");
     isValid = false;
   } else {
     setSuccessFor(taskName);
+  }
+
+  if (Date.parse(startDateValue) < Date.parse(today)) {
+    setErrorFor(taskStartDate, "This date passed");
+    isValid = false;
+  } else {
+    setSuccessFor(taskStartDate);
   }
 
   if (!costRes) {
