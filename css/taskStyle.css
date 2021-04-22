@@ -162,13 +162,13 @@ body::-webkit-scrollbar {
 
 .inputTask {
   border: none;
-  border-bottom: 2px solid black !important;
+  border-bottom: 2px solid black;
   border-radius: 0px;
   padding: 3% !important;
 }
 
 .inputTask:focus {
-  border-bottom: 2px solid #51ced1 !important;
+  border-bottom: 2px solid #51ced1;
 }
 
 .descriptionTask {
@@ -181,12 +181,12 @@ body::-webkit-scrollbar {
 
 .statusTask {
   border: none;
-  border-bottom: 2px solid black !important;
+  border-bottom: 2px solid black;
   border-radius: 0px;
 }
 
 .statusTask:focus {
-  border-bottom: 2px solid #51ced1 !important;
+  border-bottom: 2px solid #51ced1;
   box-shadow: none;
   background-color: none;
 }
@@ -252,8 +252,17 @@ select:-webkit-autofill:focus {
 }
 
 .form-group.error input {
-  border-bottom: 2px solid red !important;
+  border-bottom: 2px solid red;
 }
+
+.form-group.success select {
+  border-color: #2ecc71;
+}
+
+.form-group.error select {
+  border-bottom: 2px solid red;
+}
+
 .form-group.success i.fa-check-circle {
   color: #2ecc71;
   visibility: visible;

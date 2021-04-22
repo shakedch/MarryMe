@@ -8,8 +8,6 @@ const taskDueDate = document.getElementById("due_date");
 const validateCost = (cost) => {
   const regex = /^[+]?\d+([.]\d+)?$/;
   const res = regex.test(cost);
-  console.log(cost);
-  console.log(res);
 
   if (!res) {
     return false;
@@ -18,7 +16,6 @@ const validateCost = (cost) => {
 };
 
 formCreate.addEventListener("submit", (e) => {
-  // e.preventDefault();
   checkInputsCreate(e);
 });
 
@@ -46,6 +43,7 @@ function checkInputsCreate(e) {
 
   if (nameValue === "") {
     setErrorFor(taskName, "Task name cannot be blank");
+    // $(".name").css("border-bottom", "2px solid red");
     isValid = false;
   } else {
     setSuccessFor(taskName);
@@ -82,7 +80,6 @@ function checkInputsCreate(e) {
   if (!isValid) {
     e.preventDefault();
   }
-  // e.preventDefault();
 }
 
 function setErrorFor(input, message) {
@@ -97,4 +94,13 @@ function setErrorFor(input, message) {
 function setSuccessFor(input) {
   const formGroup = input.parentElement;
   formGroup.className = "form-group success";
+}
+
+//remove validetions notifications by click on close btn
+function changeClass() {
+  taskName.parentElement.className = "mb-3 form-group";
+  taskCost.parentElement.className = "mb-3 form-group";
+  taskStatus.parentElement.className = "mb-3 form-group";
+  taskStartDate.parentElement.className = "mb-3 form-group";
+  taskDueDate.parentElement.className = "mb-3 form-group";
 }
