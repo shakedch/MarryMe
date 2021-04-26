@@ -77,6 +77,7 @@
                     New Task</button>
             </div>
 
+
             <div class="d-flex justify-content-around col-md-12">
                 <?php
                 $list = ['To Do', 'In Progress', 'Completed'];
@@ -325,8 +326,28 @@
                                     enctype="multipart/form-data">
                                     <div class="modal-body">
                                         <input type="hidden" name="task_id">
+                                        <script src="./taskBank.js"></script>
 
                                         <div class='mb-3 form-group'>
+                                            <input onclick="clickForMore()" class="form-check-input " type="checkbox"
+                                                style="margin-top: 6px;" />
+                                            <label class="form-check-label lableTask">Check our
+                                                suggestions!</label>
+                                        </div>
+
+                                        <div id="showTaskBank" class='mb-3 form-group' style="display: none">
+                                            <select id="nameBank" name='nameBank'
+                                                class="form-select statusTask lableTask">
+                                                <option selected disabled hidden>Choose Task</option>
+                                                <?php
+                                                        $records = $mysqli->query("SELECT * FROM tasksuggestions") or die($mysqli->error);
+                                                        while ($data = mysqli_fetch_array($records)) {
+                                                            echo "<option value='" . $data['suggestion_name'] . "'>" . $data['suggestion_name'] . "</option>";  // displaying data in option menu
+                                                        }
+                                                        ?>
+                                            </select>
+                                        </div>
+                                        <div id="taskNameInput" class='mb-3 form-group'>
                                             <label class="form-label lableTask" for='name'>Task Name</label>
                                             <input class="form-control name inputTask" id="name" type="text" name="name"
                                                 placeholder="Enter Task name">
@@ -334,6 +355,8 @@
                                             <i class="fas fa-exclamation-circle"></i>
                                             <small id="errorName">Error message</small>
                                         </div>
+
+
 
                                         <div class='mb-3 form-group'>
                                             <label for="start_date" class="form-label lableTask">Start Date</label>

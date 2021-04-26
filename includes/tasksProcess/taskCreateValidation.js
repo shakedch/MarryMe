@@ -1,5 +1,6 @@
 const formCreate = document.getElementById("createForm");
 const taskName = document.getElementById("name");
+const taskNameBank = document.getElementById("nameBank");
 const taskCost = document.getElementById("createCost");
 const taskStatus = document.getElementById("status");
 const taskStartDate = document.getElementById("start_date");
@@ -23,11 +24,14 @@ function checkInputsCreate(e) {
   // trim to remove the whitespaces
   let isValid = true;
   const nameValue = taskName.value.trim();
+  const nameBankValue = taskNameBank.selectedIndex;
   const statusValue = taskStatus.selectedIndex;
   const startDateValue = taskStartDate.value;
   const dueDateValue = taskDueDate.value;
 
-  const cost = e.target[4].value;
+  const cost = e.target[6].value;
+  console.log("cost", cost);
+  console.log("fun", validateCost(cost));
   if (!cost) {
     cost = 0;
   }
@@ -41,9 +45,8 @@ function checkInputsCreate(e) {
 
   today = mm + "/" + dd + "/" + yyyy;
 
-  if (nameValue === "") {
+  if (nameValue === "" && nameBankValue <= 0) {
     setErrorFor(taskName, "Task name cannot be blank");
-    // $(".name").css("border-bottom", "2px solid red");
     isValid = false;
   } else {
     setSuccessFor(taskName);

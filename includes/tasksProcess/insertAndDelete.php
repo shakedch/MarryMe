@@ -19,6 +19,9 @@ $mysqli = new mysqli("localhost", "root", "", "marryme") or die(mysqli_error(($m
 $task_id = " ";
 $update = false;
 $name = "";
+
+$nameBank = "";
+
 $startDate = date('Y-m-d\TH:i');
 $minDueDate = date('Y-m-d\TH:i');
 $dueDate = '';
@@ -32,14 +35,23 @@ $status = '';
 
 if (isset($_POST["save"])) {
     $name = $_POST["name"];
+    debug_to_console($name);
+    $nameBank = $_POST["nameBank"];
+    debug_to_console($nameBank);
     $startDate = $_POST["start_date"];
     $dueDate = $_POST["due_date"];
     $cost = $_POST["cost"] == '' ? 0 : $_POST["cost"];
     $description = $_POST["description"];
     $status = $_POST["status"];
 
-    $mysqli->query("INSERT INTO `tasks`(`user_id`, `name`, `start_date`, `due_date`, `cost`, `description`, `status`) VALUES (1,'$name','$startDate','$dueDate','$cost','$description','$status')") or
-        die($mysqli->error);
+    if ($name === '') {
+        $mysqli->query("INSERT INTO `tasks`(`user_id`, `name`, `start_date`, `due_date`, `cost`, `description`, `status`) VALUES (1,'$nameBank','$startDate','$dueDate','$cost','$description','$status')") or
+            die($mysqli->error);
+    } elseif ($nameBank === '') {
+        $mysqli->query("INSERT INTO `tasks`(`user_id`, `name`, `start_date`, `due_date`, `cost`, `description`, `status`) VALUES (1,'$name','$startDate','$dueDate','$cost','$description','$status')") or
+            die($mysqli->error);
+    }
+
 
     $_SESSION['message'] = "Record has been saved!";
     $_SESSION['msg_type'] = "success";
