@@ -51,6 +51,7 @@
     <?php require_once 'insertAndDelete.php'; ?>
 
 
+
     <div class="wrapper">
         <div class="header">
             <div class="img-holder" data-image="../../assets/img/parallax_offers.png">
@@ -82,6 +83,16 @@
                 <?php
                 $list = ['To Do', 'In Progress', 'Completed'];
                 $listColor = ['background-color:#E47F74;', 'background-color:#EFA37E;', 'background-color:#9BAD69;'];
+                // get currnt date
+                date_default_timezone_set('UTC');
+                $today = date("Y-m-d H:i:s");
+                debug_to_console($today);
+
+
+
+
+
+
                 // With this for loop, we will print all our lists (in this oreder) :
                 // To do , In Progress, Completed.
                 // Every round of the loop, we will print the next column.
@@ -121,7 +132,26 @@
 
                                             <input type="hidden" name='task_id' value=<?php echo $row['task_id']; ?>>
                                             <div class="card-header text-center" style="background-color:white;">
-                                                <h5 class="viewDate">Due date:
+                                                <?php if ($row['due_date'] < $today && $list[$i] !== 'Completed') : ?>
+                                                <i class="fas fa-exclamation-circle dateDanger"></i>
+                                                <small class="dateDangerMsg">Due date passed!</small>
+                                                <i class="fas fa-exclamation-circle dateDanger"></i>
+                                                <?php endif; ?>
+                                                <?php
+
+                                                                $diff = round((strtotime($row['due_date']) - strtotime($today)) / (60 * 60 * 24));
+                                                                debug_to_console($diff);
+                                                                ?>
+
+                                                <?php if ($diff == 1 && $list[$i] !== 'Completed') : ?>
+                                                <i class="bi bi-alarm-fill dateWarning"></i>
+                                                <small class="dateWarningMsg">One day to due date!</small>
+                                                <i class="bi bi-alarm-fill dateWarning"></i>
+                                                <?php endif; ?>
+
+
+                                                <h5 class="viewDate" id="viewDate">
+                                                    Due date:
                                                     <?php echo date('d/m/Y', strtotime(str_replace(':00', '', $row['due_date']))); ?>
                                                 </h5>
                                             </div>

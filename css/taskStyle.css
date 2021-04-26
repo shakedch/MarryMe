@@ -228,6 +228,22 @@ select:-webkit-autofill:focus {
   font-family: "Muli", sans-serif !important;
 }
 
+.dateDanger {
+  color: #e74c3c;
+}
+
+.dateWarning {
+  color: orange;
+}
+
+.dateDangerMsg {
+  color: #e74c3c;
+}
+
+.dateWarningMsg {
+  color: orange;
+}
+
 /* -----VALIDATIONS ----- */
 .form-group i {
   visibility: hidden;
