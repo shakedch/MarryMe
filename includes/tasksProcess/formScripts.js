@@ -1,22 +1,3 @@
-function getStartDateTask(value) {
-  var x = (document.getElementById("due_date").min = value);
-}
-
-const validateCost = (event) => {
-  const cost = event.target[4].value;
-  const costElement = document.getElementById("cost");
-  const regex = /^[+]?\d+([.]\d+)?$/;
-  const res = regex.test(cost);
-
-  if (!res) {
-    event.preventDefault();
-    alert("Must enter only positive digits!");
-    costElement.focus();
-    return false;
-  }
-  return true;
-};
-
 //form disabled inputs by click edit
 $(document).ready(function () {
   $(document).on("click", ".information", function (event) {
@@ -40,6 +21,7 @@ $(document).ready(function () {
   });
 });
 
+// View || Update Modal
 $(document).ready(function () {
   $(".updatetask").hide();
 
@@ -63,13 +45,13 @@ $(document).ready(function () {
     var type = that.attr("method"); //post
     data = {}; // array value
 
-    //form.ajax find name= name name=email
+    //form.ajax find name= name name=email attribute
     that.find("[name]").each(function (value) {
       var that = $(this); //this name
-      var name = that.attr("name"); //name=email
+      var name = that.attr("name"); //name attribute
       var value = that.val(); // value of input
 
-      data[name] = value; //name:uri email:uri@test.com
+      data[name] = value; //name:email= email:uri@test.com
     }); //end of that find
 
     //ajax: send the data to updateTask.php
@@ -83,14 +65,14 @@ $(document).ready(function () {
         if (response == 1) {
           $(".updatetask").text("Updating....");
           $(".modal-body").after(
-            '<div class="alert alert-warning" role="alert">update task success</div>'
+            '<div class="alertUpdate alert-success" role="alert">Update task success!</div>'
           );
           setTimeout(function () {
             location.reload();
-          }, 1000);
+          }, 1200);
         } else {
           $(".modal-body").after(
-            '<div class="alert alert-danger divmsg" role="alert">Something went wrong!</div>'
+            '<div class="alertUpdate alert-danger divmsg" role="alert">Something went wrong..</div>'
           );
           setTimeout(function () {
             $(".divmsg").hide();

@@ -1,0 +1,288 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+/* ----- CARD ----- */
+.cardLists {
+  width: 22rem;
+  box-shadow: 0px 0px 9px 4px #00000057;
+  border: none;
+  margin-bottom: 3rem;
+}
+
+.cardListName {
+  color: white;
+  font-size: 2.7rem !important;
+}
+
+/* ----- CARD SCROLL----- */
+.cardBodyScroll {
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+.cardBodyScroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.cardBodyScroll::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0px rgba(128, 128, 128, 0.397);
+  border-radius: 10px;
+}
+
+/* Handle */
+.cardBodyScroll::-webkit-scrollbar-thumb {
+  background: #e4d7d6;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.cardBodyScroll::-webkit-scrollbar-thumb:hover {
+  background: #ebeade;
+}
+
+/* ----- CARD DISPLAY ----- */
+.viewName {
+  font-size: 1.7rem;
+}
+
+.viewDate {
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+
+.viewCost {
+  font-size: 1.3rem;
+  font-weight: bolder;
+  color: #f2b84b;
+  font-style: italic;
+}
+
+/* ----- ALERT ----- */
+.alert {
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  width: 22%;
+  margin: auto;
+}
+
+.alertUpdate {
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.alert-success {
+  color: #0f5132 !important;
+  background-color: white !important;
+  border-color: #badbcc !important;
+  text-align: center;
+  font-weight: 800;
+}
+
+.alert-danger {
+  color: #842029 !important;
+  background-color: white !important;
+  border-color: #e26875 !important;
+  text-align: center;
+  font-weight: 800;
+}
+
+/* ----- ADD TASK ----- */
+
+.addTaskBtn {
+  font-family: "Niconne", "cursive" !important;
+  font-size: 2.5rem !important;
+  border-radius: 1em;
+  border: 3px solid transparent;
+  padding: 20px;
+  text-align: center;
+  color: #bdb0c8;
+  background-color: #fffcf9;
+}
+
+.addIcon {
+  font-size: 40px;
+}
+
+.addTaskBtnWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.addTaskBtn:hover {
+  border: 3px solid #bdb0c8;
+  color: black;
+}
+
+/* ----- MODAL ----- */
+
+.taskTitle {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.modalBorder {
+  border: 5px solid #fae6c7b4 !important;
+}
+
+.modal-header {
+  border-bottom: 3px solid #7a9fbb;
+}
+
+.modal-footer {
+  border-top: 3px solid #7a9fbb;
+}
+
+.deleteheader {
+  border-bottom: 3px solid #e47f74;
+}
+
+.deletefooter {
+  border-top: 3px solid #e47f74;
+}
+
+/* ----- FORM ----- */
+.form-control:focus {
+  box-shadow: none;
+  background-color: none;
+}
+
+.btn:focus {
+  box-shadow: none;
+  background-color: none;
+}
+
+.inputTask {
+  border: none;
+  border-bottom: 2px solid black;
+  border-radius: 0px;
+  padding: 3% !important;
+}
+
+.inputTask:focus {
+  border-bottom: 2px solid #51ced1;
+}
+
+.descriptionTask {
+  border: 2px solid black;
+}
+
+.descriptionTask:focus {
+  border: 2px solid #51ced1;
+}
+
+.statusTask {
+  border: none;
+  border-bottom: 2px solid black;
+  border-radius: 0px;
+}
+
+.statusTask:focus {
+  border-bottom: 2px solid #51ced1;
+  box-shadow: none;
+  background-color: none;
+}
+
+.lableTask {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* ----- TO REMOVE AUTOCOMPLETE CSS ----- */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill::first-line,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  box-shadow: 0 0 0px 1000px white inset;
+  transition: background-color 5000s ease-in-out 0s;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "Muli", sans-serif !important;
+}
+
+/* -----FORM BTN ----- */
+.createTaskBtn,
+.btnEdit,
+.btnUpdate,
+.btnYes {
+  background-color: #51ced1;
+  font-family: "Muli", sans-serif !important;
+}
+
+.closeBtn {
+  background-color: #e4d7d6;
+  font-family: "Muli", sans-serif !important;
+}
+
+.dateDanger {
+  color: #e74c3c;
+}
+
+.dateWarning {
+  color: orange;
+}
+
+.dateDangerMsg {
+  color: #e74c3c;
+}
+
+.dateWarningMsg {
+  color: orange;
+}
+
+/* -----VALIDATIONS ----- */
+.form-group i {
+  visibility: hidden;
+  top: 40px;
+  right: 10px;
+}
+
+.form-group small {
+  visibility: hidden;
+}
+
+.form-group.error small {
+  visibility: visible;
+  color: #e74c3c;
+  margin-bottom: 1%;
+}
+
+.form-group.success input {
+  border-color: #2ecc71;
+}
+
+.form-group.error input {
+  border-bottom: 2px solid red;
+}
+
+.form-group.success select {
+  border-color: #2ecc71;
+}
+
+.form-group.error select {
+  border-bottom: 2px solid red;
+}
+
+.form-group.success i.fa-check-circle {
+  color: #2ecc71;
+  visibility: visible;
+}
+
+.form-group.error i.fa-exclamation-circle {
+  color: red;
+  visibility: visible;
+}
