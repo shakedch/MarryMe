@@ -54,6 +54,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
 		<link rel="stylesheet" type="text/css" href="../../css/Login.css">
+        <link rel="stylesheet" type="text/css" href="./css/general.css">
+
 	</head>
 	<body>
 		<p id="error"><?php echo $error?></p>
