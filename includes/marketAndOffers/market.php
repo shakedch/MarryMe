@@ -24,7 +24,7 @@
     <div class="container">
         <?php
         $mysqli = new mysqli("localhost:3308", "root", "", "marryme") or die(mysqli_error(($mysqli)));
-        $result = $mysqli->query("SELECT * FROM offers") or die($mysqli->error);
+        $result = $mysqli->query("SELECT * FROM offers") or die($mysqli->error); //לבדוק גם שהתאריך גדול ממה שהיום
 
         function findCompanyName($vendor_to_search, $mysqli)
         {
@@ -46,7 +46,7 @@
             while ($row = $result->fetch_assoc()) : ?>
                 <div id="offer-frame">
                     <div class="market-item">
-                        <table class="table">
+                        <table >
                             <tr>
                                 <td>
                                     <?php
@@ -60,7 +60,11 @@
                                 <td><button name="<?php echo $row['vendor_id'] ?>" class="btn btn-info" onclick="parent.location='vendorDetails.php'"><i class="fas fa-address-card"></i> </button></td>
                             </tr>
                         </table>
-                        <img class="market-item-image" src="../../assets/img/parallax_offers.png"> <!-- לראות איך שולפים תמונה-->
+                        <?php
+                        echo
+                        "<img class='centerPic' src='../../assets/img/offersUploads/" . (($row["img"] == '') || ($row["img"] == '.') ? 'no-image-available.png' : $row["img"]) . "' />";
+                        ?>
+                      
                         <div class="market-item-details">
                             <span class="market-item-price">&#8362 <?php echo $row['price'] ?></span>
                             <button class="market-item-button" type="button">ADD TO WISHLIST &#8594</button>
