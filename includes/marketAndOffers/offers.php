@@ -26,9 +26,6 @@
 
 <body>
 
-    <!--      <div id="general"></div>
-אם לא נשאיר את הפיאייפי הכללי למחוק את זה 2 שורות-->
-    <div id="general"></div>
     <?php require_once 'offersProcess.php'; ?>
 
     <?php if (isset($_SESSION['message'])) : ?>
@@ -53,7 +50,7 @@
         $mysqli = new mysqli("localhost:3308", "root", "", "marryme") or die(mysqli_error(($mysqli)));
         $result = $mysqli->query("SELECT * FROM offers WHERE vendor_id='2' ") or die($mysqli->error);
         /*כאן נצטרך לעשות תנאי נוסף של להציג רק מי שהסשן של המשתמש הוא הספק המחובר*/
-        //pre_r($result);
+
         ?>
 
         <div class="row justify-content-center">
@@ -63,7 +60,15 @@
             while ($row = $result->fetch_assoc()) : ?>
 
                 <div class="grid-container mb-3 mt-3">
-                    <div class="item1"><img width=200px src="../../assets/img/logo.png"></div> <!-- לשלוף תמונה מהדאטה בייס של הההצעה-->
+
+                    <div class="item1">
+                        <?php
+                        echo
+                        "<td class='photoUpload'><img class='centerPic' src='../../assets/img/offersUploads/" . (($row["img"] == '') || ($row["img"] == '.') ? 'no-image-available.png' : $row["img"]) . "' align='center' height='65' /></td>";
+                        ?>
+
+                    </div>
+
                     <div class="item2">
                         <h2><?php echo $row['name'] ?></h2>
                     </div>
@@ -85,7 +90,7 @@
         <button onclick="parent.location='offers.php'">&#10008;</button>
         <h2>Add New Offer</h2>
         <div class="row pr-5 pl-5 ">
-            <form name="offers_form" action="offersProcess.php" id="offers_form" method="POST">
+            <form name="offers_form" action="offersProcess.php" id="offers_form" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="offer_id" value="<?php echo $offer_id; ?>">
 
                 <div class="form-group ">
