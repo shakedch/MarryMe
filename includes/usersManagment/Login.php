@@ -1,224 +1,115 @@
 <?php
-//conection to all class
-require_once('conection/init.php');
-global $session;  //Makes class variables global for use on each page
-// if there are a session ( if user or vendor are make log in)
-if($session->signed_in){
-
-	$role = $_SESSION['role'];
-	$temp = 'couple';
-	if($role == $temp)
-	{
-		// for navbar for user
-		$one_n = "My Task";
-		$sec_n = "Market";
-		$thr_n = "My Offer";
-		$inout = "Log Out";
-		$SeeCre = "See Your Account";
-		$where0 = "includes/tasksProcess/tasks.php";
-		$where1 = "includes/usersManagment/LogOut.php";
-		$where2 = "includes/usersManagment/My_Account.php";
-		$where3 = "includes/marketAndOffers/market.php";
-		$where4 = "includes/my_OFFER/offer_wish.php";
+	//conection to all class
+    require_once('../../conection/init.php');
+	// chack conenction to DB
+	if($database->get_connection()){
+		echo "connection is OK <br>";
 	}
-	else
-	{
-		// for navbar for vendor
-		$one_n = "Offers";
-		$sec_n = "";
-		$thr_n = "";
-		$inout = "Log Out";
-		$SeeCre = "See Your Account";
-		$where0 = "includes/marketAndOffers/offers.php";
-		$where1 = "includes/usersManagment/LogOut.php";
-		$where2 = "includes/usersManagment/My_Account.php";
-		$where3 = "#";
-		$where4 = "#";		
+	else{
+		die("conncection failed.");
 	}
-	
-}
-else{	
-		// for navbar if there are no log in user or vendor
-		$one_n = "";
-		$sec_n = "";
-		$thr_n = "";
-		$role = "Hello Guest";
-		$inout = "Sign in";
-		$SeeCre = "Create New Account";
-		$where0 = "#";
-		$where1 = "includes/usersManagment/Login.php";
-		$where2 = "includes/usersManagment/SignUp.php";
-		$where3 = "#";
-		$where4 = "#";
-}
+    global $session; //Makes class variables global for use on each page
+    $error='';
+	//if user or vendor make log in 
+    if(isset($_POST['submit'])){
+		// if user not give email or password
+        if (!$_POST['email']){
+            $error='User is required';
+        }
+        else if(!$_POST['password']){
+            $error='password is required';
+        }
+        else{
+				$tepm = 'Couples';
+				$res=$_POST['role'];
+				// for user
+				if($res == $tepm){
+					$email=$_POST['email'];
+					$password=md5($_POST['password']); //md5 for password
+					$user=new User(); // Create an empty object
+					$error=$user->find_user_by_name($email,$password); //Function for finding a customer
+					if (!$error){ // if function find user 
+						$session->login($user); // A function that saves users to global variables that will be maintained throughout the stay on the site
+						header('Location: ../../index.php');
+					}
+				}
+				else{
+					// for vendor
+					$email=$_POST['email'];
+					$password=md5($_POST['password']); //md5 for password
+					$vendor=new Vendor(); // Create an empty object
+					$error=$vendor->find_user_by_name($email,$password); //Function for finding a vendor
+					if (!$error){ // if function find vendor 
+						$session->login($vendor); // A function that saves users to global variables that will be maintained throughout the stay on the site
+						header('Location: ../../index.php');
+					}						
+				}   
+        }
+    }
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstra4.5.2/css/bootstrap.min.css"> -->
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript">
-    </script>
-    <script src="https://kit.fontawesome.com/90569433a0.js" crossorigin="anonymous"></script>
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.5.0/mdb.min.css"
-        integrity="sha512-ENnX3mn8eIEmPp8XJ30lCs82Ux76IHv3ZeK9Z4TGzmBDEyYmYodgeqFIw7207m3f1Lhl9t1nMzPxHF6p+YD5Pw=="
-        crossorigin="anonymous" />
-    <!-- general fonts-->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700&amp;display=swap" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap"
-        rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="./css/HeadFoot.css">
-    <link rel="stylesheet" type="text/css" href="./css/hpStyle.css"> 
-    <link rel="stylesheet" type="text/css" href="./css/general.css">
-	<title>Wedding</title>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<title>Login Form</title>
+			<!-- connection css and bootstrap -->
+		    <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+			<link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+			<link rel="stylesheet" type="text/css" href="../../css/Login.css">
+			<link rel="stylesheet" type="text/css" href="./css/general.css">
 
-</head>
-<body>
-    <div id="wrapper">
-        <div>
-	<!-- navbar by variables -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
-      <div class="container">
-        <a class="navbar-brand" href="#">Wedding</a>
-		<ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link text-black" href="index.php">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-black" href="<?php echo $where0 ?>"><?php echo $one_n ?></a>
-            </li>
-			<li class="nav-item">
-              <a class="nav-link text-black" href="<?php echo $where3 ?>"><?php echo $sec_n ?></a>
-            </li>
-						<li class="nav-item">
-              <a class="nav-link text-black" href="<?php echo $where4 ?>"><?php echo $thr_n ?></a>
-            </li>
-          </ul>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <div class="mx-auto"></div>
-		        <span class="navbar-text text-black"><?php echo $role ?></span>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link text-primary" href="<?php echo $where1?>"><?php echo $inout?></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-primary" href="<?php echo $where2?>"><?php echo $SeeCre?></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-	<hr>
-	<hr>
-
-
-		<?php 
-		if($session->signed_in){
-			if($role =='couple'){
-				// If the object being connected is a user
-				header('Location: includes/regularUserHomepage/regularUserHP.php');	
-		
-		}
-			else{	
-			// If the object being connected is a vendor
-			header('Location: includes/marketAndOffers/vendorHomepage.php');
-		}
-		}
-		else{
-			// If there are no user or vendor that log in
-		?>
-			 <div id='wrapper'>
-        <!-- TODO: Video here -->
-        <header>
-            <div class="overlay"></div>
-            <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-                <source src="./assets/videos/flowers.mp4" type="video/mp4">
-                <source src="./assets/videos/flowers.webm" type="video/mp4">
-                <!-- <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4"> -->
-            </video>
-            <div class="container2 h-100">
-                <div class="d-flex h-100 text-center align-items-center">
-                    <div class="w-100 text-white">
-                        <h1 class="display-3"><img style="width:25rem;height:25rem;" src="./assets/img/logo_transparent.png" alt="Logo"></h1>
-                        <!-- <h1 class="display-3">Marry Me</h1> -->
-                        <!-- TODO: Change this line ! -->
-                        <p class="lead mb-0">Manage you wedding with us!</p>
+	</head>
+	<body>
+		<!-- show if the conection is good or no -->
+		<p id="error"><?php echo $error?></p>
+	    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+        <div class="container">
+            <div class="card login-card">
+                <div class="row no-gutters">
+                    <div class="col-md-5">
+                        <img src="../../assets/img/one.jpg" alt="login" class="login-card-img">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card-body">
+                            <p class="login-card-description">Sign into your account</p>
+							<!-- form for log in  -->
+                            <form method="post">
+                                <div class="form-group">
+                                    <label for="email" class="sr-only">Email</label>
+                                    <input type="email" name="email" id="email" class="form-control"
+                                        placeholder="Email address">
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label for="password" class="sr-only">Password</label>
+                                    <input type="password" name="password" id="password" class="form-control"
+                                        placeholder="***********">
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label>Role:</label>
+                                    <input type="radio" id="role1" name="role" value="Couples">
+                                    <label for="Couples">Couples</label>
+                                    <input type="radio" id="role2" name="role" value="Vendor">
+                                    <label for="Vendor">Vendor</label>
+                                </div>
+                                <input name="submit" id="login" class="btn btn-block login-btn mb-4" type="submit"
+                                    value="Sign in">
+                            </form>
+                            <p class="login-card-footer-text">Don't have an account? <a href="./SignUP.php"
+                                    class="text-reset">Register here</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </header>
-    </div>
-    <!-- TODO: Out story div here (with lot of text) here -->
-    <div class='divWrapper'>
-        <div class='aboutUs'>
-            <h2>About us</h2>
-            <p id="ourStoryText"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lacus turpis, commodo
-                vitae elit eu, finibus convallis elit. Vivamus vulputate lobortis rutrum. Sed viverra, elit nec luctus
-                convallis, nunc massa bibendum nulla, sit amet dictum justo erat ut metus. Integer porttitor sagittis
-                justo, eget pulvinar orci dictum eget. Integer ut nulla ut dui aliquam aliquet nec at erat. Nullam vel
-                eros nibh. Donec tincidunt ligula sem, dapibus iaculis felis lacinia eu. Sed in ex eu nunc egestas
-                consectetur. Pellentesque at ligula ut est rutrum efficitur. Pellentesque maximus diam sed massa
-                pellentesque, in dignissim eros elementum. Sed luctus turpis nunc, quis vulputate arcu dapibus nec. Sed
-                non justo lacus. Curabitur posuere laoreet magna, id ullamcorper lectus imperdiet sed. Nam magna nunc,
-                volutpat sit amet ipsum sit amet, sollicitudin pretium purus. Nam in iaculis nunc, id pretium ligula.
-                Sed suscipit pellentesque mauris, ac convallis lacus mollis sed. In posuere mi quis tellus dictum, ac
-                facilisis ex mattis. Donec in tincidunt purus, sed consequat dolor. Ut eu tellus quis orci efficitur
-                consectetur. </p>
         </div>
-    </div>
-    <!-- TODO: Some image in full width here -->
-    <div class="img-holder" data-image="./assets/img/hp_img_one.jpg">
-    </div>
-    <!-- TODO: 3 element :[ offer to regular user , I DO button, offer to vendor user] here -->
-    <div class='divWrapper' id='offers'>
-        <div class='textOffers'>
-            <div class='textOfferBox'>
-                <h3>Offer to regular user</h3>
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lacus turpis, commodo vitae elit eu,
-                    finibus convallis elit. Vivamus vulputate lobortis rutrum. Sed viverra, elit nec luctus convallis,
-                    nunc massa bibendum nulla, sit amet dictum justo erat ut metus. Integer porttitor sagittis justo,
-                    eget pulvinar orci dictum eget.</p>
-            </div>
-            <div class='textOfferBox'>
-                <h3>Offer to vendor user</h3>
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lacus turpis, commodo vitae elit eu,
-                    finibus convallis elit. Vivamus vulputate lobortis rutrum. Sed viverra, elit nec luctus convallis,
-                    nunc massa bibendum nulla, sit amet dictum justo erat ut metus. Integer porttitor sagittis justo,
-                    eget pulvinar orci dictum eget.</p>
-            </div>
-        </div>
-        <div class='joinUs'>
-            <h3>Will you join us?</h3>
-            <!-- <div class='offerBox'> --><a class='iDoLink' href="http://www.google.com" target="_self"
-                rel="noopener noreferrer"><button type="button">I Do!</button></a><!-- </div> -->
-        </div>
-    </div>
-    <!-- TODO: Some image in full width here -->
-    <div class="img-holder" data-image="./assets/img/hp_img_two.jpg">
-    </div>
-    <!-- Necessary scripts-->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://rawgithub.com/pederan/Parallax-ImageScroll/master/jquery.imageScroll.min.js"
-        type="text/javascript"></script>
-    <script src="./includes/general.js"></script>
-		<?php
-		}
-		?>
-		</div>
-	</div>
+    </main>
+	<!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-
-</body>
+	</body>
 </html>
