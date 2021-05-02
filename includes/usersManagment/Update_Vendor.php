@@ -1,22 +1,27 @@
 <?php
+	//conection to all class
 	require_once('../../conection/init.php');
+	// chack conenction to DB
 	if($database->get_connection()){
 		echo "connection is OK <br>";
 	}
 	else{
 		die("conncection failed.");
 	}
-    global $session;
+    global $session; //Makes class variables global for use on each page
 	$error='';
+	//if vendor make Update 
 	if(isset($_POST['submit'])){
 		if($_POST){
 			$error=NULL;
-			$vendor= new Vendor();
+			$vendor= new Vendor(); // Create an empty object
+			// A function for update data
 			$error=$vendor->update_data($session->email,$_POST['company_name'],$_POST['phone_num'],$_POST['kind_of_business'],$_POST['web_url'],$_POST['address']);
 			echo '<script>alert("vendor was update")</script>';
 			header('Location: My_Account.php');
 		}
 		else{
+			// if vendor make update but there was a error
 			$error='something is worng';
 		}				
 	}
@@ -24,6 +29,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	<!-- connection css and bootstrap and metadata -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -34,6 +40,7 @@
 		<p id="error"><?php echo $error?></p>
 		<div class="login-box">
 			<h1>Update for <?php echo $session->email?></h1>
+			<!-- form for update  -->
 			<form method="post">
 				<div class="textbox">
 					<i class="fa fa-address-card" aria-hidden="true"></i>

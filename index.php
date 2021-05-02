@@ -1,20 +1,55 @@
 <?php
+//conection to all class
 require_once('conection/init.php');
-global $session;
+global $session;  //Makes class variables global for use on each page
+// if there are a session ( if user or vendor are make log in)
 if($session->signed_in){
 
 	$role = $_SESSION['role'];
-	$inout = "Log Out";
-	$SeeCre = "See Your Account";
-	$where1 = "includes/usersManagment/LogOut.php";
-	$where2 = "includes/usersManagment/My_Account.php";
+	$temp = 'couple';
+	if($role == $temp)
+	{
+		// for navbar for user
+		$one_n = "My Task";
+		$sec_n = "Market";
+		$thr_n = "My Offer";
+		$inout = "Log Out";
+		$SeeCre = "See Your Account";
+		$where0 = "includes/tasksProcess/tasks.php";
+		$where1 = "includes/usersManagment/LogOut.php";
+		$where2 = "includes/usersManagment/My_Account.php";
+		$where3 = "includes/marketAndOffers/market.php";
+		$where4 = "includes/my_OFFER/offer_wish.php";
+	}
+	else
+	{
+		// for navbar for vendor
+		$one_n = "Offers";
+		$sec_n = "";
+		$thr_n = "";
+		$inout = "Log Out";
+		$SeeCre = "See Your Account";
+		$where0 = "includes/marketAndOffers/offers.php";
+		$where1 = "includes/usersManagment/LogOut.php";
+		$where2 = "includes/usersManagment/My_Account.php";
+		$where3 = "#";
+		$where4 = "#";		
+	}
+	
 }
 else{	
-	$role = "Hello Guest";
-	$inout = "Sign in";
-	$SeeCre = "Create New Account";
-	$where1 = "includes/usersManagment/Login.php";
-	$where2 = "includes/usersManagment/SignUp.php";
+		// for navbar if there are no log in user or vendor
+		$one_n = "";
+		$sec_n = "";
+		$thr_n = "";
+		$role = "Hello Guest";
+		$inout = "Sign in";
+		$SeeCre = "Create New Account";
+		$where0 = "#";
+		$where1 = "includes/usersManagment/Login.php";
+		$where2 = "includes/usersManagment/SignUp.php";
+		$where3 = "#";
+		$where4 = "#";
 }
 ?>
 <!DOCTYPE html>
@@ -52,47 +87,56 @@ else{
 <body>
     <div id="wrapper">
         <div>
-            <nav class="navbar navbar-expand-md navbar-light ">
-                <a style="font-family: fantasy; font-size: 35px; color: #8A2C47" class="navbar-brand" href="#"><i>Wedding</i></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                    <ul class="navbar-nav text-uppercase">
-                        <li class="nav-item "><a class="nav-link active" href="index.php" "javascript:void(0)">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="offer.php" "javascript:void(0)">offer</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">###</a></li>
-                    </ul>
-					<ul class="navbar-nav text-uppercase ml-auto">					
-						<li class="nav-item nav-link waves-effect"><?php echo $role?></a></li>
-						<li class="nav-item"><a href="<?php echo $where1?>" style= "padding-left: 30px" class="nav-link waves-effect"><?php echo $inout?></a></li>						
-						<li class="nav-item pl-auto"><a href="<?php echo $where2?>"  type="button"class="btn btn-outline-danger btn-md btn-rounded btn-navbar waves-effect waves-light"><?php echo $SeeCre?></a></li>
-					</ul>
-                </div>
-            </nav>
-            <hr>
+	<!-- navbar by variables -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
+      <div class="container">
+        <a class="navbar-brand" href="#">Wedding</a>
+		<ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-black" href="index.php">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-black" href="<?php echo $where0 ?>"><?php echo $one_n ?></a>
+            </li>
+			<li class="nav-item">
+              <a class="nav-link text-black" href="<?php echo $where3 ?>"><?php echo $sec_n ?></a>
+            </li>
+						<li class="nav-item">
+              <a class="nav-link text-black" href="<?php echo $where4 ?>"><?php echo $thr_n ?></a>
+            </li>
+          </ul>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="mx-auto"></div>
+		        <span class="navbar-text text-black"><?php echo $role ?></span>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-primary" href="<?php echo $where1?>"><?php echo $inout?></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-primary" href="<?php echo $where2?>"><?php echo $SeeCre?></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	<hr>
+	<hr>
+
+
 		<?php 
 		if($session->signed_in){
 			if($role =='couple'){
-						
-			?>			
-			<h1> you are user </h1>
-			<p> the session ID is: <?php echo $session->id?> </p>
-			<p> the session email is: <?php echo $session->email?> </p>
-			<p> the session role is: <?php echo $session->role?> </p>
-		<?php
+				// If the object being connected is a user
+				header('Location: includes/regularUserHomepage/regularUserHP.php');	
+		
 		}
-			else{
-				
-		?>
-			<h1> you are vendor </h1>
-			<p> the session ID is: <?php echo $session->id?> </p>
-			<p> the session email is: <?php echo $session->email?> </p>
-			<p> the session role is: <?php echo $session->role?> </p>
-		<?php
+			else{	
+			// If the object being connected is a vendor
+			header('Location: includes/marketAndOffers/vendorHomepage.php');
 		}
 		}
 		else{
+			// If there are no user or vendor that log in
 		?>
 			 <div id='wrapper'>
         <!-- TODO: Video here -->

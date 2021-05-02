@@ -1,21 +1,22 @@
 * {
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
-  
+
 html {
   height: 100%;
-  -webkit-text-size-adjust: 100%;                   
+  -webkit-text-size-adjust: 100%;
 }
-  
+
 body {
   margin: 0;
   overflow-x: hidden;
 }
 
- ul, ol {
+ul,
+ol {
   list-style-type: none;
   margin: 0;
-  padding: 0; 
+  padding: 0;
 }
 
 main .offer-list {
@@ -81,7 +82,6 @@ main .offer-list .offer .controls .trash-span {
   right: 0;
 }
 
-
 .switch input {
   opacity: 0;
   width: 0;
@@ -103,8 +103,8 @@ main .offer-list .offer .controls .switch .slider {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 main .offer-list .offer .controls .switch .slider:before {
@@ -115,12 +115,12 @@ main .offer-list .offer .controls .switch .slider:before {
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 main .offer-list .offer .controls .switch input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 main .offer-list .offer .controls .switch input:checked + .slider:before {

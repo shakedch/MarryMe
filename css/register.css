@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap");
 
 body {
-  font-family: 'Karla', sans-serif;
+  font-family: "Karla", sans-serif;
   background-color: #d0d0ce;
   min-height: 100vh;
 }
@@ -130,7 +130,7 @@ body {
 }
 .overlyCarouselLight > a > button {
   color: #000;
-  font-family: 'Berkshire Swash', 'cursive';
+  font-family: "Berkshire Swash", "cursive";
   transition: 0.2s;
 }
 .overlyCarouselLight > a > button:hover {
@@ -141,7 +141,7 @@ body {
   background: none;
   border: none;
   color: #fff;
-  font-family: 'Berkshire Swash', 'cursive';
+  font-family: "Berkshire Swash", "cursive";
   transition: 0.2s;
 }
 .carouselButton > button:hover {
