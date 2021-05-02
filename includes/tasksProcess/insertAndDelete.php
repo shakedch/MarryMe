@@ -1,5 +1,8 @@
 <?php
 
+require_once('../../conection/init.php');
+global $session;
+global $database;
 
 //remove before production
 function debug_to_console($data)
@@ -12,9 +15,6 @@ function debug_to_console($data)
 }
 
 
-
-session_start();
-$mysqli = new mysqli("localhost", "root", "", "marryme") or die(mysqli_error(($mysqli)));
 
 $task_id = " ";
 $update = false;
@@ -45,11 +45,11 @@ if (isset($_POST["save"])) {
     $status = $_POST["status"];
 
     if ($name === '') {
-        $mysqli->query("INSERT INTO `tasks`(`user_id`, `name`, `start_date`, `due_date`, `cost`, `description`, `status`) VALUES (1,'$nameBank','$startDate','$dueDate','$cost','$description','$status')") or
-            die($mysqli->error);
-    } elseif ($nameBank === '') {
-        $mysqli->query("INSERT INTO `tasks`(`user_id`, `name`, `start_date`, `due_date`, `cost`, `description`, `status`) VALUES (1,'$name','$startDate','$dueDate','$cost','$description','$status')") or
-            die($mysqli->error);
+        $database->query("INSERT INTO `tasks`(`user_id`, `name`, `start_date`, `due_date`, `cost`, `description`, `status`) VALUES ('" . $session->id . "','$nameBank','$startDate','$dueDate','$cost','$description','$status')") or
+            die($database->query);
+    } elseif ($nameBank <= 0) {
+        $database->query("INSERT INTO `tasks`(`user_id`, `name`, `start_date`, `due_date`, `cost`, `description`, `status`) VALUES ('" . $session->id . "','$name','$startDate','$dueDate','$cost','$description','$status')") or
+            die($database->query);
     }
 
 
@@ -63,8 +63,8 @@ if (isset($_POST["save"])) {
 
 if (isset($_GET['deleteTask'])) {
     $task_id = $_GET['deleteTask'];
-    $mysqli->query("DELETE FROM tasks WHERE`tasks`.`task_id`=$task_id") or
-        die($mysqli->error);
+    $database->query("DELETE FROM tasks WHERE`tasks`.`task_id`=$task_id") or
+        die($database->query);
 
 
     $_SESSION['message'] = "Record has been deleted!";

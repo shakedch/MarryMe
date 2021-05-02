@@ -1,3 +1,19 @@
+<?php require_once 'insertAndDelete.php';
+global $session;
+global $database;
+$role = $_SESSION['role'];
+$one_n = "My Task";
+$sec_n = "Market";
+$thr_n = "My Offer";
+$inout = "Log Out";
+$SeeCre = "See Your Account";
+$where0 = "../tasksProcess/tasks.php";
+$where1 = "../usersManagment/LogOut.php";
+$where2 = "../usersManagment/My_Account.php";
+$where3 = "../marketAndOffers/market.php";
+$where4 = "../my_OFFER/offer_wish.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,7 +52,7 @@
     <script src="./formScripts.js"></script>
     <link rel="stylesheet" href="../../css/general.css">
     <link rel="stylesheet" href="../../css/taskStyle.css">
-
+    <link rel="stylesheet" type="text/css" href="../../css/HeadFoot.css">
 
 
     <!-- our import files -->
@@ -48,13 +64,46 @@
 
 <body>
 
-    <?php require_once 'insertAndDelete.php'; ?>
+
 
 
 
     <div class="wrapper">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
+            <div class="container">
+                <a class="navbar-brand" href="#">Wedding</a>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-black" href="../../index.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-black" href="<?php echo $where0 ?>"><?php echo $one_n ?></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-black" href="<?php echo $where3 ?>"><?php echo $sec_n ?></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-black" href="<?php echo $where4 ?>"><?php echo $thr_n ?></a>
+                    </li>
+                </ul>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="mx-auto"></div>
+                    <span class="navbar-text text-black"><?php echo $role ?></span>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" href="<?php echo $where1 ?>"><?php echo $inout ?></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" href="<?php echo $where2 ?>"><?php echo $SeeCre ?></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <hr>
+        <hr>
         <div class="header">
-            <div class="img-holder" data-image="../../assets/img/parallax_offers.png">
+            <div class="img-holder" data-image="../../assets/img/parallax_mytasks.png">
             </div>
             <div>
                 <h1 class="head-text typographyH1">My Tasks</h1>
@@ -97,7 +146,7 @@
                 // To do , In Progress, Completed.
                 // Every round of the loop, we will print the next column.
                 for ($i = 0; $i < sizeof($list); $i++) {
-                    $listData = $mysqli->query("SELECT * FROM tasks WHERE tasks.status='$list[$i]'") or die($mysqli->error);
+                    $listData = $database->query("SELECT * FROM tasks WHERE status='" . $list[$i] . "' AND user_id='" . $session->id . "'");
                 ?>
                 <!-- each column will print from here. -->
                 <div class="card cardLists col-md-4 p-2">
@@ -370,7 +419,7 @@
                                                 class="form-select statusTask lableTask">
                                                 <option selected disabled hidden>Choose Task</option>
                                                 <?php
-                                                        $records = $mysqli->query("SELECT * FROM tasksuggestions") or die($mysqli->error);
+                                                        $records = $database->query("SELECT * FROM tasksuggestions") or die($database->query);
                                                         while ($data = mysqli_fetch_array($records)) {
                                                             echo "<option value='" . $data['suggestion_name'] . "'>" . $data['suggestion_name'] . "</option>";  // displaying data in option menu
                                                         }
