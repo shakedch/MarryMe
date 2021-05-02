@@ -1,6 +1,7 @@
 <?php
-	
+	//conection to all class
 	require_once('../../conection/init.php');
+	// chack conenction to DB
 	if($database->get_connection()){
 		echo "connection is OK <br>";
 	}
@@ -8,7 +9,7 @@
 		die("conncection failed.");
 	}
 	
-    global $session;
+    global $session; //Makes class variables global for use on each page
     $error='';
 ?>
 
@@ -16,6 +17,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	<!-- connection css and bootstrap and metadata -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -56,6 +58,7 @@
                                     <img src="../../assets/img/REvendor.jpg" class="d-block w-100" alt="...">
                                     <div class="carousel-caption d-none d-md-block overlyCarouselLight">
                                         <br>
+										<!-- for new vendor -->
 										<h4>Vendors</h4>
                                         <p>If you are a vendor and to join us.</p>
                                         <a class='carouselButton' href="./signUp_Vendor.php"><button>Click here to register as
@@ -65,6 +68,7 @@
                                 <div class="carousel-item">
                                     <img src="../../assets/img/RElogin.jpg" class="d-block w-100" alt="...">
                                     <div class="carousel-caption d-none d-md-block overlyCarousel">
+									<!-- for user that have account -->
                                         <h4>Already have an account?</h4>
                                         <p>You came here by mistake?</p>
                                         <a class='carouselButton' href="./Login.php"><button>Click Here to login</button></a>
@@ -73,13 +77,15 @@
                                 <div class="carousel-item">
                                     <img src="../../assets/img/REcouples.jpg" class="d-block w-100" alt="...">
                                     <div class="carousel-caption d-none d-md-block overlyCarousel">
-                                        <h4>Couples getting married?</h4>
+                                        <!-- for new user -->
+										<h4>Couples getting married?</h4>
                                         <p>Join us and manage your tasks!.</p>
                                         <a class='carouselButton' href="./signUp_User.php"><button>Click Here to register as
                                                 couples</button></a>
                                     </div>
                                 </div>
                             </div>
+							 <!-- Carousel navigation -->
                             <button class="carousel-control-prev" type="button"
                                 data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -96,6 +102,7 @@
             </div>
         </div>
     </main>
+	<!-- JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">

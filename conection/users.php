@@ -1,8 +1,10 @@
 <?php
-  
+//conection to all class 
 require_once('init.php');
 
+// Building a class for User
 class User{
+	//Class variables
 	private $user_id;
     private $email;
 	private $password;
@@ -13,7 +15,7 @@ class User{
 	private $budget;
 	private $role;
     
-
+	// A function that takes all the record in a user table and puts them into an array of objects
     public static function fetch_users(){
         
         global $database;
@@ -32,7 +34,7 @@ class User{
         }
         return $users;
     }
-        
+    // Two functions that make the record an object   
     private function has_attribute($attribute){
         
         $object_properties=get_object_vars($this);
@@ -46,6 +48,7 @@ class User{
        }
      }
 	 
+	// Function that finds a user by email and password
 	public function find_user_by_name($email,$password){
         global $database;
         $error=null;
@@ -62,6 +65,7 @@ class User{
         return $error;
 
     }
+	//Function that finds a user by email
 	public function find_user_by_email($email){
         global $database;
         $error=null;
@@ -77,6 +81,23 @@ class User{
 		 
         return $error;
 	}
+	// Function that finds a user by user_id
+	public function find_user_by_id($id){
+        global $database;
+        $error=null;
+        $result=$database->query("select * from users where user_id='".$id."'");
+        if (!$result)
+            $error='Can not find the user.  Error is:'.$database->get_connection()->error;
+        elseif ($result->num_rows>0){
+            $found_user=$result->fetch_assoc();
+			$this->instantation($found_user);
+        }
+         else
+             $error="Can no find user by this id";
+		 
+        return $error;
+	}
+	//Function that finds a user by email
 	public function find_email($email){
         global $database;
         $error=null;
@@ -91,6 +112,7 @@ class User{
 		 
         return $error;
 	}
+	//Function that add new user
     public static function add_user($email,$password,$full_name1,$full_name2,$date_of_wedding,$hour_of_wedding,$budget){
         global $database;
         $error=null;
@@ -103,6 +125,7 @@ class User{
         return $error;
         
     }
+	//Function that update_data for user
 	public function update_data($email,$full_name1,$full_name2,$date_of_wedding,$hour_of_wedding,$budget){
         global $database;
         $error=null;
@@ -110,7 +133,7 @@ class User{
         return $error;  
     }
 	
-	
+	// get function
     public function __get($property){
         if (property_exists($this,$property))
             return $this->$property;

@@ -1,72 +1,121 @@
 <?php
+//conection to all class
 require_once('../../conection/init.php');
-global $session;
-if($session->signed_in){
-
+global $session; //Makes class variables global for use on each page
 	$role = $_SESSION['role'];
-	$inout = "Log Out";
-	$SeeCre = "See Your Account";
-	$where1 = "LogOut.php";
-	$where2 = "My_Account.php";
-}
-else{	
-	$role = "Hello Guest";
-	$inout = "Sign in";
-	$SeeCre = "Create New Account";
-	$where1 = "Login.php";
-	$where2 = "SignUp.php";
-}
+	$temp = 'couple';
+	if($role == $temp)
+	{
+		// for navbar for user
+		$one_n = "My Task";
+		$sec_n = "Market";	
+		$thr_n = "My Offer";
+		$inout = "Log Out";
+		$SeeCre = "See Your Account";
+		$where0 = "../tasksProcess/tasks.php";
+		$where1 = "LogOut.php";
+		$where2 = "My_Account.php";
+		$where3 = "../marketAndOffers/market.php";
+		$where4 = "../my_OFFER/offer_wish.php";
+	}
+	else
+	{
+		// for navbar for vendor
+		$one_n = "Offers";
+		$sec_n = "";
+		$thr_n = "";
+		$inout = "Log Out";
+		$SeeCre = "See Your Account";
+		$where0 = "../marketAndOffers/offers.php";
+		$where1 = "LogOut.php";
+		$where2 = "My_Account.php";			
+		$where3 = "#";	
+		$where4 = "#";
+	}
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>DOG'S WORLD</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../../css/HeadFoot.css">		
-	<script src = "https://code.jquery.com/jquery-3.5.0.js"></script>	
-	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>	
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstra4.5.2/css/bootstrap.min.css"> -->
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript">
+    </script>
+    <script src="https://kit.fontawesome.com/90569433a0.js" crossorigin="anonymous"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.5.0/mdb.min.css"
+        integrity="sha512-ENnX3mn8eIEmPp8XJ30lCs82Ux76IHv3ZeK9Z4TGzmBDEyYmYodgeqFIw7207m3f1Lhl9t1nMzPxHF6p+YD5Pw=="
+        crossorigin="anonymous" />
+    <!-- general fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700&amp;display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap"
+        rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../../css/HeadFoot.css">
+    <link rel="stylesheet" type="text/css" href="../../css/hpStyle.css"> 
+    <link rel="stylesheet" type="text/css" href="../../css/general.css">
+	<title>Wedding</title>
 
 </head>
 
 <body>
     <div id="wrapper">
-        <div id="internalWrapper">
-            <nav class="navbar navbar-expand-md navbar-light ">
-                <a style="font-family: fantasy; font-size: 35px; color: #8A2C47" class="navbar-brand" href="#"><i>Wedding</i></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                    <ul class="navbar-nav text-uppercase">
-                        <li class="nav-item "><a class="nav-link active" href="../../index.php" "javascript:void(0)">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../../offer.php" "javascript:void(0)">offer</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">###</a></li>
-                    </ul>
-					<ul class="navbar-nav text-uppercase ml-auto">					
-						<li class="nav-item nav-link waves-effect"><?php echo $role?></a></li>
-						<li class="nav-item"><a href="<?php echo $where1?>" style= "padding-left: 30px" class="nav-link waves-effect"><?php echo $inout?></a></li>						
-						<li class="nav-item pl-auto"><a href="<?php echo $where2?>"  type="button"class="btn btn-outline-danger btn-md btn-rounded btn-navbar waves-effect waves-light"><?php echo $SeeCre?></a></li>
-					</ul>
-                </div>
-            </nav>
-			<hr>
+        <div>
+	<!-- navbar by variables -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
+      <div class="container">
+        <a class="navbar-brand" href="#">Wedding</a>
+		<ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-black" href="../../index.php">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-black" href="<?php echo $where0 ?>"><?php echo $one_n ?></a>
+            </li>
+			<li class="nav-item">
+              <a class="nav-link text-black" href="<?php echo $where3 ?>"><?php echo $sec_n ?></a>
+            </li>
+          </ul>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="mx-auto"></div>
+		        <span class="navbar-text text-black"><?php echo $role ?></span>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-primary" href="<?php echo $where1?>"><?php echo $inout?></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-primary" href="<?php echo $where2?>"><?php echo $SeeCre?></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	<hr>
+	<hr>
+		<hr>
+	<hr>
 			<?php 
 				if($session->signed_in){
 					if($role =='couple'){
 						$error='';
-						$user=new User();
-						$error=$user->find_user_by_email($session->email);			
+						$user=new User(); // Create an empty object
+						$error=$user->find_user_by_email($session->email);	// Inserting data into an object		
 					
 				
 					?>			
 					
-					
-					<table class="table table-striped">
+					<!-- table with user data -->
+					<table class="table">
 					<thead>
 					<tr>
 						<th scope="col">user_id</th>
@@ -89,6 +138,7 @@ else{
 					  <td><?php echo $user->hour_of_wedding; ?></td>
 					  <td><?php echo $user->budget; ?></td>
 					</tr>
+					<!-- button to change data -->
 					<tr>
 						<button type="button" class ="btn btn-outline-danger btn-md"><a href = "Update_User.php">Update Data </a></button>
 					</tr>
@@ -99,10 +149,11 @@ else{
 				}
 					else{
 						$error='';
-						$user=new Vendor();
-						$error=$user->find_user_by_email($session->email);		
+						$user=new Vendor(); // Create an empty object
+						$error=$user->find_user_by_email($session->email);	// Inserting data into an object	
 				?>
-					<table class="table table-striped">
+				<!-- table with user data -->
+					<table class="table">
 					<thead>
 					<tr>
 						<th scope="col">vendor_id</th>
@@ -126,6 +177,7 @@ else{
 					  <td><?php echo $user->address; ?></td>
 					</tr>
 					<tr>
+					<!-- button to change data -->
 						<button type="button" class ="btn btn-outline-danger btn-md"><a href = "Update_Vendor.php">Update Data </a></button>
 					</tr>
 					</tbody>
@@ -134,7 +186,6 @@ else{
 				}
 				}	
 				?>
-				</div>
 			</div>
 
 
