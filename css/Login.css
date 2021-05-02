@@ -1,3 +1,4 @@
+/* needs to be moved to a different css file for sign up forms */
 body {
   margin: 0;
   padding: 0;
@@ -64,7 +65,8 @@ body {
 
 body {
   font-family: "Karla", sans-serif;
-  background-color: #d0d0ce;
+  background: url(../assets/img/coverLogin.jpg) no-repeat;
+  background-size: cover;
   min-height: 100vh;
 }
 
