@@ -1,3 +1,16 @@
+<?php require_once 'offersProcess.php';
+global $session;
+global $database;
+$role = $_SESSION['role'];
+$one_n = "Offers";
+$inout = "Log Out";
+$SeeCre = "See Your Account";
+$where0 = "offers.php";
+$where1 = "../usersManagment/LogOut.php";
+$where2 = "../usersManagment/My_Account.php";
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -7,13 +20,16 @@
 
     <link href="../../css/general.css?v=1.0" rel="stylesheet" type="text/css" />
     <link href="../../css/offers.css?v=1.0" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../css/HeadFoot.css">
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript">
+    </script>
     <script src="https://kit.fontawesome.com/90569433a0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    </script>
     <!-- tab view -->
     <link rel="shortcut icon" href="../../assets/img/tab_logo.png" type="image/png">
     <title> Marry Me</title>
@@ -26,8 +42,33 @@
 
 <body>
 
-    <?php require_once 'offersProcess.php'; ?>
-
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">Wedding</a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-black" href="../../index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-black" href="<?php echo $where0 ?>"><?php echo $one_n ?></a>
+                </li>
+            </ul>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="mx-auto"></div>
+                <span class="navbar-text text-black"><?php echo $role ?></span>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-primary" href="<?php echo $where1 ?>"><?php echo $inout ?></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-primary" href="<?php echo $where2 ?>"><?php echo $SeeCre ?></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <hr>
+    <hr>
     <?php if (isset($_SESSION['message'])) : ?>
         <div class="alert alert-<?= $_SESSION['msg_type'] ?> ">
             <?php
@@ -41,14 +82,14 @@
         <div class="img-holder" data-image="../../assets/img/parallax_offers.png">
         </div>
         <div>
-            <h1 class="head-text">Offers</h1>
+            <h1 class="head-text typographyH1">Offers</h1>
         </div>
     </div>
 
     <div class="container">
         <?php
-        $mysqli = new mysqli("localhost:3308", "root", "", "marryme") or die(mysqli_error(($mysqli)));
-        $result = $mysqli->query("SELECT * FROM offers WHERE vendor_id='2' ") or die($mysqli->error);
+        $mysqli = new mysqli("localhost", "root", "", "marryme") or die(mysqli_error(($mysqli)));
+        $result = $mysqli->query("SELECT * FROM offers WHERE vendor_id='" . $session->id . "' ") or die($mysqli->error);
         /*כאן נצטרך לעשות תנאי נוסף של להציג רק מי שהסשן של המשתמש הוא הספק המחובר*/
 
         ?>
