@@ -45,13 +45,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<title>Registration Form for couples</title>
-		<link rel="stylesheet" type="text/css" href="../../css/Login.css">
+		<!-- <link rel="stylesheet" type="text/css" href="../../css/Login.css"> -->
 		<link rel="stylesheet" type="text/css" href="../../css/signup.css">
 	</head>
 	<body>
 		<p id="error"><?php echo $error?></p>
 		<div class="login-box">
-			<h1>Registration for couples</h1>
+			<h1>Registration - Couples</h1>
 			<!-- form for Registration  -->
 			<form method="post">
 				<div class="textbox">

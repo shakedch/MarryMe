@@ -5,10 +5,11 @@ body {
   font-family: sans-serif;
   background: url(../assets/img/coverLogin.jpg) no-repeat;
   background-size: cover;
+  font-family: "Berkshire Swash", "cursive";
 }
 
 .login-box {
-  width: 280px;
+  width: 450px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -18,10 +19,12 @@ body {
 
 .login-box h1 {
   float: left;
-  font-size: 40px;
+  font-size: 45px;
   border-bottom: 6px solid #8a2c47;
   margin-bottom: 50px;
   padding: 13px 0;
+  font-family: "Berkshire Swash", "cursive";
+  text-shadow: 5px 5px 5px rgb(17, 17, 17);
 }
 
 .textbox {
@@ -47,6 +50,7 @@ body {
   width: 80%;
   float: left;
   margin: 0 10px;
+  font-family: "Berkshire Swash", "cursive";
 }
 
 .btn {
@@ -59,4 +63,5 @@ body {
   cursor: pointer;
   margin: 12px 0;
   border-radius: 15px;
+  font-family: "Berkshire Swash", "cursive";
 }

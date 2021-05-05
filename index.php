@@ -166,15 +166,7 @@ else{
             <p id="ourStoryText"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lacus turpis, commodo
                 vitae elit eu, finibus convallis elit. Vivamus vulputate lobortis rutrum. Sed viverra, elit nec luctus
                 convallis, nunc massa bibendum nulla, sit amet dictum justo erat ut metus. Integer porttitor sagittis
-                justo, eget pulvinar orci dictum eget. Integer ut nulla ut dui aliquam aliquet nec at erat. Nullam vel
-                eros nibh. Donec tincidunt ligula sem, dapibus iaculis felis lacinia eu. Sed in ex eu nunc egestas
-                consectetur. Pellentesque at ligula ut est rutrum efficitur. Pellentesque maximus diam sed massa
-                pellentesque, in dignissim eros elementum. Sed luctus turpis nunc, quis vulputate arcu dapibus nec. Sed
-                non justo lacus. Curabitur posuere laoreet magna, id ullamcorper lectus imperdiet sed. Nam magna nunc,
-                volutpat sit amet ipsum sit amet, sollicitudin pretium purus. Nam in iaculis nunc, id pretium ligula.
-                Sed suscipit pellentesque mauris, ac convallis lacus mollis sed. In posuere mi quis tellus dictum, ac
-                facilisis ex mattis. Donec in tincidunt purus, sed consequat dolor. Ut eu tellus quis orci efficitur
-                consectetur. </p>
+                justo, eget pulvinar orci dictum eget. </p>
         </div>
     </div>
     <!-- TODO: Some image in full width here -->
@@ -200,7 +192,7 @@ else{
         </div>
         <div class='joinUs'>
             <h3>Will you join us?</h3>
-            <!-- <div class='offerBox'> --><a class='iDoLink' href="http://www.google.com" target="_self"
+            <!-- <div class='offerBox'> --><a class='iDoLink' href="./includes/usersManagment/signUp.php" target="_self"
                 rel="noopener noreferrer"><button type="button">I Do!</button></a><!-- </div> -->
         </div>
     </div>
