@@ -34,7 +34,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<title>Update Form for couples</title>
-		<link rel="stylesheet" type="text/css" href="../../css/Login.css">
+		<!-- <link rel="stylesheet" type="text/css" href="../../css/Login.css"> -->
 		<link rel="stylesheet" type="text/css" href="../../css/signup.css">
 
 	</head>
@@ -56,15 +56,15 @@
 				  <select class="btn" name="kind_of_business" id="kind_of_business">
 					<option value="Balloons">Balloons</option>
 					<option value="DJ">DJ</option>
-					<option value="photographer">photographer</option>
+					<option value="photographer">Photographer</option>
 					<option value="Hall design">Hall design</option>
 					<option value="Designing tables">Designing tables</option>
-					<option value="seating">seating</option>
+					<option value="seating">Seating</option>
 					<option value="Catering">Catering</option>
 					<option value="Wedding Dresses">Wedding Dresses</option>
 					<option value="Makeup">Makeup</option>
-					<option value="entertainment show">entertainment show</option>
-					<option value="flowers">flowers</option>
+					<option value="entertainment show">Entertainment show</option>
+					<option value="flowers">Flowers</option>
 					<option value="Alcohol">Alcohol</option>
 				  </select>
 				<div class="textbox"></div>
@@ -72,13 +72,10 @@
 					<i class="fa fa-address-card" aria-hidden="true"></i>
 					<input type="text" placeholder="Enter your web url" name="web_url" required>
 				</div>
-					<label>Region:</label>
-					<input type="radio" id="Region1" name="address" value="North">
-					<label for="North">North</label>
-					<input type="radio" id="Region2" name="address" value="Center">
-					<label for="Center">Center</label>
-					<input type="radio" id="Region3" name="address" value="South">
-					<label for="South">South</label>
+				<div class="textbox">
+					<i class="fa fa-address-card" aria-hidden="true"></i>
+					<input type="text" placeholder="Enter address" name="address" required>
+				</div>
 			  
 				<input class="btn" type="submit" name="submit" value="update">
 			</form>
