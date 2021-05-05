@@ -1,3 +1,16 @@
+<?php require_once '../../conection/init.php';
+global $session;
+global $database;
+$role = $_SESSION['role'];
+$one_n = "My_Task";
+$sec_n = "Market";
+$inout = "Log Out";
+$SeeCre = "See Your Account";
+$where0 = "../tasksProcess/tasks.php";
+$where3 = "market.php";
+$where1 = "../usersManagment/LogOut.php";
+$where2 = "../usersManagment/My_Account.php";
+?>
 <!DOCTYPE html>
 <html>
 
@@ -5,9 +18,11 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
 
+    <link rel="stylesheet" type="text/css" href="../../css/HeadFoot.css">
     <link rel="stylesheet" type="text/css" href="../../css/general.css" />
     <link rel="stylesheet" type="text/css" href="../../css/vendorDetails.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript">
+    </script>
     <script src="https://kit.fontawesome.com/90569433a0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <!-- tab view -->
@@ -21,18 +36,48 @@
 </head>
 
 <body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">Wedding</a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-black" href="../../index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-black" href="<?php echo $where0 ?>"><?php echo $one_n ?></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-black" href="<?php echo $where3 ?>"><?php echo $sec_n ?></a>
+                </li>
+            </ul>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="mx-auto"></div>
+                <span class="navbar-text text-black"><?php echo $role ?></span>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-primary" href="<?php echo $where1 ?>"><?php echo $inout ?></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-primary" href="<?php echo $where2 ?>"><?php echo $SeeCre ?></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <hr>
+    <hr>
     <div class="header">
         <div class="img-holder" data-image="../../assets/img/parallax_vendor.png">
         </div>
         <div>
-            <h1 class="head-text">Vendor Details</h1>
+            <h1 class="head-text typographyH1 ">Vendor Details</h1>
             <!--במקום ונדור לשים את שם הספק שנלחץ לוודא שבלחיצה מועבר הערך הזה-->
         </div>
     </div>
     <div class="container">
         <?php
-        $mysqli = new mysqli("localhost:3308", "root", "", "marryme") or die(mysqli_error(($mysqli)));
-        $result = $mysqli->query("SELECT * FROM vendors WHERE vendor_id='4' ") or die($mysqli->error); // נצטרך לעשות תנאי של מתי שהספק שווה הספק שנשלח בלחיצה
+        $mysqli = new mysqli("localhost", "root", "", "marryme") or die(mysqli_error(($mysqli)));
+        $result = $mysqli->query("SELECT * FROM vendors WHERE vendor_id='2' ") or die($mysqli->error); // נצטרך לעשות תנאי של מתי שהספק שווה הספק שנשלח בלחיצה
         //pre_r($result);
         ?>
 
