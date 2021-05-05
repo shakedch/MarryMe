@@ -33,9 +33,9 @@
         href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../../css/register.css">
-    <link rel="stylesheet" href="../../css/general.css">
-		<title>Registration</title>
-		<link rel="stylesheet" type="text/css" href="../../css/Login.css">
+    <link rel="stylesheet" href="../../css/general.css">	
+	<link rel="stylesheet" type="text/css" href="../../css/Login.css">
+    <title>Registration</title>
 	</head>
 	<body>
 		<p id="error"><?php echo $error?></p>
