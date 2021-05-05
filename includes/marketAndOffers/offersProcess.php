@@ -1,8 +1,9 @@
 <?php
+require_once '../../conection/init.php';
+global $session;
 
-session_start();
 
-$mysqli = new mysqli("localhost:3308", "root", "", "marryme") or die(mysqli_error(($mysqli)));
+$mysqli = new mysqli("localhost", "root", "", "marryme") or die(mysqli_error(($mysqli)));
 
 $offer_id = 0;
 $update = false;
@@ -20,7 +21,7 @@ if (isset($_POST['save'])) {
     $valid_date =  $_POST['valid_date'];
     $description =  $_POST['description'];
     $price =  $_POST['price'];
-    $vendor_id =  2;/*צריך לבדוק איך נותנים לזה סשן ואת מי שמחובר */
+    $vendor_id =  $session->id;/*צריך לבדוק איך נותנים לזה סשן ואת מי שמחובר */
 
     $img = uploadImg();
 
@@ -39,10 +40,10 @@ if (isset($_GET['delete'])) {
     //delete record image
     $result =  $mysqli->query("SELECT * FROM offers WHERE offer_id=$offer_id") or die($mysqli->error);
     $row = $result->fetch_array();
-    $temp_img_to_delete = $row['img'];
+    $temp_img_to_delete = $row['img']; 
 
     //delete image if exist
-    if ($temp_img_to_delete !== '') {
+    if ($temp_img_to_delete !== ''){
         // Use unlink() function to delete a file 
         $file_pointer = "../../assets/img/offersUploads/" . $temp_img_to_delete;
         unlink($file_pointer);
@@ -79,11 +80,11 @@ if (isset($_POST['update'])) {
     $valid_date =  $_POST['valid_date'];
     $description =  $_POST['description'];
     $price =  $_POST['price'];
-    $vendor_id =  2;/*צריך לבדוק איך נותנים לזה סשן ואת מי שמחובר */
+    $vendor_id =  $session->id;/*צריך לבדוק איך נותנים לזה סשן ואת מי שמחובר */
 
     $result =  $mysqli->query("SELECT * FROM offers WHERE offer_id=$offer_id") or die($mysqli->error);
     $row = $result->fetch_array();
-    $temp_img_to_delete = $row['img'];
+    $temp_img_to_delete = $row['img']; 
 
     $img = uploadImg();
 
@@ -93,12 +94,12 @@ if (isset($_POST['update'])) {
     } else {
 
         //delete prev image if exist
-        if ($temp_img_to_delete !== '') {
+        if ($temp_img_to_delete !== ''){
             // Use unlink() function to delete a file 
             $file_pointer = "../../assets/img/offersUploads/" . $temp_img_to_delete;
             unlink($file_pointer);
         }
-
+        
         $mysqli->query("UPDATE offers SET name='$name',valid_date='$valid_date',description='$description',price='$price',img='$img',vendor_id='$vendor_id' WHERE offer_id=$offer_id ") or die($mysqli->error);
     }
 
