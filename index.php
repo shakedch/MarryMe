@@ -88,7 +88,7 @@ else{
     <div id="wrapper">
         <div>
 	<!-- navbar by variables -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark p-md-3">
       <div class="container">
         <a class="navbar-brand" href="#">Wedding</a>
 		<ul class="navbar-nav">
@@ -119,10 +119,7 @@ else{
         </div>
       </div>
     </nav>
-	<hr>
-	<hr>
-
-
+	
 		<?php 
 		if($session->signed_in){
 			if($role =='couple'){

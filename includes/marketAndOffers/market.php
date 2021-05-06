@@ -43,7 +43,7 @@ $where4 = "../my_OFFER/offer_wish.php";
 </head>
 
 <body>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark p-md-3">
         <div class="container">
             <a class="navbar-brand" href="#">Wedding</a>
             <ul class="navbar-nav">
@@ -74,8 +74,7 @@ $where4 = "../my_OFFER/offer_wish.php";
             </div>
         </div>
     </nav>
-    <hr>
-    <hr>
+   
     <div class="container">
         <?php
     $mysqli = new mysqli("localhost", "root", "", "marryme") or die(mysqli_error(($mysqli)));

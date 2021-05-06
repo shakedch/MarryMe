@@ -48,7 +48,7 @@ $where2 = "../usersManagment/My_Account.php";
 
 <body>
 
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark p-md-3">
         <div class="container">
             <a class="navbar-brand" href="#">Wedding</a>
             <ul class="navbar-nav">
@@ -73,14 +73,13 @@ $where2 = "../usersManagment/My_Account.php";
             </div>
         </div>
     </nav>
-    <hr>
-    <hr>
+   
 
     <div class="header">
         <div class="img-holder typographyH1" data-image="../../assets/img/parallax_vendor_homepage.png">
         </div>
         <div>
-            <h1 class="head-text">Vendor Homepage</h1>
+            <h1 class="head-text typographyH1">Vendor Homepage</h1>
         </div>
     </div>
 
