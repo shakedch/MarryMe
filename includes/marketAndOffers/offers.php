@@ -42,7 +42,7 @@ $where2 = "../usersManagment/My_Account.php";
 
 <body>
 
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark p-md-3">
         <div class="container">
             <a class="navbar-brand" href="#">Wedding</a>
             <ul class="navbar-nav">
@@ -67,8 +67,7 @@ $where2 = "../usersManagment/My_Account.php";
             </div>
         </div>
     </nav>
-    <hr>
-    <hr>
+    
     <?php if (isset($_SESSION['message'])) : ?>
         <div class="alert alert-<?= $_SESSION['msg_type'] ?> ">
             <?php

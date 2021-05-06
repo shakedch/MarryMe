@@ -72,7 +72,7 @@ global $session; //Makes class variables global for use on each page
     <div id="wrapper">
         <div>
 	<!-- navbar by variables -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark p-md-3">
       <div class="container">
         <a class="navbar-brand" href="#">Wedding</a>
 		<ul class="navbar-nav">
@@ -100,10 +100,7 @@ global $session; //Makes class variables global for use on each page
         </div>
       </div>
     </nav>
-	<hr>
-	<hr>
-		<hr>
-	<hr>
+	
 			<?php 
 				if($session->signed_in){
 					if($role =='couple'){
