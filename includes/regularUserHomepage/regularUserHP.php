@@ -59,7 +59,7 @@ $user->find_user_by_id($session->id);
     <link rel="stylesheet" type="text/css" href="../../css/HeadFoot.css">
     <link rel="stylesheet" href="../../css/general.css" />
     <link rel="stylesheet" href="../../css/coupleHomepage.css" />
-    <script src="./weddingCountdown.js"></script>
+
 
     <!-- our import files -->
     <!-- tab view -->
@@ -132,6 +132,8 @@ $user->find_user_by_id($session->id);
     <!-- img-header -->
     <div class="header">
         <div class="img-holder" data-image="../../assets/img/parallax_coupleHP.jpg"></div>
+
+
         <div>
             <h1 class="head-text typographyH1 coupleHPTitle">
                 The wedding of <br />
@@ -141,6 +143,40 @@ $user->find_user_by_id($session->id);
         </div>
     </div>
     <!-- wedding countdown-->
+    <?php
+    $weddingDate = $user->date_of_wedding;
+    $weddingHour = $user->hour_of_wedding;
+    $combinedDT = $weddingDate . ' ' . $weddingHour;
+    date_default_timezone_set('UTC');
+    $now = date("Y-m-d H:i:s");
+    ?>
+    <script>
+    var countDownDate = <?php
+                            echo strtotime("$combinedDT") ?> * 1000;
+    var now = <?php echo strtotime("$now") ?> * 1000;
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+        now = now + 1000;
+        // Find the distance between now an the count down date
+        var distance = countDownDate - now;
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        // Output the result in an element with id="demo"
+        document.getElementById("countdown").innerHTML = days + "d " + hours + "h " +
+            minutes + "m " + seconds + "s ";
+        // If the count down is over, write some text 
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("countdown").innerHTML = "Time To Celebrate";
+        }
+
+    }, 1000);
+    </script>
+
     <div class="countdownWrraper">
         <h2>Time to Wedding!</h2>
         <p class="countdown" id="countdown"></p>
@@ -164,7 +200,7 @@ $user->find_user_by_id($session->id);
     $total_cost = $total["SUM(cost)"];
     $precent = round(($total_cost / $budget) * 100, 3);
     //check calculation
-    echo "<p>$total_cost is $precent% of $budget </p>";
+    // echo "<p>$total_cost is $precent% of $budget </p>";
     ?>
 
     <br /><br />
@@ -174,11 +210,29 @@ $user->find_user_by_id($session->id);
     <?php echo "<p>$precent%</p>" ?>
 
     <!-- budget bar-->
+
     <br /><br />
+
+    <?php
+    $res = "SELECT COUNT(task_id) FROM tasks WHERE due_date < '" . $now . "' AND user_id='" . $session->id . "' AND status != 'Completed'";
+    $temp = mysqli_query($mysqli, $res);
+    $res1 = mysqli_fetch_array($temp);
+    $total_task = $res1["COUNT(task_id)"];
+
+
+
+    $num = 1;
+    $res2 = "SELECT COUNT(task_id) FROM tasks WHERE DATEDIFF(due_date,CURDATE()) = $num AND user_id='" . $session->id . "' AND status != 'Completed'";
+    $temp1 = mysqli_query($mysqli, $res2);
+    $res3 = mysqli_fetch_array($temp1);
+    $total_task2 = $res3["COUNT(task_id)"];
+    ?>
+
+
     <div class="updates">
         <h3>Pay Attention:</h3>
-        <p>You have <span> --sum of tasks-- </span> tasks that their due date has passed.</p>
-        <p>You have <span> --sum of tasks-- </span> tasks to do coming soon.</p>
+        <p>You have <span> <?php echo $total_task ?> </span> tasks that their due date has passed.</p>
+        <p>You have <span> <?php echo $total_task2 ?> </span> tasks to do coming soon.</p>
 
     </div>
 
