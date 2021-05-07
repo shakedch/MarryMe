@@ -1,0 +1,23 @@
+.coupleHPTitle {
+  font-size: 60px !important;
+}
+
+.countdown {
+  text-align: center;
+  font-size: 60px;
+  margin-top: 0px;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.countdownWrraper {
+  text-align: center;
+  border: 2px solid black;
+  width: fit-content;
+  margin: auto;
+}
+
+.updates {
+  border: 2px solid black;
+  width: fit-content;
+  margin: auto;
+}
