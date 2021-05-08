@@ -249,7 +249,7 @@ $user->find_user_by_id($session->id);
         <!-- task status Chart-->
 
 
-        <div class="divCard" style="padding:1.5rem;width: 39%;">
+        <div class="divCard chart">
             <h3>Your tasks status:</h3>
             <div id="piechart"></div>
         </div>
