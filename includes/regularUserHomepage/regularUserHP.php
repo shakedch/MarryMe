@@ -190,8 +190,6 @@ $user->find_user_by_id($session->id);
         if (distance < 0) {
             clearInterval(x);
             document.getElementById("countdown").innerHTML = "Time To Celebrate!!";
-            document.getElementById("dashboardWrapper").className = "dashboardWrapper pyro";
-
         }
 
     }, 1000);
@@ -216,17 +214,28 @@ $user->find_user_by_id($session->id);
         $temp = mysqli_query($mysqli, $cost);
         $total = mysqli_fetch_array($temp);
         $total_cost = $total["SUM(cost)"];
-        $precent = round(($total_cost / $budget) * 100, 3);
+        $precent = round(($total_cost / $budget) * 100, 2);
         ?>
         <div class="budgetBarWrapper divCard">
             <div class="budgetBar">
                 <h2>Budget bar:</h2>
                 <div class="progress">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                        aria-valuenow="<?php echo $precent ?>" aria-valuemin="0" aria-valuemax="100"
+                    <div id="budgetBar" class="progress-bar progress-bar-striped progress-bar-animated"
+                        role="progressbar" aria-valuenow="<?php echo $precent ?>" aria-valuemin="0" aria-valuemax="100"
                         style="width: <?php echo $precent ?>%"><?php echo "$precent%" ?></div>
                 </div>
-                <?php echo "<p>$total_cost is $precent% of $budget </p>" ?>
+                <script>
+                var precent = <?php echo $precent ?>;
+                if (precent == 100) {
+                    document.getElementById("budgetBar").classList.add('bg-danger');;
+                }
+                </script>
+                <?php if ($total_cost >= $budget) {
+                    echo "<p>Pay Attention! you exceeded your budget!!</p>";
+                } else {
+                    echo "<p>$total_cost$ of $budget$ </p>";
+                } ?>
+
             </div>
         </div>
 
