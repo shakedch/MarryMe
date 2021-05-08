@@ -254,31 +254,55 @@ $user->find_user_by_id($session->id);
         $temp1 = mysqli_query($mysqli, $res2);
         $res3 = mysqli_fetch_array($temp1);
         $total_task2 = $res3["COUNT(task_id)"];
-
-        if ($total_task2 > 0) {
-            $task_name_res = $database->query("SELECT name FROM tasks WHERE DATEDIFF(due_date,CURDATE()) = $num AND user_id='" . $session->id . "' AND status != 'Completed'");
-            $res3 = mysqli_fetch_assoc($temp1);
-        }
         ?>
 
         <div class="updatesWrapper">
             <div class="delayTasks updates">
                 <i class="bi bi-exclamation-circle delayTasksIcon"></i>
-                <p class="updatesContent">You have <span class="updatesContentSpan"> <?php echo $total_task ?>
+                <p class="updatesContent">You have <span class="updatesContentSpan">
+                        <?php echo $total_task ?>
                     </span>
                     tasks that their due date
-                    has passed.</p>
-                <a class="updatesContent" href="../tasksProcess/tasks.php">View your task >></a>
+                    has passed</p>
+                <div class='taskNameDelay toP'>
+                    <?php if ($total_task > 0) {
+                        $task_name_res = $database->query("SELECT name FROM tasks WHERE due_date < '" . $now . "' AND user_id='" . $session->id . "' AND status != 'Completed' LIMIT 3");
+                        $res3 = mysqli_fetch_assoc($temp1);
+                        while ($row = $task_name_res->fetch_assoc()) :
+                            $name_task = $row['name'];
+                            echo "<p>$name_task</p> ";
+                        endwhile;
+                    } else {
+                        echo " ";
+                    }
+                    ?>
+                </div>
+                <a class="updatesContent linkPos" href="../tasksProcess/tasks.php">View More >></a>
             </div>
 
             <div class="tasksComing updates">
-                <p class="updatesContent"> coming soon <span class="updatesContentSpan"> <?php echo $total_task2 ?>
-                    </span> tasks
+                <i class="bi bi-alarm-fill delayTasksIcon"></i>
+                <p class="updatesContent"> You have <span class="updatesContentSpan">
+                        <?php echo $total_task2 ?>
+                    </span> tasks coming soon
                 </p>
-                <?php while ($row = $task_name_res->fetch_assoc()) : ?>
-                <p><?php echo $row['name'] ?></p>
-                <?php endwhile ?>
-                <a class="updatesContent" href="../tasksProcess/tasks.php">View your task >></a>
+
+
+                <div class='taskNameComing toP'>
+                    <?php if ($total_task2 > 0) {
+                        $task_name_res = $database->query("SELECT name FROM tasks WHERE DATEDIFF(due_date,CURDATE()) = $num AND user_id='" . $session->id . "' AND status != 'Completed' LIMIT 3");
+                        $res3 = mysqli_fetch_assoc($temp1);
+                        while ($row = $task_name_res->fetch_assoc()) :
+                            $name_task = $row['name'];
+                            echo "<p>$name_task</p> ";
+                        endwhile;
+                    } else {
+                        echo " ";
+                    }
+                    ?>
+                </div>
+
+                <a class="updatesContent linkPos" href="../tasksProcess/tasks.php">View More >></a>
             </div>
         </div>
 
