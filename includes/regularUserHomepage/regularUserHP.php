@@ -84,9 +84,28 @@ $user->find_user_by_id($session->id);
                 ?>
         ]);
         var options = {
-            title: 'Your Tasks Status',
-            //is3D:true,  
-            pieHole: 0.4
+
+            pieSliceText: "none",
+            legend: {
+                position: 'labeled',
+                alignment: 'center',
+                textStyle: {
+                    fontName: '"Muli", sans-serif',
+                    bold: true,
+                    italic: true
+                }
+            },
+            backgroundColor: '#ffffffff',
+            pieHole: 0.6,
+            chartArea: {
+                left: 50,
+                top: 20,
+                right: 50,
+                bottom: 29,
+                width: 130,
+            },
+            height: '500px',
+            width: '900px'
         };
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
@@ -96,7 +115,7 @@ $user->find_user_by_id($session->id);
 
 <body>
 
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark p-md-3">
         <div class="container">
             <a class="navbar-brand" href="#">Wedding</a>
             <ul class="navbar-nav">
@@ -127,13 +146,9 @@ $user->find_user_by_id($session->id);
             </div>
         </div>
     </nav>
-    <hr>
-    <hr>
     <!-- img-header -->
     <div class="header">
         <div class="img-holder" data-image="../../assets/img/parallax_coupleHP.jpg"></div>
-
-
         <div>
             <h1 class="head-text typographyH1 coupleHPTitle">
                 The wedding of <br />
@@ -142,6 +157,9 @@ $user->find_user_by_id($session->id);
             </h1>
         </div>
     </div>
+    <!-- img-header -->
+
+
     <!-- wedding countdown-->
     <?php
     $weddingDate = $user->date_of_wedding;
@@ -171,72 +189,103 @@ $user->find_user_by_id($session->id);
         // If the count down is over, write some text 
         if (distance < 0) {
             clearInterval(x);
-            document.getElementById("countdown").innerHTML = "Time To Celebrate";
+            document.getElementById("countdown").innerHTML = "Time To Celebrate!!";
+            document.getElementById("dashboardWrapper").className = "dashboardWrapper pyro";
+
         }
 
     }, 1000);
     </script>
 
-    <div class="countdownWrraper">
+    <div id="countdownWrraper" class="countdownWrraper">
         <h2>Time to Wedding!</h2>
-        <p class="countdown" id="countdown"></p>
+        <p class="countdown" id="countdown">
+        </p>
     </div>
+    <!-- wedding countdown-->
 
-    <!-- task status Chart-->
-    <br /><br />
-    <div style="width:900px;">
-        <h4>Tasks status view:</h4>
-        <br />
-        <div id="piechart" style="width: 900px; height: 500px;"></div>
-    </div>
 
-    <!-- budget bar-->
-    <br /><br />
-    <?php
-    $budget = $user->budget;
-    $cost = "SELECT SUM(cost) FROM tasks WHERE user_id='" . $session->id . "'";
-    $temp = mysqli_query($mysqli, $cost);
-    $total = mysqli_fetch_array($temp);
-    $total_cost = $total["SUM(cost)"];
-    $precent = round(($total_cost / $budget) * 100, 3);
-    //check calculation
-    // echo "<p>$total_cost is $precent% of $budget </p>";
-    ?>
 
-    <br /><br />
-    <h4>Budget bar:</h4>
-    <label for="file">File progress:</label>
-    <progress value="<?php echo $precent ?>" max="100"></progress>
-    <?php echo "<p>$precent%</p>" ?>
 
     <!-- budget bar-->
 
-    <br /><br />
+    <div class="tasksViewWrapper">
+        <?php
+        $budget = $user->budget;
+        $cost = "SELECT SUM(cost) FROM tasks WHERE user_id='" . $session->id . "'";
+        $temp = mysqli_query($mysqli, $cost);
+        $total = mysqli_fetch_array($temp);
+        $total_cost = $total["SUM(cost)"];
+        $precent = round(($total_cost / $budget) * 100, 3);
+        ?>
+        <div class="budgetBarWrapper divCard">
+            <div class="budgetBar">
+                <h2>Budget bar:</h2>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        aria-valuenow="<?php echo $precent ?>" aria-valuemin="0" aria-valuemax="100"
+                        style="width: <?php echo $precent ?>%"><?php echo "$precent%" ?></div>
+                </div>
+                <?php echo "<p>$total_cost is $precent% of $budget </p>" ?>
+            </div>
+        </div>
 
-    <?php
-    $res = "SELECT COUNT(task_id) FROM tasks WHERE due_date < '" . $now . "' AND user_id='" . $session->id . "' AND status != 'Completed'";
-    $temp = mysqli_query($mysqli, $res);
-    $res1 = mysqli_fetch_array($temp);
-    $total_task = $res1["COUNT(task_id)"];
+        <!-- budget bar-->
+
+        <!-- task status Chart-->
 
 
-
-    $num = 1;
-    $res2 = "SELECT COUNT(task_id) FROM tasks WHERE DATEDIFF(due_date,CURDATE()) = $num AND user_id='" . $session->id . "' AND status != 'Completed'";
-    $temp1 = mysqli_query($mysqli, $res2);
-    $res3 = mysqli_fetch_array($temp1);
-    $total_task2 = $res3["COUNT(task_id)"];
-    ?>
+        <div class="divCard" style="padding:1.5rem;width: 39%;">
+            <h2>Your tasks status:</h2>
+            <div id="piechart"></div>
+        </div>
+        <!-- task status Chart-->
 
 
-    <div class="updates">
-        <h3>Pay Attention:</h3>
-        <p>You have <span> <?php echo $total_task ?> </span> tasks that their due date has passed.</p>
-        <p>You have <span> <?php echo $total_task2 ?> </span> tasks to do coming soon.</p>
+        <!-- update board -->
+        <?php
+        $res = "SELECT COUNT(task_id) FROM tasks WHERE due_date < '" . $now . "' AND user_id='" . $session->id . "' AND status != 'Completed'";
+        $temp = mysqli_query($mysqli, $res);
+        $res1 = mysqli_fetch_array($temp);
+        $total_task = $res1["COUNT(task_id)"];
+
+        $num = 1;
+        $res2 = "SELECT COUNT(task_id) FROM tasks WHERE DATEDIFF(due_date,CURDATE()) = $num AND user_id='" . $session->id . "' AND status != 'Completed'";
+        $temp1 = mysqli_query($mysqli, $res2);
+        $res3 = mysqli_fetch_array($temp1);
+        $total_task2 = $res3["COUNT(task_id)"];
+
+        if ($total_task2 > 0) {
+            $task_name_res = $database->query("SELECT name FROM tasks WHERE DATEDIFF(due_date,CURDATE()) = $num AND user_id='" . $session->id . "' AND status != 'Completed'");
+            $res3 = mysqli_fetch_assoc($temp1);
+        }
+        ?>
+
+        <div class="updatesWrapper">
+            <div class="delayTasks updates">
+                <i class="bi bi-exclamation-circle delayTasksIcon"></i>
+                <p class="updatesContent">You have <span class="updatesContentSpan"> <?php echo $total_task ?>
+                    </span>
+                    tasks that their due date
+                    has passed.</p>
+                <a class="updatesContent" href="../tasksProcess/tasks.php">View your task >></a>
+            </div>
+
+            <div class="tasksComing updates">
+                <p class="updatesContent"> coming soon <span class="updatesContentSpan"> <?php echo $total_task2 ?>
+                    </span> tasks
+                </p>
+                <?php while ($row = $task_name_res->fetch_assoc()) : ?>
+                <p><?php echo $row['name'] ?></p>
+                <?php endwhile ?>
+                <a class="updatesContent" href="../tasksProcess/tasks.php">View your task >></a>
+            </div>
+        </div>
+
+
+        <!-- update board -->
 
     </div>
-
-
 
 
     <!-- Necessary scripts-->
