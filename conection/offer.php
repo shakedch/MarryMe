@@ -32,6 +32,7 @@ class offer{
         }
         return $offers;
     }
+    
     // Two functions that make the record an object   
     private function has_attribute($attribute){
         
@@ -45,13 +46,14 @@ class offer{
                 $this->$attribute=$value;
        }
      }
+
 	// Function that finds a offer by offer_id
 	public function find_my_offer($offer_id){
         global $database;
         $error=null;
         $result=$database->query("select * from offers where offer_id='".$offer_id."'");
         if (!$result)
-            $error='Can not find the user.  Error is:'.$database->get_connection()->error;
+            $error='Can not find the offer.  Error is:'.$database->get_connection()->error;
         elseif ($result->num_rows>0){
             $found_user=$result->fetch_assoc();
 			$this->instantation($found_user);

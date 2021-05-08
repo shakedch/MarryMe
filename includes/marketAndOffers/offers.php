@@ -67,7 +67,7 @@ $where2 = "../usersManagment/My_Account.php";
             </div>
         </div>
     </nav>
-    
+
     <?php if (isset($_SESSION['message'])) : ?>
         <div class="alert alert-<?= $_SESSION['msg_type'] ?> ">
             <?php
@@ -89,8 +89,6 @@ $where2 = "../usersManagment/My_Account.php";
         <?php
         $mysqli = new mysqli("localhost", "root", "", "marryme") or die(mysqli_error(($mysqli)));
         $result = $mysqli->query("SELECT * FROM offers WHERE vendor_id='" . $session->id . "' ") or die($mysqli->error);
-        /*כאן נצטרך לעשות תנאי נוסף של להציג רק מי שהסשן של המשתמש הוא הספק המחובר*/
-
         ?>
 
         <div class="row justify-content-center">
@@ -127,6 +125,7 @@ $where2 = "../usersManagment/My_Account.php";
 
 
     <dialog id="myDialog">
+
         <button onclick="parent.location='offers.php'">&#10008;</button>
         <h2>Add New Offer</h2>
         <div class="row pr-5 pl-5 ">
@@ -195,15 +194,10 @@ $where2 = "../usersManagment/My_Account.php";
         if ((window.location.href).includes("edit")) document.getElementById("myDialog").showModal();
     </script>
 
-
-
-
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://rawgithub.com/pederan/Parallax-ImageScroll/master/jquery.imageScroll.min.js" type="text/javascript"></script>
     <script src="../general.js"></script>
     <script src="offers.js"></script>
-
-
 
 </body>
 

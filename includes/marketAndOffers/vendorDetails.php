@@ -64,7 +64,7 @@ $where2 = "../usersManagment/My_Account.php";
             </div>
         </div>
     </nav>
-   
+
     <div class="header">
         <div class="img-holder" data-image="../../assets/img/parallax_vendor.png">
         </div>
@@ -77,7 +77,6 @@ $where2 = "../usersManagment/My_Account.php";
         <?php
         $mysqli = new mysqli("localhost", "root", "", "marryme") or die(mysqli_error(($mysqli)));
         $result = $mysqli->query("SELECT * FROM vendors WHERE vendor_id='2' ") or die($mysqli->error); // נצטרך לעשות תנאי של מתי שהספק שווה הספק שנשלח בלחיצה
-        //pre_r($result);
         ?>
 
         <div class="d-flex justify-content-around info">
