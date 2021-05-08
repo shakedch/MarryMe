@@ -1,0 +1,43 @@
+.dashboard{
+    display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.dashboard > div {
+    width: 30%;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 50px !important;
+    text-align: center;
+    margin: auto;
+    box-shadow:1px 1px 2px 3px rgb(208, 212, 211);
+  }
+
+  #pieChartContainer{
+    height: 370px;
+  }
+
+  #barChartContainer{
+    height: 370px;
+  }
+
+  #lineChartContainer{
+    height: 370px; 
+    width: 80%;
+  }
+
+  #horizontalBarChartContainer{
+    width: 100%;
+  }
+
+  .num-of-offers span{
+    font-family: 'Itim', cursive;
+    color: rgb(160, 54, 86);
+    font-size: 200px;
+  }
+
+  .num-of-offers{
+      font-size: 36px;
+      font-weight: bold;
+  }
