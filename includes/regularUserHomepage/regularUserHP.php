@@ -189,25 +189,30 @@ $user->find_user_by_id($session->id);
         // If the count down is over, write some text 
         if (distance < 0) {
             clearInterval(x);
+            document.getElementById("titleCountdown").innerHTML = "Congratulations";
+            document.getElementById("titleCountdown").classList.add('titleCoundownCelebrate');
             document.getElementById("countdown").innerHTML = "Time To Celebrate!!";
+            document.getElementById("countdown").classList.add('countdownCelebrate');
+            document.getElementById("countdownWrraper").classList.add('countdownWrraperCelebrate');
         }
 
     }, 1000);
     </script>
 
     <div id="countdownWrraper" class="countdownWrraper">
-        <h2>Time to Wedding!</h2>
-        <p class="countdown" id="countdown">
-        </p>
+        <div id="countdownContent" class="countdownContent">
+            <h2 id="titleCountdown">Time To The Wedding!</h2>
+            <p class="countdown" id="countdown">
+            </p>
+        </div>
     </div>
     <!-- wedding countdown-->
 
 
 
-
-    <!-- budget bar-->
-
     <div class="tasksViewWrapper">
+        <h2 class="taskViewTitle">Your Tasks View:</h2>
+        <!-- budget bar-->
         <?php
         $budget = $user->budget;
         $cost = "SELECT SUM(cost) FROM tasks WHERE user_id='" . $session->id . "'";
@@ -218,7 +223,7 @@ $user->find_user_by_id($session->id);
         ?>
         <div class="budgetBarWrapper divCard">
             <div class="budgetBar">
-                <h2>Budget bar:</h2>
+                <h3>Budget bar:</h3>
                 <div class="progress">
                     <div id="budgetBar" class="progress-bar progress-bar-striped progress-bar-animated"
                         role="progressbar" aria-valuenow="<?php echo $precent ?>" aria-valuemin="0" aria-valuemax="100"
@@ -226,14 +231,14 @@ $user->find_user_by_id($session->id);
                 </div>
                 <script>
                 var precent = <?php echo $precent ?>;
-                if (precent == 100) {
-                    document.getElementById("budgetBar").classList.add('bg-danger');;
+                if (precent >= 100) {
+                    document.getElementById("budgetBar").classList.add('bg-danger');
                 }
                 </script>
                 <?php if ($total_cost >= $budget) {
                     echo "<p>Pay Attention! you exceeded your budget!!</p>";
                 } else {
-                    echo "<p>$total_cost$ of $budget$ </p>";
+                    echo "<p>$total_cost$ costs of $budget$ budget </p>";
                 } ?>
 
             </div>
@@ -245,7 +250,7 @@ $user->find_user_by_id($session->id);
 
 
         <div class="divCard" style="padding:1.5rem;width: 39%;">
-            <h2>Your tasks status:</h2>
+            <h3>Your tasks status:</h3>
             <div id="piechart"></div>
         </div>
         <!-- task status Chart-->
@@ -286,7 +291,10 @@ $user->find_user_by_id($session->id);
                     }
                     ?>
                 </div>
-                <a class="updatesContent linkPos" href="../tasksProcess/tasks.php">View More >></a>
+                <div class="linkPos">
+                    <a class="viewMoreLink" href="../tasksProcess/tasks.php">View More >></a>
+                </div>
+
             </div>
 
             <div class="tasksComing updates">
@@ -311,7 +319,9 @@ $user->find_user_by_id($session->id);
                     ?>
                 </div>
 
-                <a class="updatesContent linkPos" href="../tasksProcess/tasks.php">View More >></a>
+                <div class="linkPos">
+                    <a class="viewMoreLink" href="../tasksProcess/tasks.php">View More >></a>
+                </div>
             </div>
         </div>
 
