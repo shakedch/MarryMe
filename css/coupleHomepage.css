@@ -1,23 +1,183 @@
 .coupleHPTitle {
-  font-size: 60px !important;
+  font-size: 80px !important;
 }
 
+.divCard {
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.77);
+  margin-bottom: 5%;
+}
+
+/* countdown */
 .countdown {
   text-align: center;
-  font-size: 60px;
+  font-size: 84px;
   margin-top: 0px;
   font-family: "Josefin Sans", sans-serif;
 }
 
-.countdownWrraper {
-  text-align: center;
-  border: 2px solid black;
-  width: fit-content;
-  margin: auto;
+.countdownCelebrate {
+  background-image: url("../assets/img/celebration_countdown.jpg");
+  color: #b2fefa;
 }
 
-.updates {
-  border: 2px solid black;
-  width: fit-content;
+.titleCoundownCelebrate {
+  color: #ffc107;
+}
+
+.countdownContent {
+  margin: 5%;
+}
+
+.countdownWrraperCelebrate {
+  background-image: url("../assets/img/celebration_countdown.jpg");
+}
+
+.countdownWrraper {
+  width: 50%;
   margin: auto;
+  text-align: center;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  border-top: 5px dotted #7a9fbb;
+  border-bottom: 5px dotted #7a9fbb;
+}
+
+.taskViewTitle {
+  text-align: center;
+  margin-top: 5%;
+  margin-bottom: 4%;
+}
+.tasksViewWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 1rem 0 rgb(0 0 0 / 20%);
+  border-radius: 18px;
+  margin: auto auto 2rem auto;
+  width: 85%;
+  background: #e0eafc; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #cfdef3,
+    #e0eafc
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #cfdef3,
+    #e0eafc
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/* budget bar */
+.budgetBar {
+  width: 90%;
+  padding-top: 2%;
+}
+.progress {
+  height: auto;
+}
+
+.budgetBarWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 30%;
+  width: 40%;
+  margin-bottom: 7%;
+}
+
+.chart {
+  padding: 1.5rem;
+  width: 39%;
+}
+
+/* updates boards */
+
+.updates {
+  padding: 1rem;
+  height: auto;
+  width: 30%;
+  position: relative;
+}
+
+.updatesWrapper {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 10%;
+}
+
+.viewMoreLink {
+  position: absolute;
+  bottom: 8px;
+  color: black;
+  font-size: 1em;
+}
+
+.linkPos {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delayTasks {
+  color: white;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  background: #cb356b; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #bd3f32,
+    #cb356b
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #bd3f32,
+    #cb356b
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.delayTasksIcon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2%;
+  font-size: 34px;
+}
+
+.tasksComing {
+  color: white;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  background: #b2fefa; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #0ed2f7,
+    #b2fefa
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #0ed2f7,
+    #b2fefa
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.updatesContent {
+  font-size: 1.5em;
+  text-align: center;
+}
+.updatesContentSpan {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.taskNameComing {
+  margin-top: 10%;
+}
+
+.taskNameDelay {
+  margin-bottom: 7%;
+  margin-top: 3%;
+}
+
+.toP > p {
+  font-size: 18px;
 }
