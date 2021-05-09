@@ -109,8 +109,14 @@ $where4 = "../my_OFFER/offer_wish.php";
                                 <td>
                                     <h3 class="market-item-title"><?php echo $row['name'] ?></h3>
                                 </td>
-                                <td><button name="<?php echo $row['vendor_id'] ?>" class="btn btn-info" onclick="parent.location='vendorDetails.php'"><i class="fas fa-address-card"></i>
-                                    </button></td>
+                                <td>
+                                <form name="vendor_form" action="vendorDetails.php" id="vendor_form" method="POST">
+                                <input type="hidden" name="vendor_id" value="<?php echo $row['vendor_id']; ?>">
+                                <button type="submit" name="send_vendor" class="btn btn-info"><i class="fas fa-address-card"></i></button>
+                                </form>
+                                    
+
+                                </td>
                             </tr>
                         </table>
                         <?php
