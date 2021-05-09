@@ -67,6 +67,7 @@ global $session; //Makes class variables global for use on each page
 	<title>Wedding</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<!-- move this lines to a css file -->
     <style>
          .inf-content{
     border:1px solid #DDDDDD;
@@ -129,7 +130,7 @@ global $session; //Makes class variables global for use on each page
             <div class="col-md-4">
               
               <!-- <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="https://bootdey.com/img/Content/avatar/avatar7.png" data-original-title="Usuario">  -->
-              <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="./one.jpg" data-original-title="Usuario"> 
+              <img alt="" style="width:250px;" title="" class="img-circle img-thumbnail isTooltip" src="../../assets/img/one.jpg" data-original-title="Usuario"> 
 
               
             </div>
@@ -235,7 +236,7 @@ global $session; //Makes class variables global for use on each page
             <div class="row">
                 <div class="col-md-4">
                     <!-- <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="https://bootdey.com/img/Content/avatar/avatar7.png" data-original-title="Usuario">  -->
-                    <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="/REvendor.jpg" data-original-title="Usuario"> 
+                    <img alt="" style="width:250px;" title="" class="img-circle img-thumbnail isTooltip" src="../../assets/img/one.jpg" data-original-title="Usuario"> 
 
                 </div>
                 <div class="col-md-6">
