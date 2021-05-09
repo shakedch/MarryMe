@@ -126,7 +126,13 @@ $where4 = "../my_OFFER/offer_wish.php";
 
                         <div class="market-item-details">
                             <span class="market-item-price">&#8362 <?php echo $row['price'] ?></span>
-                            <button class="market-item-button" type="button">ADD TO WISHLIST &#8594 </button>
+                            <!-- קוד שנוסף ב- 09.05.2021 להעברת פרטים שנדרשים ליצירת רשומה חדשה בטבלת wishlist -->
+                            <form method="post" action = "wishlist.inc.php">
+                                <input type = "hidden" name="Vid" value="<?php echo $row['vendor_id']; ?>">
+                                <input type = "hidden" name="Oid" value="<?php echo $row['offer_id']; ?>">
+                                <button class="market-item-button" type="submit" name='wishlist'>ADD TO WISHLIST &#8594 </button>
+                            </form>
+                            <!-- סוף קוד -->
                         </div>
                     </div>
                     <div class="item-description">
