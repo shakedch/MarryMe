@@ -10,6 +10,16 @@ $where0 = "../tasksProcess/tasks.php";
 $where3 = "market.php";
 $where1 = "../usersManagment/LogOut.php";
 $where2 = "../usersManagment/My_Account.php";
+
+
+if (isset($_POST['send_vendor'])) {
+
+    $vendor_id = $_POST['vendor_id'];
+    
+
+    //header("location: offers.php");
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -76,7 +86,7 @@ $where2 = "../usersManagment/My_Account.php";
     <div class="container">
         <?php
         $mysqli = new mysqli("localhost", "root", "", "marryme") or die(mysqli_error(($mysqli)));
-        $result = $mysqli->query("SELECT * FROM vendors WHERE vendor_id='2' ") or die($mysqli->error); // נצטרך לעשות תנאי של מתי שהספק שווה הספק שנשלח בלחיצה
+        $result = $mysqli->query("SELECT * FROM vendors WHERE vendor_id=$vendor_id ") or die($mysqli->error); // נצטרך לעשות תנאי של מתי שהספק שווה הספק שנשלח בלחיצה
         ?>
 
         <div class="d-flex justify-content-around info">
