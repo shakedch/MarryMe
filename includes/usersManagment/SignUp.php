@@ -66,15 +66,6 @@
                                     </div>
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="../../assets/img/RElogin.jpg" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block overlyCarousel">
-									<!-- for user that have account -->
-                                        <h4>Already have an account?</h4>
-                                        <p>You came here by mistake?</p>
-                                        <a class='carouselButton' href="./Login.php"><button>Click Here to login</button></a>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
                                     <img src="../../assets/img/REcouples.jpg" class="d-block w-100" alt="...">
                                     <div class="carousel-caption d-none d-md-block overlyCarousel">
                                         <!-- for new user -->
@@ -84,6 +75,16 @@
                                                 couples</button></a>
                                     </div>
                                 </div>
+                                <div class="carousel-item">
+                                    <img src="../../assets/img/RElogin.jpg" class="d-block w-100" alt="...">
+                                    <div class="carousel-caption d-none d-md-block overlyCarousel">
+									<!-- for user that have account -->
+                                        <h4>Already have an account?</h4>
+                                        <p>You came here by mistake?</p>
+                                        <a class='carouselButton' href="./Login.php"><button>Click Here to login</button></a>
+                                    </div>
+                                </div>
+                                
                             </div>
 							 <!-- Carousel navigation -->
                             <button class="carousel-control-prev" type="button"
