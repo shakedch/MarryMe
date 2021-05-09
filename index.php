@@ -167,7 +167,7 @@ else{
         </div>
     </div>
     <!-- TODO: Some image in full width here -->
-    <div class="img-holder" data-image="./assets/img/hp_img_one.jpg">
+    <div class="img-holder" data-image="./assets/img/hp_img_up.png">
     </div>
     <!-- TODO: 3 element :[ offer to regular user , I DO button, offer to vendor user] here -->
     <div class='divWrapper' id='offers'>
@@ -194,7 +194,7 @@ else{
         </div>
     </div>
     <!-- TODO: Some image in full width here -->
-    <div class="img-holder" data-image="./assets/img/hp_img_two.jpg">
+    <div class="img-holder" data-image="./assets/img/hp_img_down.png">
     </div>
     <!-- Necessary scripts-->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
