@@ -19,6 +19,15 @@
 			$vendor = new Vendor(); // Create an empty object
 			$error1 = $user->find_email($_POST['email']); //A function that aims to check that there is no registered email like the email that the new customer entered
 			$error2 = $vendor->find_email($_POST['email']); //A function that aims to check that there is no registered email like the email that the new customer entered
+			// added code 09.05.2021
+			$date_of_wedding = $_POST['date_of_wedding'];
+			$changeDate = date("Y-m-d", strtotime($date_of_wedding));
+  	        $today = date("Y-m-d");
+			  if($changeDate < $today){
+				header("location: ../usersManagment/signUp_user.php?dateError");
+                exit();
+			  }
+			// end of added code
 			if($error1 == null && $error2 == null ){ // If there is no email already registered
 				//Function for adding a user
 				$error=user::add_user($_POST['email'],$_POST['password'],$_POST['full_name1'],$_POST['full_name2'],$_POST['date_of_wedding'],$_POST['hour_of_wedding'],$_POST['budget']);
@@ -86,5 +95,12 @@
 			</form>
 			<p> Already have an account? <a href="Login.php">Sign-In</a></p>
 		</div>
+		<!-- added code 9/5/2021 -->
+		<?php
+		if(isset($_GET["dateError"])){
+			echo "<script> alert('impossible date');</script>";
+		}
+		?>
+		<!-- end of code -->
 	</body>
 </html>
