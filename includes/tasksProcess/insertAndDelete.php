@@ -51,12 +51,15 @@ if (isset($_POST["save"])) {
         $database->query("INSERT INTO `tasks`(`user_id`, `name`, `start_date`, `due_date`, `cost`, `description`, `status`) VALUES ('" . $session->id . "','$name','$startDate','$dueDate','$cost','$description','$status')") or
             die($database->query);
     }
+    if (isset($_POST["googleCheck"])) {
+        header("location:../../insertevent.php");
+    } else {
 
+        $_SESSION['message'] = "Record has been saved!";
+        $_SESSION['msg_type'] = "success";
 
-    $_SESSION['message'] = "Record has been saved!";
-    $_SESSION['msg_type'] = "success";
-
-    header("location:tasks.php");
+        header("location:tasks.php");
+    }
 }
 
 

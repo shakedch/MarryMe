@@ -135,7 +135,7 @@ $where4 = "../my_OFFER/offer_wish.php";
                 // get currnt date
                 date_default_timezone_set('UTC');
                 $today = date("Y-m-d H:i:s");
-                debug_to_console($today);
+
 
 
 
@@ -324,6 +324,8 @@ $where4 = "../my_OFFER/offer_wish.php";
                                                             </div>
 
 
+
+
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn closeBtn"
@@ -483,6 +485,12 @@ $where4 = "../my_OFFER/offer_wish.php";
                                             <i class="fas fa-check-circle"></i>
                                             <i class="fas fa-exclamation-circle"></i>
                                             <small id="errorStatus">Error message</small>
+                                        </div>
+                                        <div class='mb-3 form-group'>
+                                            <input name="googleCheck" value="1" class="form-check-input "
+                                                type="checkbox" style="margin-top: 6px;" />
+                                            <label for="googleCheck" class="form-check-label lableTask">Save to Google
+                                                Calender</label>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
