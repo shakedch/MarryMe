@@ -129,7 +129,7 @@ global $session; //Makes class variables global for use on each page
             <div class="col-md-4">
               
               <!-- <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="https://bootdey.com/img/Content/avatar/avatar7.png" data-original-title="Usuario">  -->
-              <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="./one.jpg" data-original-title="Usuario"> 
+              <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="../../assets/img/hp_img_two.jpg" data-original-title="Usuario"> 
 
               
             </div>
@@ -235,7 +235,7 @@ global $session; //Makes class variables global for use on each page
             <div class="row">
                 <div class="col-md-4">
                     <!-- <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="https://bootdey.com/img/Content/avatar/avatar7.png" data-original-title="Usuario">  -->
-                    <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="/REvendor.jpg" data-original-title="Usuario"> 
+                    <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="../../assets/img/REvendor.jpg" data-original-title="Usuario"> 
 
                 </div>
                 <div class="col-md-6">
