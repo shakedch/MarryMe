@@ -189,7 +189,7 @@ $where4 = "../my_OFFER/offer_wish.php";
                                                 <?php
 
                                                                 $diff = round((strtotime($row['due_date']) - strtotime($today)) / (60 * 60 * 24));
-                                                                debug_to_console($diff);
+
                                                                 ?>
 
                                                 <?php if ($diff == 1 && $list[$i] !== 'Completed') : ?>
