@@ -319,6 +319,18 @@
   }
 }
 
+@media screen and (max-width: 700px) {
+  .countdownWrraper {
+    width: 76%;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    border-top: 5px dotted #7a9fbb;
+    border-bottom: 5px dotted #7a9fbb;
+  }
+}
+
 @media screen and (max-width: 670px) {
   /* timetocelebrate */
   .countdown {
@@ -351,14 +363,24 @@
 }
 
 @media screen and (max-width: 580px) {
+  .coupleHPTitle {
+    font-size: 71px !important;
+  }
   .countdownWrraper {
-    width: 74%;
+    width: 76%;
     margin: auto;
     text-align: center;
     margin-bottom: 5%;
     margin-top: 5%;
     border-top: 5px dotted #7a9fbb;
     border-bottom: 5px dotted #7a9fbb;
+  }
+
+  .countdown {
+    text-align: center;
+    font-size: 55px;
+    margin-top: 0px;
+    font-family: "Josefin Sans", sans-serif;
   }
   .tasksViewWrapper {
     display: flex;
@@ -424,6 +446,10 @@
     margin-top: 0px;
     font-family: "Josefin Sans", sans-serif;
   }
+
+  .coupleHPTitle {
+    font-size: 65px !important;
+  }
 }
 
 @media screen and (max-width: 450px) {
@@ -451,7 +477,7 @@
   }
 
   .countdownWrraper {
-    width: 82%;
+    width: 91%;
     margin: auto;
     text-align: center;
     margin-bottom: 5%;
@@ -462,6 +488,9 @@
 }
 
 @media screen and (max-width: 360px) {
+  .coupleHPTitle {
+    font-size: 60px !important;
+  }
   .updates {
     padding: 1rem;
     height: 241px;
@@ -469,9 +498,25 @@
     position: relative;
     margin-bottom: 5%;
   }
+
+  .countdown {
+    text-align: center;
+    font-size: 43px;
+    margin-top: 0px;
+    font-family: "Josefin Sans", sans-serif;
+  }
+
+  h2 {
+    color: #e47f74;
+    font-family: "Niconne", "cursive";
+    font-size: 44px !important;
+  }
 }
 
 @media screen and (max-width: 320px) {
+  .coupleHPTitle {
+    font-size: 50px !important;
+  }
   .countdownWrraper {
     width: 95%;
     margin: auto;
@@ -480,22 +525,5 @@
     margin-top: 5%;
     border-top: 5px dotted #7a9fbb;
     border-bottom: 5px dotted #7a9fbb;
-  }
-
-  h2 {
-    color: #e47f74;
-    font-family: "Niconne", "cursive";
-    font-size: 49px !important;
-  }
-
-  .coupleHPTitle {
-    font-size: 60px !important;
-  }
-
-  .countdown {
-    text-align: center;
-    font-size: 51px;
-    margin-top: 0px;
-    font-family: "Josefin Sans", sans-serif;
   }
 }
