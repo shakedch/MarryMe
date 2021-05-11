@@ -101,7 +101,7 @@ $where4 = "../my_OFFER/offer_wish.php";
             <div class="img-holder" data-image="../../assets/img/parallax_mytasks.png">
             </div>
             <div>
-                <h1 class="head-text typographyH1">My Tasks</h1>
+                <h1 id="myTasksTitle" class="head-text typographyH1">My Tasks</h1>
             </div>
         </div>
         <?php
@@ -122,18 +122,13 @@ $where4 = "../my_OFFER/offer_wish.php";
             </div>
 
 
-            <div class="d-flex justify-content-around col-md-12">
+            <div id="cradListsWrapper" class="d-flex justify-content-around col-md-12">
                 <?php
                 $list = ['To Do', 'In Progress', 'Completed'];
                 $listColor = ['background-color:#E47F74;', 'background-color:#EFA37E;', 'background-color:#9BAD69;'];
                 // get currnt date
                 date_default_timezone_set('UTC');
                 $today = date("Y-m-d H:i:s");
-
-
-
-
-
 
 
                 // With this for loop, we will print all our lists (in this oreder) :
@@ -209,7 +204,9 @@ $where4 = "../my_OFFER/offer_wish.php";
                                                                     </button>
                                                                     <button class="btn" name="delete" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $row['task_id']; ?>">
                                                                         <i class="fas fa-trash fa-lg" style="color:#b12531"></i></button>
-                                                                    <span class="viewCost">Cost: <?php echo $row['cost'];  ?> $ </span>
+
+                                                                    <span class="viewCost"><?php echo $row['cost'];  ?>$</span>
+
                                                                 </div>
                                                             </div>
                                                             </div>
@@ -278,8 +275,6 @@ $where4 = "../my_OFFER/offer_wish.php";
                                                                                     <i class="fas fa-exclamation-circle"></i>
                                                                                     <small id="viewErrorStatus">Error message</small>
                                                                                 </div>
-
-
 
 
                                                                             </div>
@@ -418,11 +413,13 @@ $where4 = "../my_OFFER/offer_wish.php";
                                                     <i class="fas fa-exclamation-circle"></i>
                                                     <small id="errorStatus">Error message</small>
                                                 </div>
+
                                                 <div class='mb-3 form-group'>
                                                     <input name="googleCheck" value="1" class="form-check-input " type="checkbox" style="margin-top: 6px;" />
                                                     <label for="googleCheck" class="form-check-label lableTask">Save to Google
                                                         Calender</label>
                                                 </div>
+
                                             </div>
                                             <div class="modal-footer">
                                                 <button onclick="changeClass()" type="button" class="btn closeBtn" data-bs-dismiss="modal">Close</button>

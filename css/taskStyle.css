@@ -286,3 +286,184 @@ select:-webkit-autofill:focus {
   color: red;
   visibility: visible;
 }
+
+/* Responsive */
+
+@media screen and (max-width: 1000px) {
+  .cardLists {
+    width: 19rem;
+    box-shadow: 0px 0px 9px 4px #00000057;
+    border: none;
+    margin-bottom: 3rem;
+  }
+
+  .viewDate {
+    font-size: 1.2rem;
+    font-weight: bolder;
+  }
+
+  .viewName {
+    font-size: 1.5rem;
+  }
+
+  .viewCost {
+    font-size: 1rem;
+    font-weight: bolder;
+    color: #f2b84b;
+    font-style: italic;
+  }
+
+  .fa-lg {
+    font-size: 1em;
+    line-height: 0.75em;
+    vertical-align: -0.0667em;
+  }
+}
+
+@media screen and (max-width: 890px) {
+  .cardLists {
+    width: 17rem;
+    box-shadow: 0px 0px 9px 4px #00000057;
+    border: none;
+    margin-bottom: 3rem;
+  }
+
+  .cardListName {
+    color: white;
+    font-size: 2.3rem !important;
+  }
+
+  .viewDate {
+    font-size: 1rem;
+    font-weight: bolder;
+  }
+
+  .viewName {
+    font-size: 1.2rem;
+  }
+
+  .viewCost {
+    font-size: 0.9rem;
+    font-weight: bolder;
+    color: #f2b84b;
+    font-style: italic;
+  }
+
+  small {
+    font-size: smaller;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .cardLists {
+    width: 15rem;
+    box-shadow: 0px 0px 9px 4px #00000057;
+    border: none;
+    margin-bottom: 3rem;
+  }
+  .dateDanger {
+    color: #e74c3c;
+    font-size: 10px;
+  }
+  .cardListName {
+    color: white;
+    font-size: 2rem !important;
+  }
+
+  .viewCost {
+    font-size: 0.8rem;
+    font-weight: bolder;
+    color: #f2b84b;
+    font-style: italic;
+  }
+
+  .fa-lg {
+    font-size: 0.9em;
+    line-height: 0.75em;
+    vertical-align: -0.0667em;
+  }
+
+  .viewName {
+    font-size: 1rem;
+  }
+
+  .viewDate {
+    font-size: 0.8rem;
+    font-weight: bolder;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .addTaskBtnWrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5%;
+  }
+
+  .addTaskBtn {
+    font-family: "Niconne", "cursive" !important;
+    font-size: 2rem !important;
+    border-radius: 1em;
+    border: 3px solid transparent;
+    padding: 12px;
+    text-align: center;
+    color: #bdb0c8;
+    background-color: #fffcf9;
+  }
+
+  .addIcon {
+    font-size: 27px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  #cradListsWrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cardLists {
+    width: 19rem;
+    box-shadow: 0px 0px 9px 4px #00000057;
+    border: none;
+    margin-bottom: 3rem;
+  }
+
+  .cardListName {
+    color: white;
+    font-size: 2.3rem !important;
+  }
+
+  .dateDanger {
+    color: #e74c3c;
+    font-size: 12px;
+  }
+
+  .viewDate {
+    font-size: 1rem;
+    font-weight: bolder;
+  }
+
+  .viewName {
+    font-size: 1.2rem;
+  }
+
+  .viewCost {
+    font-size: 0.9rem;
+    font-weight: bolder;
+    color: #f2b84b;
+    font-style: italic;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #myTasksTitle {
+    font-size: 80px !important;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  #myTasksTitle {
+    font-size: 70px !important;
+  }
+}
