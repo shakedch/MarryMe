@@ -35,26 +35,32 @@ $status = '';
 
 if (isset($_POST["save"])) {
     $name = $_POST["name"];
-    debug_to_console($name);
     $nameBank = $_POST["nameBank"];
-    debug_to_console($nameBank);
     $startDate = $_POST["start_date"];
     $dueDate = $_POST["due_date"];
     $cost = $_POST["cost"] == '' ? 0 : $_POST["cost"];
     $description = $_POST["description"];
     $status = $_POST["status"];
 
+    // $fullStartDate = $startDate  . 'Z';
+    $fullStartDate = $startDate . ':00' . 'Z';
+    $fullDueDate = $dueDate . ':00' . 'Z';
+
+
     if ($name === '') {
         $database->query("INSERT INTO `tasks`(`user_id`, `name`, `start_date`, `due_date`, `cost`, `description`, `status`) VALUES ('" . $session->id . "','$nameBank','$startDate','$dueDate','$cost','$description','$status')") or
             die($database->query);
+        $url = 'insertevent.php?namebank=' . $nameBank . '&startdate=' . $fullStartDate . '&duedate=' . $fullDueDate . '&description=' . $description;
     } elseif ($nameBank <= 0) {
         $database->query("INSERT INTO `tasks`(`user_id`, `name`, `start_date`, `due_date`, `cost`, `description`, `status`) VALUES ('" . $session->id . "','$name','$startDate','$dueDate','$cost','$description','$status')") or
             die($database->query);
+        $url = 'insertevent.php?name=' . $name . '&startdate=' . $fullStartDate . '&duedate=' . $fullDueDate . '&description=' . $description;
     }
     if (isset($_POST["googleCheck"])) {
-        header("location:../../insertevent.php");
+        $_SESSION['message'] = "Record has been saved to Google Calendar!";
+        $_SESSION['msg_type'] = "success";
+        header("location:../../$url");
     } else {
-
         $_SESSION['message'] = "Record has been saved!";
         $_SESSION['msg_type'] = "success";
 

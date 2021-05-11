@@ -79,54 +79,35 @@ $events = $results->getItems();
 
 
 
-// if (empty($events)) {
-//     print "No upcoming events found.\n";
-// } else {
-//     print "Upcoming events:\n";
-//     foreach ($events as $event) {
-//         $start = $event->start->dateTime;
+if (isset($_GET['name'])) {
+  $summary = $_GET['name'];
+} else {
+  $summary = $_GET['namebank'];
+}
 
-//         if (empty($start)) {
-//             $start = $event->start->date;
-//         }
-//        //printf("%s (%s)\n", $event->getSummary(), $start);
-//         //print_r("%s (%s)\n",$event->getSummary(), $start);
-//          echo $event->getSummary().' in date:  '.$event->start->dateTime. ' place: '.$event->location.' Description: '.$event->description.'<br/><br/>';
-//         //var_dump($event);
-//        // echo $event->start->dateTime;
-//         echo '<br/><br/>';
-
-//         //var_dump($event);
-//     }
-// }
+//startdate
+$utc = date_default_timezone_set('UTC');
+$startDate = $_GET['startdate'];
 
 
-//insert event
-// Refer to the PHP quickstart on how to setup the environment:
-// https://developers.google.com/calendar/quickstart/php
-// Change the scope to Google_Service_Calendar::CALENDAR and delete any stored
-// credentials.
+//end date
 
-$summary = "sapir testWTF";
+$dueDate = $_GET['duedate'];
+$descreption = $_GET['description'];
+
 $event = new Google_Service_Calendar_Event(array(
   'summary' => $summary,
-  'location' => 'Yoni Netanyahu 13, 	Petah Tikva, 4906411',
-  'description' => 'i created test event',
+  'location' => ' ',
+  'description' => $descreption,
   'start' => array(
-    'dateTime' => '2021-05-07T09:00:00-07:00',
-    'timeZone' => 'America/Los_Angeles',
+    'dateTime' => $startDate,
+    'timeZone' => 'UTC',
   ),
   'end' => array(
-    'dateTime' => '2021-05-07T17:00:00-07:00',
-    'timeZone' => 'America/Los_Angeles',
+    'dateTime' => $dueDate,
+    'timeZone' => 'UTC',
   ),
-  'recurrence' => array(
-    'RRULE:FREQ=DAILY;COUNT=1'
-  ),
-  'attendees' => array(
-    array('email' => 'sapir@example.com'),
-    array('email' => 'uricohen@example.com'),
-  ),
+
   'reminders' => array(
     'useDefault' => FALSE,
     'overrides' => array(
@@ -138,5 +119,7 @@ $event = new Google_Service_Calendar_Event(array(
 
 $calendarId = 'primary';
 $event = $service->events->insert($calendarId, $event);
-printf('Event created: %s\n', $event->htmlLink);
+header("location:./includes/tasksProcess/tasks.php");
+
+// printf('Event created: %s\n', $event->htmlLink);
 //end of insert event
