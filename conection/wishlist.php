@@ -10,8 +10,6 @@ class wishlist{
 	private $vendor_id;
     private $user_id;
 	private $is_contact_supplier;
-	private $name;
-	private $valid_date;
     
 	// A function that takes all the record in a wishlist table and puts them into an array of objects
     public static function fetch_wishlist($id){
