@@ -84,7 +84,7 @@ $user->find_user_by_id($session->id);
                 ?>
         ]);
         var options = {
-
+            backgroundColor: "rgba(255, 255, 255, 0.77)",
             pieSliceText: "none",
             legend: {
                 position: 'labeled',
@@ -95,21 +95,33 @@ $user->find_user_by_id($session->id);
                     italic: true
                 }
             },
-            backgroundColor: '#ffffffff',
+            backgroundColor: {
+                fill: 'none',
+            },
             pieHole: 0.6,
             chartArea: {
-                left: 50,
+                left: 0,
                 top: 20,
-                right: 50,
+                right: 5,
                 bottom: 29,
                 width: 130,
             },
-            height: '500px',
-            width: '900px'
+            height: '100%',
+            width: '100%'
         };
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
         chart.draw(data, options);
     }
+    //responsive chart
+    $(function() {
+        console.log("loaded");
+        drawChart();
+    });
+
+    $(window).resize(function() {
+        console.log("resize");
+        drawChart();
+    });
     </script>
 </head>
 
@@ -149,7 +161,7 @@ $user->find_user_by_id($session->id);
     <!-- img-header -->
     <div class="header">
         <div class="img-holder" data-image="../../assets/img/parallax_coupleHP.jpg"></div>
-        <div>
+        <div class="mainTitle">
             <h1 class="head-text typographyH1 coupleHPTitle">
                 The wedding of <br />
                 <span class="coupleHPTitle"><?php echo $user->full_name1; ?></span> &
@@ -251,7 +263,7 @@ $user->find_user_by_id($session->id);
 
         <div class="divCard chart">
             <h3>Your tasks status:</h3>
-            <div id="piechart"></div>
+            <div id="donutchart"></div>
         </div>
         <!-- task status Chart-->
 
