@@ -9,14 +9,18 @@ global $session; //Makes class variables global for use on each page
 		// for navbar for user
 		$one_n = "My Task";
 		$sec_n = "Market";	
-		$thr_n = "My Offer";
+		$thr_n = "wishlist";
 		$inout = "Log Out";
 		$SeeCre = "See Your Account";
 		$where0 = "../tasksProcess/tasks.php";
 		$where1 = "LogOut.php";
 		$where2 = "My_Account.php";
 		$where3 = "../marketAndOffers/market.php";
-		$where4 = "../my_OFFER/offer_wish.php";
+		$where4 = "../wishList/wishList.php";
+		$user = new User();
+		$user->find_user_by_id($session->id);
+		$whoi = $user->full_name1 . " & " . $user->full_name2;
+		
 	}
 	else
 	{
@@ -31,6 +35,9 @@ global $session; //Makes class variables global for use on each page
 		$where2 = "My_Account.php";			
 		$where3 = "#";	
 		$where4 = "#";
+		$vendor = new Vendor();
+		$vendor->find_user_by_id($session->id);
+		$whoi = $vendor->company_name;
 	}
 	
 ?>
@@ -96,10 +103,13 @@ global $session; //Makes class variables global for use on each page
 			<li class="nav-item">
               <a class="nav-link text-black" href="<?php echo $where3 ?>"><?php echo $sec_n ?></a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link text-black" href="<?php echo $where4 ?>"><?php echo $thr_n ?></a>
+            </li>
           </ul>
         <div class="collapse navbar-collapse" id="navbarNav">
           <div class="mx-auto"></div>
-		        <span class="navbar-text text-black"><?php echo $role ?></span>
+		        <span class="navbar-text text-black"><?php echo $whoi; ?></span>
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link text-primary" href="<?php echo $where1?>"><?php echo $inout?></a>

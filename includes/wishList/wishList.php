@@ -4,14 +4,16 @@ global $database;
 		$role = $_SESSION['role'];
 		$one_n = "My Task";
 		$sec_n = "Market";
-		$thr_n = "My Offer";
+		$thr_n = "wishlist";
 		$inout = "Log Out";
 		$SeeCre = "See Your Account";
 		$where0 = "../tasksProcess/tasks.php";
 		$where3 = "../marketAndOffers/market.php";
 		$where1 = "../usersManagment/LogOut.php";
 		$where2 = "../usersManagment/My_Account.php";
-		$where4 = "offer_wish.php";
+		$where4 = "wishList.php";
+		$user = new User();
+		$user->find_user_by_id($session->id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +62,7 @@ global $database;
           </ul>
         <div class="collapse navbar-collapse" id="navbarNav">
           <div class="mx-auto"></div>
-		        <span class="navbar-text text-black"><?php echo $role ?></span>
+		        <span class="navbar-text text-black"><?php echo $user->full_name1; ?> & <?php echo $user->full_name2; ?></span>
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link text-primary" href="<?php echo $where1?>"><?php echo $inout?></a>
@@ -94,7 +96,7 @@ global $database;
 				$offer = new offer();
 				$offer->find_my_offer($wishlist[$i]->offer_id);
 				$vendor = new Vendor();
-				$vendor->find_vendor($wishlist[$i]->vendor_id);
+				$vendor->find_user_by_id($wishlist[$i]->vendor_id);
 				
 	?>
 
@@ -110,7 +112,7 @@ global $database;
         <div class="info">
           <ul>
             <li><h3><?php echo $offer->name?></h3></li>
-            <li><?php echo $vendor->company_name?></li>
+            <li><h2><?php echo $vendor->company_name?><h2></li>
             <li><h2><?php echo $offer->price?>&#8362;</h2></li>
           </ul>
 
@@ -121,9 +123,9 @@ global $database;
 
         <div class="controls">
           <p>Get Offer</p>
-          <button onclick="myFunction()">send email</button>
-
-          <img class="trash-span" src="https://img.icons8.com/carbon-copy/100/000000/delete--v1.png" width="50px" onclick=""/>
+          <button><a href="update_wishList.php?id=<?php echo $wishlist[$i]->whistlist_id; ?>">send email</a></button>
+		  <a href="delet_wishList.php?id=<?php echo $wishlist[$i]->whistlist_id; ?>"><img class="trash-span" src="https://img.icons8.com/carbon-copy/100/000000/delete--v1.png" width="50px"/></a>
+          
         </div>
 	
 
