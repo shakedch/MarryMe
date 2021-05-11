@@ -4,14 +4,16 @@ global $database;
 $role = $_SESSION['role'];
 $one_n = "My_Task";
 $sec_n = "Market";
-$thr_n = "My Offer";
+$thr_n = "wishlist";
 $inout = "Log Out";
 $SeeCre = "See Your Account";
 $where0 = "../tasksProcess/tasks.php";
 $where3 = "market.php";
 $where1 = "../usersManagment/LogOut.php";
 $where2 = "../usersManagment/My_Account.php";
-$where4 = "../my_OFFER/offer_wish.php";
+$where4 = "../wishList/wishList.php";
+$user = new User();
+$user->find_user_by_id($session->id);
 ?>
 
 
@@ -58,7 +60,7 @@ $where4 = "../my_OFFER/offer_wish.php";
             </ul>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="mx-auto"></div>
-                <span class="navbar-text text-black"><?php echo $role ?></span>
+                <span class="navbar-text text-black"><?php echo $user->full_name1; ?> & <?php echo $user->full_name2; ?></span>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link text-primary" href="<?php echo $where1 ?>"><?php echo $inout ?></a>
@@ -110,11 +112,11 @@ $where4 = "../my_OFFER/offer_wish.php";
                                     <h3 class="market-item-title"><?php echo $row['name'] ?></h3>
                                 </td>
                                 <td>
-                                <form name="vendor_form" action="vendorDetails.php" id="vendor_form" method="POST">
-                                <input type="hidden" name="vendor_id" value="<?php echo $row['vendor_id']; ?>">
-                                <button type="submit" name="send_vendor" class="btn btn-info"><i class="fas fa-address-card"></i></button>
-                                </form>
-                                    
+                                    <form name="vendor_form" action="vendorDetails.php" id="vendor_form" method="POST">
+                                        <input type="hidden" name="vendor_id" value="<?php echo $row['vendor_id']; ?>">
+                                        <button type="submit" name="send_vendor" class="btn btn-info"><i class="fas fa-address-card"></i></button>
+                                    </form>
+
 
                                 </td>
                             </tr>
@@ -127,9 +129,9 @@ $where4 = "../my_OFFER/offer_wish.php";
                         <div class="market-item-details">
                             <span class="market-item-price">&#8362 <?php echo $row['price'] ?></span>
                             <!-- קוד שנוסף ב- 09.05.2021 להעברת פרטים שנדרשים ליצירת רשומה חדשה בטבלת wishlist -->
-                            <form method="post" action = "wishlist.inc.php">
-                                <input type = "hidden" name="Vid" value="<?php echo $row['vendor_id']; ?>">
-                                <input type = "hidden" name="Oid" value="<?php echo $row['offer_id']; ?>">
+                            <form method="post" action="wishlist.inc.php">
+                                <input type="hidden" name="Vid" value="<?php echo $row['vendor_id']; ?>">
+                                <input type="hidden" name="Oid" value="<?php echo $row['offer_id']; ?>">
                                 <button class="market-item-button" type="submit" name='wishlist'>ADD TO WISHLIST &#8594 </button>
                             </form>
                             <!-- סוף קוד -->

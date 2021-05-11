@@ -214,7 +214,7 @@ while ($row = $resultWishlistPerOffer->fetch_assoc()) {
             </ul>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="mx-auto"></div>
-                <span class="navbar-text text-black"><?php echo $role ?></span>
+                <span class="navbar-text text-black"><?php echo $user->company_name; ?></span>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link text-primary" href="<?php echo $where1 ?>"><?php echo $inout ?></a>

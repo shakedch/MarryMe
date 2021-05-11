@@ -81,6 +81,22 @@ class Vendor{
         return $error;
 	}
 	// Function that finds a Vendor by vendor_id
+		public function find_user_by_id($id){
+        global $database;
+        $error=null;
+        $result=$database->query("select * from vendors where vendor_id='".$id."'");
+        if (!$result)
+            $error='Can not find the vendor.  Error is:'.$database->get_connection()->error;
+        elseif ($result->num_rows>0){
+            $found_user=$result->fetch_assoc();
+			$this->instantation($found_user);
+        }
+         else
+             $error="Can no find vendor by this id";
+		 
+        return $error;
+	}
+	// Function that finds a Vendor by vendor_id and give yes or no
 	public function find_vendor($id){
         global $database;
         $error=null;
