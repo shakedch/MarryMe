@@ -9,14 +9,18 @@ global $session; //Makes class variables global for use on each page
 		// for navbar for user
 		$one_n = "My Task";
 		$sec_n = "Market";	
-		$thr_n = "My Offer";
+		$thr_n = "wishlist";
 		$inout = "Log Out";
 		$SeeCre = "See Your Account";
 		$where0 = "../tasksProcess/tasks.php";
 		$where1 = "LogOut.php";
 		$where2 = "My_Account.php";
 		$where3 = "../marketAndOffers/market.php";
-		$where4 = "../my_OFFER/offer_wish.php";
+		$where4 = "../wishList/wishList.php";
+		$user = new User();
+		$user->find_user_by_id($session->id);
+		$whoi = $user->full_name1 . " & " . $user->full_name2;
+		
 	}
 	else
 	{
@@ -31,6 +35,9 @@ global $session; //Makes class variables global for use on each page
 		$where2 = "My_Account.php";			
 		$where3 = "#";	
 		$where4 = "#";
+		$vendor = new Vendor();
+		$vendor->find_user_by_id($session->id);
+		$whoi = $vendor->company_name;
 	}
 	
 ?>
@@ -66,6 +73,17 @@ global $session; //Makes class variables global for use on each page
     <link rel="stylesheet" type="text/css" href="../../css/general.css">
 	<title>Wedding</title>
 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <style>
+         .inf-content{
+    border:1px solid #DDDDDD;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+    box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.3);
+}			                                                      
+    </style>
+
 </head>
 
 <body>
@@ -85,10 +103,13 @@ global $session; //Makes class variables global for use on each page
 			<li class="nav-item">
               <a class="nav-link text-black" href="<?php echo $where3 ?>"><?php echo $sec_n ?></a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link text-black" href="<?php echo $where4 ?>"><?php echo $thr_n ?></a>
+            </li>
           </ul>
         <div class="collapse navbar-collapse" id="navbarNav">
           <div class="mx-auto"></div>
-		        <span class="navbar-text text-black"><?php echo $role ?></span>
+		        <span class="navbar-text text-black"><?php echo $whoi; ?></span>
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link text-primary" href="<?php echo $where1?>"><?php echo $inout?></a>
@@ -112,29 +133,98 @@ global $session; //Makes class variables global for use on each page
 					?>			
 					
 					<!-- table with user data -->
-					<table class="table">
-					<thead>
-					<tr>
-						<th scope="col">user_id</th>
-						<th scope="col">Email</th>
-						<th scope="col">Full_Name1</th>
-						<th scope="col">Full_Name2</th>
-						<th scope="col">Date_OF_Wedding</th>
-						<th scope="col">Hour_OF_Wedding</th>
-						<th scope="col">Budget</th>
+					<div class="container bootstrap snippets bootdey">
+    <div class="panel-body inf-content">
+        <div class="row">
+            <div class="col-md-4">
+              
+              <!-- <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="https://bootdey.com/img/Content/avatar/avatar7.png" data-original-title="Usuario">  -->
+              <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="../../assets/img/hp_img_two.jpg" data-original-title="Usuario"> 
 
-					</tr>
-					</thead>
-					<tbody>
-					<tr>
-					  <td><?php echo $user->user_id; ?></td>
-					  <td><?php echo $user->email; ?></td>
-					  <td><?php echo $user->full_name1; ?></td>
-					  <td><?php echo $user->full_name2; ?></td>
-					  <td><?php echo $user->date_of_wedding; ?></td>
-					  <td><?php echo $user->hour_of_wedding; ?></td>
-					  <td><?php echo $user->budget; ?></td>
-					</tr>
+              
+            </div>
+            <div class="col-md-6">
+                <strong>Information</strong><br>
+                <div class="table-responsive">
+                <table class="table table-user-information">
+                    <tbody>
+                        <tr>    
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-user  text-primary"></span>    
+                                    Full name 1                                               
+                                </strong>
+                            </td>
+                            <td class="text-primary">
+                                <?php echo $user->full_name1; ?>   
+                            </td>
+                        </tr>
+                        <tr>        
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-user text-primary"></span>  
+                                    Full name 2                                               
+                                </strong>
+                            </td>
+                            <td class="text-primary">
+                               <?php echo $user->full_name2; ?>
+                            </td>
+                        </tr>
+    
+                        <tr>        
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-calendar text-primary"></span> 
+                                    Date of wedding                                               
+                                </strong>
+                            </td>
+                            <td class="text-primary">
+                                <?php echo $user->date_of_wedding; ?>
+                            </td>
+                        </tr>
+    
+    
+                        <tr>        
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-time text-primary"></span> 
+                                   Hour of wedding                                               
+                                </strong>
+                            </td>
+                            <td class="text-primary">
+                                <?php echo $user->hour_of_wedding; ?>
+                            </td>
+                        </tr>
+                        <tr>        
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-envelope text-primary"></span> 
+                                    Email                                                
+                                </strong>
+                            </td>
+                            <td class="text-primary">
+                              <?php echo $user->email; ?>
+                            </td>
+                        </tr>
+                        <tr>        
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-exclamation-sign text-primary"></span>
+                                    Budget                                                
+                                </strong>
+                            </td>
+                            <td class="text-primary">
+                              <?php echo $user->budget; ?>
+                            </td>
+                        </tr>
+                                                        
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>  
 					<!-- button to change data -->
 					<tr>
 						<button type="button" class ="btn btn-outline-danger btn-md"><a href = "Update_User.php">Update Data </a></button>
@@ -150,30 +240,95 @@ global $session; //Makes class variables global for use on each page
 						$error=$user->find_user_by_email($session->email);	// Inserting data into an object	
 				?>
 				<!-- table with user data -->
-					<table class="table">
-					<thead>
-					<tr>
-						<th scope="col">vendor_id</th>
-						<th scope="col">Email</th>
-						<th scope="col">Company_Name</th>
-						<th scope="col">Phone_Num</th>
-						<th scope="col">Kind_of_Business</th>
-						<th scope="col">Web_Url</th>
-						<th scope="col">Address</th>
+				<div class="container bootstrap snippets bootdey">
+        <div class="panel-body inf-content">
+            <div class="row">
+                <div class="col-md-4">
+                    <!-- <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="https://bootdey.com/img/Content/avatar/avatar7.png" data-original-title="Usuario">  -->
+                    <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="../../assets/img/REvendor.jpg" data-original-title="Usuario"> 
 
-					</tr>
-					</thead>
-					<tbody>
-					<tr>
-					  <td><?php echo $user->vendor_id; ?></td>
-					  <td><?php echo $user->email; ?></td>
-					  <td><?php echo $user->company_name; ?></td>
-					  <td><?php echo $user->phone_num; ?></td>
-					  <td><?php echo $user->kind_of_business; ?></td>
-					  <td><?php echo $user->web_url; ?></td>
-					  <td><?php echo $user->address; ?></td>
-					</tr>
-					<tr>
+                </div>
+                <div class="col-md-6">
+                    <strong>Information</strong><br>
+                    <div class="table-responsive">
+                    <table class="table table-user-information">
+                        <tbody>
+                            <tr>    
+                                <td>
+                                    <strong>
+                                        <span class="glyphicon glyphicon-user  text-primary"></span>    
+                                        Company name                                                
+                                    </strong>
+                                </td>
+                                <td class="text-primary">
+                                    <?php echo $user->company_name; ?> 
+                                </td>
+                            </tr>
+                            <tr>        
+                                <td>
+                                    <strong>
+                                        <span class="glyphicon glyphicon-phone text-primary"></span>  
+                                        Phone number                                                
+                                    </strong>
+                                </td>
+                                <td class="text-primary">
+                                    <?php echo $user->phone_num; ?>
+                                </td>
+                            </tr>
+        
+                            <tr>        
+                                <td>
+                                    <strong>
+                                        <span class="glyphicon glyphicon-bookmark text-primary"></span> 
+                                        Kind of business                                                
+                                    </strong>
+                                </td>
+                                <td class="text-primary">
+                                    <?php echo $user->kind_of_business; ?>
+                                </td>
+                            </tr>
+        
+        
+                            <tr>        
+                                <td>
+                                    <strong>
+                                        <span class="glyphicon glyphicon-cloud text-primary"></span> 
+                                        Web Url                                                
+                                    </strong>
+                                </td>
+                                <td class="text-primary">
+                                    <?php echo $user->web_url; ?>
+                                </td>
+                            </tr>
+                            <tr>        
+                                <td>
+                                    <strong>
+                                        <span class="glyphicon glyphicon-envelope text-primary"></span> 
+                                        Email                                                
+                                    </strong>
+                                </td>
+                                <td class="text-primary">
+                                    <?php echo $user->email; ?>
+                                </td>
+                            </tr>
+                            <tr>        
+                                <td>
+                                    <strong>
+                                        <span class="glyphicon glyphicon-globe text-primary"></span>
+                                        Adress                                                
+                                    </strong>
+                                </td>
+                                <td class="text-primary">
+                                    <?php echo $user->address; ?>
+                                </td>
+                            </tr>                                   
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div> 
 					<!-- button to change data -->
 						<button type="button" class ="btn btn-outline-danger btn-md"><a href = "Update_Vendor.php">Update Data </a></button>
 					</tr>

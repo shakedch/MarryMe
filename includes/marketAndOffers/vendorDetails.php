@@ -4,12 +4,25 @@ global $database;
 $role = $_SESSION['role'];
 $one_n = "My_Task";
 $sec_n = "Market";
+$thr_n = "wishlist";
 $inout = "Log Out";
 $SeeCre = "See Your Account";
 $where0 = "../tasksProcess/tasks.php";
 $where3 = "market.php";
 $where1 = "../usersManagment/LogOut.php";
 $where2 = "../usersManagment/My_Account.php";
+$where4 = "../wishList/wishList.php";
+$user = new User();
+$user->find_user_by_id($session->id);
+
+if (isset($_POST['send_vendor'])) {
+
+    $vendor_id = $_POST['vendor_id'];
+
+
+    //header("location: offers.php");
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,13 +59,10 @@ $where2 = "../usersManagment/My_Account.php";
                 <li class="nav-item">
                     <a class="nav-link text-black" href="<?php echo $where0 ?>"><?php echo $one_n ?></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="<?php echo $where3 ?>"><?php echo $sec_n ?></a>
-                </li>
             </ul>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="mx-auto"></div>
-                <span class="navbar-text text-black"><?php echo $role ?></span>
+                <span class="navbar-text text-black"><?php echo $user->company_name; ?></span>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link text-primary" href="<?php echo $where1 ?>"><?php echo $inout ?></a>
@@ -64,7 +74,7 @@ $where2 = "../usersManagment/My_Account.php";
             </div>
         </div>
     </nav>
-   
+
     <div class="header">
         <div class="img-holder" data-image="../../assets/img/parallax_vendor.png">
         </div>
@@ -76,8 +86,7 @@ $where2 = "../usersManagment/My_Account.php";
     <div class="container">
         <?php
         $mysqli = new mysqli("localhost", "root", "", "marryme") or die(mysqli_error(($mysqli)));
-        $result = $mysqli->query("SELECT * FROM vendors WHERE vendor_id='2' ") or die($mysqli->error); // נצטרך לעשות תנאי של מתי שהספק שווה הספק שנשלח בלחיצה
-        //pre_r($result);
+        $result = $mysqli->query("SELECT * FROM vendors WHERE vendor_id=$vendor_id ") or die($mysqli->error); // נצטרך לעשות תנאי של מתי שהספק שווה הספק שנשלח בלחיצה
         ?>
 
         <div class="d-flex justify-content-around info">

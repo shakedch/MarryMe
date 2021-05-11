@@ -18,6 +18,7 @@
 
 .countdownCelebrate {
   background-image: url("../assets/img/celebration_countdown.jpg");
+  font-size: 84px;
   color: #b2fefa;
 }
 
@@ -180,4 +181,349 @@
 
 .toP > p {
   font-size: 18px;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 1300px) {
+  .budgetBarWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    width: 51%;
+    margin-bottom: 7%;
+  }
+
+  .chart {
+    padding: 1.5rem;
+    width: 51%;
+  }
+
+  .updates {
+    padding: 1rem;
+    height: auto;
+    width: 45%;
+    position: relative;
+  }
+
+  .countdownWrraper {
+    width: 61%;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    border-top: 5px dotted #7a9fbb;
+    border-bottom: 5px dotted #7a9fbb;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .countdown {
+    text-align: center;
+    font-size: 75px;
+    margin-top: 0px;
+    font-family: "Josefin Sans", sans-serif;
+  }
+}
+
+@media screen and (max-width: 910px) {
+  .tasksViewWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 1rem 0 rgb(0 0 0 / 20%);
+    border-radius: 18px;
+    margin: auto auto 2rem auto;
+    width: 92%;
+    background: #e0eafc;
+    background: -webkit-linear-gradient(to right, #cfdef3, #e0eafc);
+    background: linear-gradient(to right, #cfdef3, #e0eafc);
+  }
+
+  .budgetBarWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    width: 60%;
+    margin-bottom: 7%;
+  }
+
+  .chart {
+    padding: 1.5rem;
+    width: 60%;
+  }
+
+  .updatesWrapper {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 10%;
+  }
+
+  .countdownWrraper {
+    width: 66%;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    border-top: 5px dotted #7a9fbb;
+    border-bottom: 5px dotted #7a9fbb;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .countdown {
+    text-align: center;
+    font-size: 70px;
+    margin-top: 0px;
+    font-family: "Josefin Sans", sans-serif;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .budgetBarWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    width: 70%;
+    margin-bottom: 7%;
+  }
+
+  .chart {
+    padding: 1.5rem;
+    width: 70%;
+  }
+
+  /* timetocelebrate */
+  .countdown {
+    text-align: center;
+    font-size: 65px;
+    margin-top: 0px;
+    font-family: "Josefin Sans", sans-serif;
+  }
+
+  .updatesContent {
+    font-size: 1.2em;
+    text-align: center;
+  }
+
+  .toP > p {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .countdownWrraper {
+    width: 76%;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    border-top: 5px dotted #7a9fbb;
+    border-bottom: 5px dotted #7a9fbb;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  /* timetocelebrate */
+  .countdown {
+    text-align: center;
+    font-size: 60px;
+    margin-top: 0px;
+    font-family: "Josefin Sans", sans-serif;
+  }
+
+  .budgetBarWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    width: 80%;
+    margin-bottom: 7%;
+  }
+
+  .chart {
+    padding: 1.5rem;
+    width: 80%;
+  }
+
+  h2 {
+    color: #e47f74;
+    font-family: "Niconne", "cursive";
+    font-size: 45px !important;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .coupleHPTitle {
+    font-size: 71px !important;
+  }
+  .countdownWrraper {
+    width: 76%;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    border-top: 5px dotted #7a9fbb;
+    border-bottom: 5px dotted #7a9fbb;
+  }
+
+  .countdown {
+    text-align: center;
+    font-size: 55px;
+    margin-top: 0px;
+    font-family: "Josefin Sans", sans-serif;
+  }
+  .tasksViewWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 1rem 0 rgb(0 0 0 / 20%);
+    border-radius: 18px;
+    margin: auto auto 2rem auto;
+    width: 90%;
+    background: #e0eafc;
+    background: -webkit-linear-gradient(to right, #cfdef3, #e0eafc);
+    background: linear-gradient(to right, #cfdef3, #e0eafc);
+  }
+
+  .budgetBarWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    width: 90%;
+    margin-bottom: 7%;
+  }
+
+  .chart {
+    padding: 1.5rem;
+    width: 90%;
+  }
+
+  .updatesWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10%;
+  }
+
+  .updates {
+    padding: 1rem;
+    height: 241px;
+    width: 55%;
+    position: relative;
+    margin-bottom: 5%;
+  }
+
+  .delayTasksIcon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2%;
+    font-size: 29px;
+  }
+
+  .toP > p {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .countdown {
+    text-align: center;
+    font-size: 50px;
+    margin-top: 0px;
+    font-family: "Josefin Sans", sans-serif;
+  }
+
+  .coupleHPTitle {
+    font-size: 65px !important;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .budgetBarWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    width: 97%;
+    margin-bottom: 7%;
+  }
+
+  .chart {
+    padding: 1.5rem;
+    width: 97%;
+  }
+
+  .updates {
+    padding: 1rem;
+    height: 241px;
+    width: 70%;
+    position: relative;
+    margin-bottom: 5%;
+  }
+
+  .countdownWrraper {
+    width: 91%;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    border-top: 5px dotted #7a9fbb;
+    border-bottom: 5px dotted #7a9fbb;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .coupleHPTitle {
+    font-size: 60px !important;
+  }
+  .updates {
+    padding: 1rem;
+    height: 241px;
+    width: 85%;
+    position: relative;
+    margin-bottom: 5%;
+  }
+
+  .countdown {
+    text-align: center;
+    font-size: 43px;
+    margin-top: 0px;
+    font-family: "Josefin Sans", sans-serif;
+  }
+
+  h2 {
+    color: #e47f74;
+    font-family: "Niconne", "cursive";
+    font-size: 44px !important;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .coupleHPTitle {
+    font-size: 50px !important;
+  }
+  .countdownWrraper {
+    width: 95%;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    border-top: 5px dotted #7a9fbb;
+    border-bottom: 5px dotted #7a9fbb;
+  }
 }

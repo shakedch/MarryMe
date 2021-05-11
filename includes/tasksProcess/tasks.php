@@ -178,7 +178,7 @@ $where4 = "../my_OFFER/offer_wish.php";
                                                                 <?php
 
                                                                 $diff = round((strtotime($row['due_date']) - strtotime($today)) / (60 * 60 * 24));
-                                                                debug_to_console($diff);
+
                                                                 ?>
 
                                                                 <?php if ($diff == 1 && $list[$i] !== 'Completed') : ?>
@@ -204,7 +204,9 @@ $where4 = "../my_OFFER/offer_wish.php";
                                                                     </button>
                                                                     <button class="btn" name="delete" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $row['task_id']; ?>">
                                                                         <i class="fas fa-trash fa-lg" style="color:#b12531"></i></button>
+
                                                                     <span class="viewCost"><?php echo $row['cost'];  ?>$</span>
+
                                                                 </div>
                                                             </div>
                                                             </div>
@@ -411,6 +413,13 @@ $where4 = "../my_OFFER/offer_wish.php";
                                                     <i class="fas fa-exclamation-circle"></i>
                                                     <small id="errorStatus">Error message</small>
                                                 </div>
+
+                                                <div class='mb-3 form-group'>
+                                                    <input name="googleCheck" value="1" class="form-check-input " type="checkbox" style="margin-top: 6px;" />
+                                                    <label for="googleCheck" class="form-check-label lableTask">Save to Google
+                                                        Calender</label>
+                                                </div>
+
                                             </div>
                                             <div class="modal-footer">
                                                 <button onclick="changeClass()" type="button" class="btn closeBtn" data-bs-dismiss="modal">Close</button>

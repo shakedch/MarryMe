@@ -1,13 +1,6 @@
 <?php
 	//conection to all class
 	require_once('../../conection/init.php');
-	// chack conenction to DB
-	if($database->get_connection()){
-		echo "connection is OK <br>";
-	}
-	else{
-		die("conncection failed.");
-	}
     global $session; //Makes class variables global for use on each page
     $error='';
 	//if vendor make Registration 

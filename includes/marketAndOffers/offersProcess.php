@@ -14,18 +14,22 @@ $price = '';
 $img = '';
 $vendor_id = '';
 
+//set Israel time 
+date_default_timezone_set('Israel');
+
 // add new form
 if (isset($_POST['save'])) {
 
     $name = $_POST['name'];
     $valid_date =  $_POST['valid_date'];
+    $creation_date = date('Y-m-d H:i:s');
     $description =  $_POST['description'];
     $price =  $_POST['price'];
-    $vendor_id =  $session->id;/*צריך לבדוק איך נותנים לזה סשן ואת מי שמחובר */
+    $vendor_id =  $session->id;
 
     $img = uploadImg();
 
-    $mysqli->query("INSERT INTO offers (valid_date, name, description, img, price, vendor_id) VALUES ('$valid_date', '$name', '$description', '$img', '$price', '$vendor_id')") or die($mysqli->error);
+    $mysqli->query("INSERT INTO offers (valid_date, name, description, img, price, vendor_id,creation_date) VALUES ('$valid_date', '$name', '$description', '$img', '$price', '$vendor_id', '$creation_date')") or die($mysqli->error);
 
     $_SESSION['message'] = "Offer has been saved!";
     $_SESSION['msg_type'] = "success";
@@ -40,13 +44,15 @@ if (isset($_GET['delete'])) {
     //delete record image
     $result =  $mysqli->query("SELECT * FROM offers WHERE offer_id=$offer_id") or die($mysqli->error);
     $row = $result->fetch_array();
-    $temp_img_to_delete = $row['img']; 
+    $temp_img_to_delete = $row['img'];
 
     //delete image if exist
-    if ($temp_img_to_delete !== ''){
+    if ($temp_img_to_delete !== '') {
         // Use unlink() function to delete a file 
         $file_pointer = "../../assets/img/offersUploads/" . $temp_img_to_delete;
-        unlink($file_pointer);
+        if (file_exists($file_pointer)) {
+            unlink($file_pointer);
+        }
     }
 
     $mysqli->query("DELETE FROM offers WHERE offer_id=$offer_id") or die(mysqli_error(($mysqli)));
@@ -65,6 +71,7 @@ if (isset($_GET['edit'])) {
     if (count(array($result)) == 1) {
         $row = $result->fetch_array();
         $name = $row['name'];
+        // $valid_date = date('Y-m-d H:i:s',$row['valid_date']); אולי למחוק לשים לב
         $valid_date = str_replace(' ', 'T', $row['valid_date']);
         $description =  $row['description'];
         $price =  $row['price'];
@@ -80,11 +87,11 @@ if (isset($_POST['update'])) {
     $valid_date =  $_POST['valid_date'];
     $description =  $_POST['description'];
     $price =  $_POST['price'];
-    $vendor_id =  $session->id;/*צריך לבדוק איך נותנים לזה סשן ואת מי שמחובר */
+    $vendor_id =  $session->id;
 
     $result =  $mysqli->query("SELECT * FROM offers WHERE offer_id=$offer_id") or die($mysqli->error);
     $row = $result->fetch_array();
-    $temp_img_to_delete = $row['img']; 
+    $temp_img_to_delete = $row['img'];
 
     $img = uploadImg();
 
@@ -94,12 +101,12 @@ if (isset($_POST['update'])) {
     } else {
 
         //delete prev image if exist
-        if ($temp_img_to_delete !== ''){
+        if ($temp_img_to_delete !== '') {
             // Use unlink() function to delete a file 
             $file_pointer = "../../assets/img/offersUploads/" . $temp_img_to_delete;
             unlink($file_pointer);
         }
-        
+
         $mysqli->query("UPDATE offers SET name='$name',valid_date='$valid_date',description='$description',price='$price',img='$img',vendor_id='$vendor_id' WHERE offer_id=$offer_id ") or die($mysqli->error);
     }
 
