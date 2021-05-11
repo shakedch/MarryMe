@@ -8,6 +8,8 @@ $SeeCre = "See Your Account";
 $where0 = "offers.php";
 $where1 = "../usersManagment/LogOut.php";
 $where2 = "../usersManagment/My_Account.php";
+$vendor = new Vendor();
+$vendor->find_user_by_id($session->id);
 ?>
 
 
@@ -55,7 +57,7 @@ $where2 = "../usersManagment/My_Account.php";
             </ul>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="mx-auto"></div>
-                <span class="navbar-text text-black"><?php echo $role ?></span>
+                <span class="navbar-text text-black"><?php echo $vendor->company_name; ?></span>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link text-primary" href="<?php echo $where1 ?>"><?php echo $inout ?></a>
