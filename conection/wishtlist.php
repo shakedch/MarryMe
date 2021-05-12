@@ -3,7 +3,7 @@
 require_once('init.php');
 
 // Building a class for wishlist
-class wishlist{
+class wishtlist{
 	//Class variables
 	private $whistlist_id;
 	private $offer_id;
@@ -12,7 +12,7 @@ class wishlist{
 	private $is_contact_supplier;
     
 	// A function that takes all the record in a wishlist table and puts them into an array of objects
-    public static function fetch_wishlist($id){
+    public static function fetch_wishtlist($id){
         
         global $database;
         $result=$database->query("select * from wishlist where user_id='".$id."'");
@@ -21,7 +21,7 @@ class wishlist{
             $i=0;
             if ($result->num_rows>0){ 
                 while($row=$result->fetch_assoc()){ 
-                    $wishlist=new wishlist();
+                    $wishlist=new wishtlist();
                     $wishlist->instantation($row);
                     $wishlists[$i]=$wishlist;
                     $i+=1;

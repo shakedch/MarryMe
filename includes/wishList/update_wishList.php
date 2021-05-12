@@ -8,12 +8,12 @@ $num = 1 ;
 $result=$database->query("UPDATE wishlist SET is_contact_supplier= '".$num."' WHERE whistlist_id = '".$id."'");
 if($result)
 {
-    header("location:offer_wish.php"); // redirects to all records page
+    header("location:wishList.php"); // redirects to all records page
 }
 else
 {
     echo "Error send email "; // display error message if not update
-	header("location:offer_wish.php");
+	header("location:wishList.php");
 }
 
 ?>
