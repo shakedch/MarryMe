@@ -1,4 +1,4 @@
-<?php require_once '../../conection/init.php';
+<?php require_once ('../../conection/init.php');
 global $session;
 global $database;
 		$role = $_SESSION['role'];
@@ -87,7 +87,7 @@ global $database;
     <section class="offer-list">
 
 	<?php
-	$wishlist = wishlist::fetch_wishlist($session->id);
+	$wishlist = wishtlist::fetch_wishtlist($session->id);
 	if(!isset($wishlist)){
 		echo "there are no product";
 	}
@@ -96,7 +96,7 @@ global $database;
 				$offer = new offer();
 				$offer->find_my_offer($wishlist[$i]->offer_id);
 				$vendor = new Vendor();
-				$vendor->find_user_by_id($wishlist[$i]->vendor_id);
+              $vendor->find_user_by_id($wishlist[$i]->vendor_id);
 				
 	?>
 

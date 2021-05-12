@@ -12,14 +12,14 @@ if($session->signed_in){
 		// for navbar for user
 		$one_n = "My Task";
 		$sec_n = "Market";
-		$thr_n = "My Offer";
+		$thr_n = "wishlist";
 		$inout = "Log Out";
 		$SeeCre = "See Your Account";
 		$where0 = "includes/tasksProcess/tasks.php";
 		$where1 = "includes/usersManagment/LogOut.php";
 		$where2 = "includes/usersManagment/My_Account.php";
 		$where3 = "includes/marketAndOffers/market.php";
-		$where4 = "includes/my_OFFER/offer_wish.php";
+		$where4 = "includes/wishList/wishList.php";
 	}
 	else
 	{
