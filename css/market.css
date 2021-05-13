@@ -1,3 +1,19 @@
+#search_form input {
+  width: 40%;
+  padding: 10px;
+  border-radius: 20px;
+  outline: none;
+  display: inline-block;
+  border: 1px solid #ccc;
+}
+
+#search_form {
+  
+  margin: auto ;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
 .market-items {
   display: flex;
   flex-wrap: wrap;

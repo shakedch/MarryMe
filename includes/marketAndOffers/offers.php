@@ -1,4 +1,7 @@
-<?php require_once 'offersProcess.php';
+<?php 
+require_once '../../conection/init.php';
+require_once 'offersProcess.php';
+
 global $session;
 global $database;
 $role = $_SESSION['role'];
