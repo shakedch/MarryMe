@@ -4,6 +4,8 @@ require __DIR__ . '/vendor/autoload.php';
 
 
 
+
+
 // if (php_sapi_name() != 'cli') {
 //     throw new Exception('This application must be run on the command line.');
 // }
@@ -21,16 +23,11 @@ function getClient()
     $client->setAccessType('offline');
     $client->setPrompt('select_account consent');
 
-    // Load previously authorized token from a file, if it exists.
-    // The file token.json stores the user's access and refresh tokens, and is
-    // created automatically when the authorization flow completes for the first
-    // time.
-    $tokenPath = 'token.json';
-    if (file_exists($tokenPath)) {
-        $accessToken = json_decode(file_get_contents($tokenPath), true);
-        $client->setAccessToken($accessToken);
-    }
 
+    //we are saving the token in session
+    if ($_SESSION['access_token']) {
+        $client->setAccessToken($_SESSION['access_token']);
+    }
     // If there is no previous token or it's expired.
     if ($client->isAccessTokenExpired()) {
         // Refresh the token if possible, else fetch a new one.
@@ -42,11 +39,12 @@ function getClient()
 
                 // Exchange authorization code for an access token.
                 $accessToken = $client->fetchAccessTokenWithAuthCode($authCode);
-                $client->setAccessToken($accessToken);
+                $_SESSION['access_token'] = $accessToken;
+                $client->setAccessToken($_SESSION['access_token']);
 
                 // Check to see if there was an error.
-                if (array_key_exists('error', $accessToken)) {
-                    throw new Exception(join(', ', $accessToken));
+                if (array_key_exists('error', $_SESSION['access_token'])) {
+                    throw new Exception(join(', ', $_SESSION['access_token']));
                 }
             } else {
                 // Request authorization from the user.
@@ -55,11 +53,8 @@ function getClient()
                 die();
             }
         }
-        // Save the token to a file.
-        if (!file_exists(dirname($tokenPath))) {
-            mkdir(dirname($tokenPath), 0700, true);
-        }
-        file_put_contents($tokenPath, json_encode($client->getAccessToken()));
+
+        $_SESSION['access_token'] = $client->getAccessToken();
     }
     return $client;
 }
@@ -80,19 +75,8 @@ $optParams = array(
 $results = $service->events->listEvents($calendarId, $optParams);
 $events = $results->getItems();
 
-// if (empty($events)) {
-//     print "No upcoming events found.\n";
-// } else {
-//     print "Upcoming events:\n";
-//     foreach ($events as $event) {
-//         $start = $event->start->dateTime;
-//         if (empty($start)) {
-//             $start = $event->start->date;
-//         }
-//         printf("%s (%s)\n", $event->getSummary(), $start);
-//     }
-// }
 
+//insert event
 $event = new Google_Service_Calendar_Event(array(
     'summary' =>  $_SESSION['name'],
     'location' => ' ',
