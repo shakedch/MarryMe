@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once '../../conection/init.php';
 require_once 'offersProcess.php';
 
@@ -21,7 +21,6 @@ $vendor->find_user_by_id($session->id);
 
 <head>
     <!-- Required meta tags -->
-
 
     <link href="../../css/general.css?v=1.0" rel="stylesheet" type="text/css" />
     <link href="../../css/offers.css?v=1.0" rel="stylesheet" type="text/css" />
@@ -91,10 +90,37 @@ $vendor->find_user_by_id($session->id);
     </div>
 
     <div class="container">
+        <form name="search_form" action="offers.php" id="search_form" method="POST">
+            <input type="text" id="offer_name" name="offer_name" placeholder="search offer">
+            <button type="submit" name="search" class="btn btn-primary"><i class="fa fa-search"></i></button>
+            <button type="submit" name="all_offers" class="btn btn-outline-primary">show all my offers</button>
+        </form>
+        <hr>
+
         <?php
         $mysqli = new mysqli("localhost", "root", "", "marryme") or die(mysqli_error(($mysqli)));
-        $result = $mysqli->query("SELECT * FROM offers WHERE vendor_id='" . $session->id . "' ") or die($mysqli->error);
+        $offer_name = '';
+
+        function offer_name_to_find()
+        {
+            $offer_name = $_POST["offer_name"];
+            return $offer_name;
+        }
+        if (isset($_POST['search'])) {
+            $offer_name = offer_name_to_find();
+        }
+
+        if (isset($_POST['all_offers'])) {
+            $offer_name = '';
+        }
+
+        if ($offer_name === '') {
+            $result = $mysqli->query("SELECT * FROM offers WHERE vendor_id='" . $session->id . "' ") or die($mysqli->error);
+        } else {
+            $result = $mysqli->query("SELECT * FROM offers WHERE vendor_id='" . $session->id . "' AND name LIKE '%" . $offer_name . "%'") or die($mysqli->error);
+        }
         ?>
+
 
         <div class="row justify-content-center">
 
@@ -102,28 +128,28 @@ $vendor->find_user_by_id($session->id);
             <?php
             while ($row = $result->fetch_assoc()) : ?>
 
-                <div class="grid-container mb-3 mt-3">
+                <div class="card mb-3 offers " style="width: 80%;">
+                    <div class="row">
 
-                    <div class="item1">
-                        <?php
-                        echo
-                        "<td class='photoUpload'><img class='centerPic' src='../../assets/img/offersUploads/" . (($row["img"] == '') || ($row["img"] == '.') ? 'no-image-available.png' : $row["img"]) . "' align='center' height='65' /></td>";
-                        ?>
+                        <div class="col-3 my-auto"><?php
+                                                    echo
+                                                    "<td class='photoUpload'><img class='centerPic' src='../../assets/img/offersUploads/" . (($row["img"] == '') || ($row["img"] == '.') ? 'no-image-available.png' : $row["img"]) . "' align='center' height='65' /></td>";
+                                                    ?><br></div>
+                        <div class="col-7">
+                            <h2 class="card-title"><?php echo $row['name'] ?></h2>
+                            <p class="card-text">&#8362;<?php echo $row['price'] ?></p>
+                            <p class="card-text"><small class="text-muted">
+                                    <?php echo $row['description'] ?>
+                                </small></p>
+                        </div>
 
+                        <div class="col-2 text-right mt-2 ">
+                            <a href="offersProcess.php?delete=<?php echo $row['offer_id']; ?>" class="btn btn-danger"> <i class="fas fa-trash"></i></a>
+                            <a href="offers.php?edit=<?php echo $row['offer_id']; ?>" class="btn btn-info"> <i class="fas fa-edit"></i></a>
+                        </div>
                     </div>
-
-                    <div class="item2">
-                        <h2><?php echo $row['name'] ?></h2>
-                    </div>
-                    <div class="item3"><?php echo $row['price'] ?> &#8362; </div>
-                    <div class="item4">
-                        <a href="offersProcess.php?delete=<?php echo $row['offer_id']; ?>" class="btn btn-danger">Delete <i class="fas fa-trash"></i></a>
-                    </div>
-                    <div class="item5">
-                        <a href="offers.php?edit=<?php echo $row['offer_id']; ?>" class="btn btn-info">Edit <i class="fas fa-edit"></i></a>
-                    </div>
-                    <div class="item6"><?php echo $row['description'] ?></div>
                 </div>
+
             <?php endwhile; ?>
         </div>
     </div>
@@ -131,8 +157,8 @@ $vendor->find_user_by_id($session->id);
 
     <dialog id="myDialog">
 
-        <button onclick="parent.location='offers.php'">&#10008;</button>
-        <h2>Add New Offer</h2>
+        <button id="close" onclick="parent.location='offers.php'">&#10008;</button>
+        <h3>Add New Offer</h3>
         <div class="row pr-5 pl-5 ">
             <form name="offers_form" action="offersProcess.php" id="offers_form" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="offer_id" value="<?php echo $offer_id; ?>">

@@ -1,45 +1,24 @@
-.item1 {
-  grid-area: img;
-}
-.item2 {
-  grid-area: service-name;
-  text-align: left !important;
-}
-
-.item3 {
-  grid-area: price;
-}
-.item4 {
-  grid-area: delete;
-}
-.item5 {
-  grid-area: edit;
-}
-.item6 {
-  grid-area: description;
+#search_form input {
+  width: 40%;
+  padding: 10px;
+  border-radius: 20px;
+  outline: none;
+  display: inline-block;
+  border: 1px solid #ccc;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-areas:
-    "img img img service-name service-name price price delete edit"
-    "img img img description description description description delete edit"
-    "img img img description description description description delete edit";
-  grid-gap: 2px;
-  background-color: #f8c6b9;
-  padding: 3px;
-  width: 80%;
+#search_form {
   margin: auto;
-}
-
-.grid-container > div {
-  background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
-  padding: 20px 0;
-  font-size: 30px;
+  margin-bottom: 50px;
 }
 
-.item1 img {
+.offers {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  padding: 3px;
+}
+
+.offers img {
   width: 200px;
   height: 200px;
   object-fit: cover;
@@ -77,19 +56,22 @@ dialog {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border-style: solid;
+  border-color: rgb(180, 179, 179);
 }
 
-#myDialog h2 {
+#close {
+  margin-left: 10px;
+  margin-top: 10px;
+  padding: 5px;
+  border-style: none;
+}
+
+#myDialog h3 {
   border-bottom: 1px solid #f0f0f0;
-  background-color: #f7f7f7;
   padding: 20px 40px;
 }
-/*
-.form-group {
-	padding-bottom: 10px;;
-}*/
 
-/*החל מכאן קשור לחלק שרציתי להוסיף של הולדציות*/
 .form-group i {
   visibility: hidden;
   top: 40px;
