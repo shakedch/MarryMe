@@ -1,5 +1,8 @@
 <?php
+require_once('./conection/init.php');
 require __DIR__ . '/vendor/autoload.php';
+
+
 
 // if (php_sapi_name() != 'cli') {
 //     throw new Exception('This application must be run on the command line.');
@@ -12,7 +15,7 @@ require __DIR__ . '/vendor/autoload.php';
 function getClient()
 {
     $client = new Google_Client();
-    $client->setApplicationName('Google Calendar API PHP Quickstart');
+    $client->setApplicationName('MarryMe');
     $client->setScopes(Google_Service_Calendar::CALENDAR);
     $client->setAuthConfig('credentials.json');
     $client->setAccessType('offline');
@@ -34,19 +37,22 @@ function getClient()
         if ($client->getRefreshToken()) {
             $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
         } else {
-            // Request authorization from the user.
-            $authUrl = $client->createAuthUrl();
-            printf("Open the following link in your browser:\n%s\n", $authUrl);
-            print 'Enter verification code: ';
-            $authCode = trim(fgets(STDIN));
+            if ($_GET['code']) {
+                $authCode = $_GET['code'];
 
-            // Exchange authorization code for an access token.
-            $accessToken = $client->fetchAccessTokenWithAuthCode($authCode);
-            $client->setAccessToken($accessToken);
+                // Exchange authorization code for an access token.
+                $accessToken = $client->fetchAccessTokenWithAuthCode($authCode);
+                $client->setAccessToken($accessToken);
 
-            // Check to see if there was an error.
-            if (array_key_exists('error', $accessToken)) {
-                throw new Exception(join(', ', $accessToken));
+                // Check to see if there was an error.
+                if (array_key_exists('error', $accessToken)) {
+                    throw new Exception(join(', ', $accessToken));
+                }
+            } else {
+                // Request authorization from the user.
+                $authUrl = $client->createAuthUrl();
+                header("Location:" . $authUrl);
+                die();
             }
         }
         // Save the token to a file.
@@ -74,15 +80,42 @@ $optParams = array(
 $results = $service->events->listEvents($calendarId, $optParams);
 $events = $results->getItems();
 
-if (empty($events)) {
-    print "No upcoming events found.\n";
-} else {
-    print "Upcoming events:\n";
-    foreach ($events as $event) {
-        $start = $event->start->dateTime;
-        if (empty($start)) {
-            $start = $event->start->date;
-        }
-        printf("%s (%s)\n", $event->getSummary(), $start);
-    }
-}
+// if (empty($events)) {
+//     print "No upcoming events found.\n";
+// } else {
+//     print "Upcoming events:\n";
+//     foreach ($events as $event) {
+//         $start = $event->start->dateTime;
+//         if (empty($start)) {
+//             $start = $event->start->date;
+//         }
+//         printf("%s (%s)\n", $event->getSummary(), $start);
+//     }
+// }
+
+$event = new Google_Service_Calendar_Event(array(
+    'summary' =>  $_SESSION['name'],
+    'location' => ' ',
+    'description' => $_SESSION['description'],
+    'start' => array(
+        'dateTime' => $_SESSION['start_date'],
+        'timeZone' => 'UTC',
+    ),
+    'end' => array(
+        'dateTime' => $_SESSION['due_date'],
+        'timeZone' => 'UTC',
+    ),
+
+    'reminders' => array(
+        'useDefault' => FALSE,
+        'overrides' => array(
+            array('method' => 'email', 'minutes' => 24 * 60),
+            array('method' => 'popup', 'minutes' => 10),
+        ),
+    ),
+));
+
+$calendarId = 'primary';
+$event = $service->events->insert($calendarId, $event);
+
+header("location:./includes/tasksProcess/tasks.php");
