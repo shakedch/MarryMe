@@ -9,9 +9,7 @@ global $database;
 $task_id = " ";
 $update = false;
 $name = "";
-
 $nameBank = "";
-
 $startDate = date('Y-m-d\TH:i');
 $minDueDate = date('Y-m-d\TH:i');
 $dueDate = '';
@@ -19,7 +17,6 @@ $cost = "";
 $description = "";
 $status = '';
 
-// need to add session 
 
 
 
@@ -69,11 +66,8 @@ if (isset($_GET['deleteTask'])) {
     $database->query("DELETE FROM tasks WHERE`tasks`.`task_id`=$task_id") or
         die($database->query);
 
-
     $_SESSION['message'] = "Record has been deleted!";
     $_SESSION['msg_type'] = "danger";
-
-
 
     header("location:tasks.php");
 }
