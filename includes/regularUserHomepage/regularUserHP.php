@@ -5,14 +5,14 @@ global $session;
 $role = $_SESSION['role'];
 $one_n = "My_Task";
 $sec_n = "Market";
-$thr_n = "My Offer";
+$thr_n = "wishlist";
 $inout = "Log Out";
 $SeeCre = "See Your Account";
 $where0 = "../tasksProcess/tasks.php";
 $where1 = "../usersManagment/LogOut.php";
 $where2 = "../usersManagment/My_Account.php";
 $where3 = "../marketAndOffers/market.php";
-$where4 = "../my_OFFER/offer_wish.php";
+$where4 = "../wishList/wishList.php";
 $mysqli = new mysqli("localhost", "root", "", "marryme") or die(mysqli_error(($mysqli)));
 $chart_query = "SELECT status, count(*) as number FROM tasks WHERE user_id ='" . $session->id . "' GROUP BY status ";
 $result = mysqli_query($mysqli, $chart_query);
@@ -114,12 +114,10 @@ $user->find_user_by_id($session->id);
     }
     //responsive chart
     $(function() {
-        console.log("loaded");
         drawChart();
     });
 
     $(window).resize(function() {
-        console.log("resize");
         drawChart();
     });
     </script>
@@ -146,7 +144,8 @@ $user->find_user_by_id($session->id);
             </ul>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="mx-auto"></div>
-                <span class="navbar-text text-black"><?php echo $role ?></span>
+                <span class="navbar-text text-black"><?php echo $user->full_name1; ?> &
+                    <?php echo $user->full_name2; ?></span>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link text-primary" href="<?php echo $where1 ?>"><?php echo $inout ?></a>
@@ -259,8 +258,6 @@ $user->find_user_by_id($session->id);
         <!-- budget bar-->
 
         <!-- task status Chart-->
-
-
         <div class="divCard chart">
             <h3>Your tasks status:</h3>
             <div id="donutchart"></div>
@@ -336,8 +333,6 @@ $user->find_user_by_id($session->id);
                 </div>
             </div>
         </div>
-
-
         <!-- update board -->
 
     </div>
