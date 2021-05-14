@@ -1,7 +1,45 @@
-.vendor_address{
-    margin-top: 60px;
+.vendor_address {
+  margin-top: 60px;
 }
 
-.info{
-    margin-bottom: 10%;
+#vendor-offers {
+  margin: auto !important;
+  text-align: center !important;
+}
+
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper-container {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 330px !important;
+  height: 330px !important;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin: auto;
 }
