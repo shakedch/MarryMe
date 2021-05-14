@@ -46,34 +46,30 @@ global $session; //Makes class variables global for use on each page
 
 <head>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstra4.5.2/css/bootstrap.min.css"> -->
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript">
-    </script>
-    <script src="https://kit.fontawesome.com/90569433a0.js" crossorigin="anonymous"></script>
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
-    </script>
+   
+    <!-- JavaScript Bundle with Popper -> makes the menu titles to be black -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.5.0/mdb.min.css"
         integrity="sha512-ENnX3mn8eIEmPp8XJ30lCs82Ux76IHv3ZeK9Z4TGzmBDEyYmYodgeqFIw7207m3f1Lhl9t1nMzPxHF6p+YD5Pw=="
         crossorigin="anonymous" />
-    <!-- general fonts-->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700&amp;display=swap" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap"
-        rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="../../css/HeadFoot.css">
-    <link rel="stylesheet" type="text/css" href="../../css/hpStyle.css"> 
-    <link rel="stylesheet" type="text/css" href="../../css/general.css">
-	<title>Wedding</title>
 
+    <!-- bootstrap link to responsive -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript">
+    </script>
+    <script src="https://kit.fontawesome.com/90569433a0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+    <!-- tab view -->
+    <link rel="shortcut icon" href="../../assets/img/tab_logo.png" type="image/png">
+    <title> Marry Me</title>
+    
+    <!-- links to css files -->
+	<link rel="stylesheet" type="text/css" href="../../css/HeadFoot.css">
+    <link rel="stylesheet" type="text/css" href="../../css/general.css">
+
     <style>
          .inf-content{
     border:1px solid #DDDDDD;
@@ -87,8 +83,7 @@ global $session; //Makes class variables global for use on each page
 </head>
 
 <body>
-    <div id="wrapper">
-        <div>
+    
 	<!-- navbar by variables -->
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark p-md-3">
       <div class="container">
