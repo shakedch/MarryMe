@@ -8,10 +8,14 @@
 }
 
 #search_form {
-  
   margin: auto ;
   text-align: center;
   margin-bottom: 50px;
+}
+
+.no-offers{
+  margin:auto;
+  text-align: center;
 }
 
 .market-items {
