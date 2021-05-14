@@ -9,8 +9,8 @@ $inout = "Log Out";
 $SeeCre = "See Your Account";
 $where0 = "../tasksProcess/tasks.php";
 $where3 = "market.php";
-$where1 = "../usersManagment/LogOut.php";
-$where2 = "../usersManagment/My_Account.php";
+$where1 = "../usersManagment/logOut.php";
+$where2 = "../usersManagment/myAccount.php";
 $where4 = "../wishList/wishList.php";
 $user = new User();
 $user->find_user_by_id($session->id);
@@ -36,7 +36,9 @@ $user->find_user_by_id($session->id);
     <!-- general fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap"
+        rel="stylesheet">
 
     <!--free search jquery -->
     <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
@@ -64,7 +66,8 @@ $user->find_user_by_id($session->id);
             </ul>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="mx-auto"></div>
-                <span class="navbar-text text-black"><?php echo $user->full_name1; ?> & <?php echo $user->full_name2; ?></span>
+                <span class="navbar-text text-black"><?php echo $user->full_name1; ?> &
+                    <?php echo $user->full_name2; ?></span>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link text-primary" href="<?php echo $where1 ?>"><?php echo $inout ?></a>
@@ -130,52 +133,54 @@ $user->find_user_by_id($session->id);
             <?php
             while ($row = $result->fetch_assoc()) :
             ?>
-                <div id="offer-frame">
-                    <div class="market-item">
-                        <table>
-                            <tr>
-                                <td>
-                                    <?php
+            <div id="offer-frame">
+                <div class="market-item">
+                    <table>
+                        <tr>
+                            <td>
+                                <?php
                                     $vendor_to_search = $row['vendor_id'];
                                     findCompanyName($vendor_to_search, $mysqli);
                                     ?>
-                                </td>
-                                <td>
-                                    <h3 class="market-item-title"><?php echo $row['name'] ?></h3>
-                                </td>
-                                <td>
-                                    <form name="vendor_form" action="vendorDetails.php" id="vendor_form" method="POST">
-                                        <input type="hidden" name="vendor_id" value="<?php echo $row['vendor_id']; ?>">
-                                        <button type="submit" name="send_vendor" class="btn btn-info"><i class="fas fa-address-card"></i></button>
-                                    </form>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">
-                                    <?php
+                            </td>
+                            <td>
+                                <h3 class="market-item-title"><?php echo $row['name'] ?></h3>
+                            </td>
+                            <td>
+                                <form name="vendor_form" action="vendorDetails.php" id="vendor_form" method="POST">
+                                    <input type="hidden" name="vendor_id" value="<?php echo $row['vendor_id']; ?>">
+                                    <button type="submit" name="send_vendor" class="btn btn-info"><i
+                                            class="fas fa-address-card"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <?php
                                     echo
                                     "<img class='centerPic' src='../../assets/img/offersUploads/" . (($row["img"] == '') || ($row["img"] == '.') ? 'no-image-available.png' : $row["img"]) . "' />";
                                     ?>
 
-                                    <div class="market-item-details">
-                                        <span class="market-item-price">&#8362 <?php echo $row['price'] ?></span>
-                                        <!-- details to create new wishlist record -->
-                                        <form method="post" action="wishlist.inc.php">
-                                            <input type="hidden" name="Vid" value="<?php echo $row['vendor_id']; ?>">
-                                            <input type="hidden" name="Oid" value="<?php echo $row['offer_id']; ?>">
-                                            <button class="market-item-button" type="submit" name='wishlist'>ADD TO WISHLIST &#8594 </button>
-                                        </form>
+                                <div class="market-item-details">
+                                    <span class="market-item-price">&#8362 <?php echo $row['price'] ?></span>
+                                    <!-- details to create new wishlist record -->
+                                    <form method="post" action="wishlist.inc.php">
+                                        <input type="hidden" name="Vid" value="<?php echo $row['vendor_id']; ?>">
+                                        <input type="hidden" name="Oid" value="<?php echo $row['offer_id']; ?>">
+                                        <button class="market-item-button" type="submit" name='wishlist'>ADD TO WISHLIST
+                                            &#8594 </button>
+                                    </form>
 
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
 
-                    </div>
-                    <div class="item-description">
-                        <?php echo $row['description'] ?>
-                    </div>
                 </div>
+                <div class="item-description">
+                    <?php echo $row['description'] ?>
+                </div>
+            </div>
             <?php
 
             endwhile; ?>
@@ -184,20 +189,24 @@ $user->find_user_by_id($session->id);
 
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://rawgithub.com/pederan/Parallax-ImageScroll/master/jquery.imageScroll.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://rawgithub.com/pederan/Parallax-ImageScroll/master/jquery.imageScroll.min.js"
+        type="text/javascript"></script>
     <script src="../general.js"></script>
 
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous">
+    </script>
 
     <script src="search-table.js"></script>
     <script>
-        $("#yourtable").searchTable({
-            placeholder: "Free Search",
-            before: function() {
-                console.log("My function");
-            }
-        });
+    $("#yourtable").searchTable({
+        placeholder: "Free Search",
+        before: function() {
+            console.log("My function");
+        }
+    });
     </script>
 
 </body>
