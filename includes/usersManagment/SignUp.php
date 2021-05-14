@@ -30,6 +30,7 @@ $error = '';
     <link rel="stylesheet" href="../../css/register.css">
     <link rel="stylesheet" href="../../css/general.css">
     <link rel="stylesheet" type="text/css" href="../../css/login.css">
+    <link rel="shortcut icon" href="../../assets/img/tab_logo.png" type="image/png">
     <title>Registration</title>
 </head>
 

@@ -38,6 +38,7 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Registration Form for Vendor</title>
     <link rel="stylesheet" type="text/css" href="../../css/signUp.css">
+    <link rel="shortcut icon" href="../../assets/img/tab_logo.png" type="image/png">
 
 </head>
 

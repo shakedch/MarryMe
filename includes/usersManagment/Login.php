@@ -52,6 +52,7 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../../css/login.css">
     <link rel="stylesheet" type="text/css" href="./css/general.css">
+    <link rel="shortcut icon" href="../../assets/img/tab_logo.png" type="image/png">
 
 </head>
 
