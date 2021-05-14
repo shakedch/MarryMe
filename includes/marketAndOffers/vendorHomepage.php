@@ -7,8 +7,8 @@ $one_n = "Offers";
 $inout = "Log Out";
 $SeeCre = "See Your Account";
 $where0 = "offers.php";
-$where1 = "../usersManagment/LogOut.php";
-$where2 = "../usersManagment/My_Account.php";
+$where1 = "../usersManagment/logOut.php";
+$where2 = "../usersManagment/myAccount.php";
 
 
 $error = '';
@@ -77,14 +77,15 @@ while ($row = $resultWishlistPerOffer->fetch_assoc()) {
 
     <link href="../../css/general.css?v=1.0" rel="stylesheet" type="text/css" />
     <link href="../../css/vendorHomepage.css?v=1.0" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../css/HeadFoot.css">
+    <link rel="stylesheet" type="text/css" href="../../css/headFoot.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript">
     </script>
     <script src="https://kit.fontawesome.com/90569433a0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
     <!-- tab view -->
     <link rel="shortcut icon" href="../../assets/img/tab_logo.png" type="image/png">
@@ -92,109 +93,111 @@ while ($row = $resultWishlistPerOffer->fetch_assoc()) {
     <!-- general fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap"
+        rel="stylesheet">
 
     <!-- numbers font -->
     <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 
 
     <script>
-        window.onload = function() {
+    window.onload = function() {
 
-            //pie chart 
-            var pieChart = new CanvasJS.Chart("pieChartContainer", {
-                theme: "light2",
-                animationEnabled: true,
-                exportEnabled: true,
-                title: {
-                    text: "My Offers"
-                },
-                subtitles: [{
-                    text: "<?php echo date("l jS \of F Y "); ?>"
-                }],
-                data: [{
-                    type: "pie",
-                    yValueFormatString: "#,##0.00\"%\"",
-                    indexLabel: "{label} ({y})",
-                    dataPoints: <?php echo json_encode($pieDataPoints, JSON_NUMERIC_CHECK); ?>
-                }]
-            });
-            pieChart.render();
+        //pie chart 
+        var pieChart = new CanvasJS.Chart("pieChartContainer", {
+            theme: "light2",
+            animationEnabled: true,
+            exportEnabled: true,
+            title: {
+                text: "My Offers"
+            },
+            subtitles: [{
+                text: "<?php echo date("l jS \of F Y "); ?>"
+            }],
+            data: [{
+                type: "pie",
+                yValueFormatString: "#,##0.00\"%\"",
+                indexLabel: "{label} ({y})",
+                dataPoints: <?php echo json_encode($pieDataPoints, JSON_NUMERIC_CHECK); ?>
+            }]
+        });
+        pieChart.render();
 
-            //bar chart
-            CanvasJS.addColorSet("columnShades",
-                [ //colorSet Array
+        //bar chart
+        CanvasJS.addColorSet("columnShades",
+            [ //colorSet Array
 
-                    "#ffa366",
-                    "#80e5ff"
+                "#ffa366",
+                "#80e5ff"
 
-                ]);
+            ]);
 
-            var barChart = new CanvasJS.Chart("barChartContainer", {
-                animationEnabled: true,
-                exportEnabled: true,
-                theme: "light2",
-                colorSet: "columnShades",
-                title: {
-                    text: "Mention of Offers in Wishlists"
-                },
-                axisY: {
-                    includeZero: true
-                },
-                data: [{
-                    type: "column",
-                    indexLabel: "{y}", //Shows y value on all Data Points
-                    indexLabelFontColor: "#5A5757",
-                    indexLabelPlacement: "outside",
-                    dataPoints: <?php echo json_encode($barDataPoints, JSON_NUMERIC_CHECK); ?>
-                }]
-            });
-            barChart.render();
+        var barChart = new CanvasJS.Chart("barChartContainer", {
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "light2",
+            colorSet: "columnShades",
+            title: {
+                text: "Mention of Offers in Wishlists"
+            },
+            axisY: {
+                includeZero: true
+            },
+            data: [{
+                type: "column",
+                indexLabel: "{y}", //Shows y value on all Data Points
+                indexLabelFontColor: "#5A5757",
+                indexLabelPlacement: "outside",
+                dataPoints: <?php echo json_encode($barDataPoints, JSON_NUMERIC_CHECK); ?>
+            }]
+        });
+        barChart.render();
 
-            //line chart
-            var lineChart = new CanvasJS.Chart("lineChartContainer", {
-                theme: "light2",
-                animationEnabled: true,
-                exportEnabled: true,
-                title: {
-                    text: "Last Month offers "
-                },
-                axisY: {
-                    title: "number of offers"
-                },
-                data: [{
-                    type: "spline",
-                    dataPoints: <?php echo json_encode($lineDataPoints, JSON_NUMERIC_CHECK); ?>
-                }]
-            });
+        //line chart
+        var lineChart = new CanvasJS.Chart("lineChartContainer", {
+            theme: "light2",
+            animationEnabled: true,
+            exportEnabled: true,
+            title: {
+                text: "Last Month offers "
+            },
+            axisY: {
+                title: "number of offers"
+            },
+            data: [{
+                type: "spline",
+                dataPoints: <?php echo json_encode($lineDataPoints, JSON_NUMERIC_CHECK); ?>
+            }]
+        });
 
-            lineChart.render();
+        lineChart.render();
 
-            //horizontal bar chart
-            var horizontalBarchart = new CanvasJS.Chart("horizontalBarChartContainer", {
-                theme: "light2",
-                animationEnabled: true,
-                exportEnabled: true,
-                title: {
-                    text: "Offers in Wishlists"
-                },
-                axisY: {
-                    title: "number of references in wishlists",
-                    includeZero: true,
+        //horizontal bar chart
+        var horizontalBarchart = new CanvasJS.Chart("horizontalBarChartContainer", {
+            theme: "light2",
+            animationEnabled: true,
+            exportEnabled: true,
+            title: {
+                text: "Offers in Wishlists"
+            },
+            axisY: {
+                title: "number of references in wishlists",
+                includeZero: true,
 
-                },
-                data: [{
-                    type: "bar",
-                    indexLabel: "{y}",
-                    indexLabelPlacement: "inside",
-                    indexLabelFontWeight: "bolder",
-                    indexLabelFontColor: "white",
-                    dataPoints: <?php echo json_encode($horizontalBardataPoints, JSON_NUMERIC_CHECK); ?>
-                }]
-            });
-            horizontalBarchart.render();
+            },
+            data: [{
+                type: "bar",
+                indexLabel: "{y}",
+                indexLabelPlacement: "inside",
+                indexLabelFontWeight: "bolder",
+                indexLabelFontColor: "white",
+                dataPoints: <?php echo json_encode($horizontalBardataPoints, JSON_NUMERIC_CHECK); ?>
+            }]
+        });
+        horizontalBarchart.render();
 
-        }
+    }
     </script>
 
 </head>
@@ -250,19 +253,19 @@ while ($row = $resultWishlistPerOffer->fetch_assoc()) {
     //print offers
     while ($row = $resultOffers->fetch_assoc()) : ?>
 
+    <div>
         <div>
-            <div>
-                <h2><?php echo $row['name'] ?></h2>
-            </div>
+            <h2><?php echo $row['name'] ?></h2>
+        </div>
 
-            <div>
-                <?php
+        <div>
+            <?php
                 echo
                 "<td class='photoUpload'><img class='centerPic' src='../../assets/img/offersUploads/" . (($row["img"] == '') || ($row["img"] == '.') ? 'no-image-available.png' : $row["img"]) . "' align='center' height='65' /></td>";
                 ?>
-            </div>
-
         </div>
+
+    </div>
     <?php endwhile; ?>
 
     <!-- print vendor details -->
@@ -293,8 +296,10 @@ while ($row = $resultWishlistPerOffer->fetch_assoc()) {
     </table>
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://rawgithub.com/pederan/Parallax-ImageScroll/master/jquery.imageScroll.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://rawgithub.com/pederan/Parallax-ImageScroll/master/jquery.imageScroll.min.js"
+        type="text/javascript"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> <!-- pie chart -->
     <script src="../general.js"></script>
 

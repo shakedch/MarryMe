@@ -5,46 +5,46 @@ global $session;  //Makes class variables global for use on each page
 // if there are a session ( if user or vendor are make log in)
 if ($session->signed_in) {
 
-  $role = $_SESSION['role'];
-  $temp = 'couple';
-  if ($role == $temp) {
-    // for navbar for user
-    $one_n = "My Task";
-    $sec_n = "Market";
-    $thr_n = "wishlist";
-    $inout = "Log Out";
-    $SeeCre = "See Your Account";
-    $where0 = "includes/tasksProcess/tasks.php";
-    $where1 = "includes/usersManagment/LogOut.php";
-    $where2 = "includes/usersManagment/My_Account.php";
-    $where3 = "includes/marketAndOffers/market.php";
-    $where4 = "includes/wishList/wishList.php";
-  } else {
-    // for navbar for vendor
-    $one_n = "Offers";
+    $role = $_SESSION['role'];
+    $temp = 'couple';
+    if ($role == $temp) {
+        // for navbar for user
+        $one_n = "My Task";
+        $sec_n = "Market";
+        $thr_n = "wishlist";
+        $inout = "Log Out";
+        $SeeCre = "See Your Account";
+        $where0 = "includes/tasksProcess/tasks.php";
+        $where1 = "includes/usersManagment/logOut.php";
+        $where2 = "includes/usersManagment/myAccount.php";
+        $where3 = "includes/marketAndOffers/market.php";
+        $where4 = "includes/wishList/wishList.php";
+    } else {
+        // for navbar for vendor
+        $one_n = "Offers";
+        $sec_n = "";
+        $thr_n = "";
+        $inout = "Log Out";
+        $SeeCre = "See Your Account";
+        $where0 = "includes/marketAndOffers/offers.php";
+        $where1 = "includes/usersManagment/logOut.php";
+        $where2 = "includes/usersManagment/myAccount.php";
+        $where3 = "#";
+        $where4 = "#";
+    }
+} else {
+    // for navbar if there are no log in user or vendor
+    $one_n = "";
     $sec_n = "";
     $thr_n = "";
-    $inout = "Log Out";
-    $SeeCre = "See Your Account";
-    $where0 = "includes/marketAndOffers/offers.php";
-    $where1 = "includes/usersManagment/LogOut.php";
-    $where2 = "includes/usersManagment/My_Account.php";
+    $role = "Hello Guest";
+    $inout = "Sign in";
+    $SeeCre = "Create New Account";
+    $where0 = "#";
+    $where1 = "includes/usersManagment/login.php";
+    $where2 = "includes/usersManagment/signUp.php";
     $where3 = "#";
     $where4 = "#";
-  }
-} else {
-  // for navbar if there are no log in user or vendor
-  $one_n = "";
-  $sec_n = "";
-  $thr_n = "";
-  $role = "Hello Guest";
-  $inout = "Sign in";
-  $SeeCre = "Create New Account";
-  $where0 = "#";
-  $where1 = "includes/usersManagment/Login.php";
-  $where2 = "includes/usersManagment/SignUp.php";
-  $where3 = "#";
-  $where4 = "#";
 }
 ?>
 <!DOCTYPE html>
@@ -74,7 +74,8 @@ if ($session->signed_in) {
     <link
         href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./css/HeadFoot.css">
+    <link rel="shortcut icon" href="./assets/img/tab_logo.png" type="image/png">
+    <link rel="stylesheet" type="text/css" href="./css/headFoot.css">
     <link rel="stylesheet" type="text/css" href="./css/hpStyle.css">
     <link rel="stylesheet" type="text/css" href="./css/general.css">
     <title>Wedding</title>
@@ -87,7 +88,7 @@ if ($session->signed_in) {
             <!-- navbar by variables -->
             <nav class="navbar sticky-top navbar-expand-lg navbar-dark p-md-3">
                 <div class="container">
-                    <a class="navbar-brand" href="#">Wedding</a>
+                    <a class="navbar-brand" href="#">MarryMe</a>
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link text-black" href="index.php">Home</a>
@@ -118,17 +119,17 @@ if ($session->signed_in) {
             </nav>
 
             <?php
-      if ($session->signed_in) {
-        if ($role == 'couple') {
-          // If the object being connected is a user
-          header('Location: includes/regularUserHomepage/regularUserHP.php');
-        } else {
-          // If the object being connected is a vendor
-          header('Location: includes/marketAndOffers/vendorHomepage.php');
-        }
-      } else {
-        // If there are no user or vendor that log in
-      ?>
+            if ($session->signed_in) {
+                if ($role == 'couple') {
+                    // If the object being connected is a user
+                    header('Location: includes/regularUserHomepage/regularUserHP.php');
+                } else {
+                    // If the object being connected is a vendor
+                    header('Location: includes/marketAndOffers/vendorHomepage.php');
+                }
+            } else {
+                // If there are no user or vendor that log in
+            ?>
             <div id='wrapper'>
                 <!-- TODO: Video here -->
                 <header>
@@ -207,8 +208,8 @@ if ($session->signed_in) {
                 type="text/javascript"></script>
             <script src="./includes/general.js"></script>
             <?php
-      }
-      ?>
+            }
+            ?>
         </div>
     </div>
 

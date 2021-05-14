@@ -9,8 +9,8 @@ $thr_n = "wishlist";
 $inout = "Log Out";
 $SeeCre = "See Your Account";
 $where0 = "../tasksProcess/tasks.php";
-$where1 = "../usersManagment/LogOut.php";
-$where2 = "../usersManagment/My_Account.php";
+$where1 = "../usersManagment/logOut.php";
+$where2 = "../usersManagment/myAccount.php";
 $where3 = "../marketAndOffers/market.php";
 $where4 = "../wishList/wishList.php";
 $mysqli = new mysqli("localhost", "root", "", "marryme") or die(mysqli_error(($mysqli)));
@@ -56,7 +56,7 @@ $user->find_user_by_id($session->id);
     <script src="https://kit.fontawesome.com/90569433a0.js" crossorigin="anonymous"></script>
 
     <!-- our import files -->
-    <link rel="stylesheet" type="text/css" href="../../css/HeadFoot.css">
+    <link rel="stylesheet" type="text/css" href="../../css/headFoot.css">
     <link rel="stylesheet" href="../../css/general.css" />
     <link rel="stylesheet" href="../../css/coupleHomepage.css" />
 

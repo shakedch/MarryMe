@@ -152,5 +152,3 @@ class Vendor{
             return $this->$property;
     }  
 }
-?>
-

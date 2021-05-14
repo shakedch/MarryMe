@@ -1,20 +1,21 @@
 <?php
-	//conection to all class
-	require_once('../../conection/init.php');
-	// chack conenction to DB
-	
-    global $session; //Makes class variables global for use on each page
-    $error='';
+//conection to all class
+require_once('../../conection/init.php');
+// chack conenction to DB
+
+global $session; //Makes class variables global for use on each page
+$error = '';
 ?>
 
 
 <!DOCTYPE html>
 <html>
-	<head>
-	<!-- connection css and bootstrap and metadata -->
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-		    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<head>
+    <!-- connection css and bootstrap and metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
@@ -27,13 +28,15 @@
         href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../../css/register.css">
-    <link rel="stylesheet" href="../../css/general.css">	
-	<link rel="stylesheet" type="text/css" href="../../css/Login.css">
+    <link rel="stylesheet" href="../../css/general.css">
+    <link rel="stylesheet" type="text/css" href="../../css/login.css">
+    <link rel="shortcut icon" href="../../assets/img/tab_logo.png" type="image/png">
     <title>Registration</title>
-	</head>
-	<body>
-		<p id="error"><?php echo $error?></p>
-		<main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+</head>
+
+<body>
+    <p id="error"><?php echo $error ?></p>
+    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
         <div class="container">
             <div class="card login-card">
                 <div class="row no-gutters">
@@ -52,10 +55,11 @@
                                     <img src="../../assets/img/REvendor.jpg" class="d-block w-100" alt="...">
                                     <div class="carousel-caption d-none d-md-block overlyCarouselLight">
                                         <br>
-										<!-- for new vendor -->
-										<h4>Vendors</h4>
+                                        <!-- for new vendor -->
+                                        <h4>Vendors</h4>
                                         <p>If you are a vendor and to join us.</p>
-                                        <a class='carouselButton' href="./signUp_Vendor.php"><button>Click here to register as
+                                        <a class='carouselButton' href="./signUpVendor.php"><button>Click here to
+                                                register as
                                                 vendor</button></a>
                                     </div>
                                 </div>
@@ -63,24 +67,26 @@
                                     <img src="../../assets/img/REcouples.jpg" class="d-block w-100" alt="...">
                                     <div class="carousel-caption d-none d-md-block overlyCarousel">
                                         <!-- for new user -->
-										<h4>Couples getting married?</h4>
+                                        <h4>Couples getting married?</h4>
                                         <p>Join us and manage your tasks!.</p>
-                                        <a class='carouselButton' href="./signUp_User.php"><button>Click Here to register as
+                                        <a class='carouselButton' href="./signUpUser.php"><button>Click Here to register
+                                                as
                                                 couples</button></a>
                                     </div>
                                 </div>
                                 <div class="carousel-item">
                                     <img src="../../assets/img/RElogin.jpg" class="d-block w-100" alt="...">
                                     <div class="carousel-caption d-none d-md-block overlyCarousel">
-									<!-- for user that have account -->
+                                        <!-- for user that have account -->
                                         <h4>Already have an account?</h4>
                                         <p>You came here by mistake?</p>
-                                        <a class='carouselButton' href="./Login.php"><button>Click Here to login</button></a>
+                                        <a class='carouselButton' href="./login.php"><button>Click Here to
+                                                login</button></a>
                                     </div>
                                 </div>
-                                
+
                             </div>
-							 <!-- Carousel navigation -->
+                            <!-- Carousel navigation -->
                             <button class="carousel-control-prev" type="button"
                                 data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -97,11 +103,12 @@
             </div>
         </div>
     </main>
-	<!-- JS -->
+    <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-	</body>
+</body>
+
 </html>
