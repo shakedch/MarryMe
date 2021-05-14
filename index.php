@@ -74,7 +74,7 @@ if ($session->signed_in) {
     <link
         href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./css/HeadFoot.css">
+    <link rel="stylesheet" type="text/css" href="./css/headFoot.css">
     <link rel="stylesheet" type="text/css" href="./css/hpStyle.css">
     <link rel="stylesheet" type="text/css" href="./css/general.css">
     <title>Wedding</title>

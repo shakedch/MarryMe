@@ -29,7 +29,7 @@ $error = '';
         rel="stylesheet">
     <link rel="stylesheet" href="../../css/register.css">
     <link rel="stylesheet" href="../../css/general.css">
-    <link rel="stylesheet" type="text/css" href="../../css/Login.css">
+    <link rel="stylesheet" type="text/css" href="../../css/login.css">
     <title>Registration</title>
 </head>
 

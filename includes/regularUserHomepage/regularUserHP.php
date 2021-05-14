@@ -56,7 +56,7 @@ $user->find_user_by_id($session->id);
     <script src="https://kit.fontawesome.com/90569433a0.js" crossorigin="anonymous"></script>
 
     <!-- our import files -->
-    <link rel="stylesheet" type="text/css" href="../../css/HeadFoot.css">
+    <link rel="stylesheet" type="text/css" href="../../css/headFoot.css">
     <link rel="stylesheet" href="../../css/general.css" />
     <link rel="stylesheet" href="../../css/coupleHomepage.css" />
 

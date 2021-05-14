@@ -54,7 +54,7 @@ $user->find_user_by_id($session->id);
     <script src="./formScripts.js"></script>
     <link rel="stylesheet" href="../../css/general.css">
     <link rel="stylesheet" href="../../css/taskStyle.css">
-    <link rel="stylesheet" type="text/css" href="../../css/HeadFoot.css">
+    <link rel="stylesheet" type="text/css" href="../../css/headFoot.css">
 
 
     <!-- our import files -->

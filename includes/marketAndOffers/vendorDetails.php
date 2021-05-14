@@ -31,7 +31,7 @@ if (isset($_POST['send_vendor'])) {
     <!-- Required meta tags -->
     <meta charset="utf-8" />
 
-    <link rel="stylesheet" type="text/css" href="../../css/HeadFoot.css">
+    <link rel="stylesheet" type="text/css" href="../../css/headFoot.css">
     <link rel="stylesheet" type="text/css" href="../../css/general.css" />
     <link rel="stylesheet" type="text/css" href="../../css/vendorDetails.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript">

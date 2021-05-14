@@ -24,7 +24,7 @@ $vendor->find_user_by_id($session->id);
 
     <link href="../../css/general.css?v=1.0" rel="stylesheet" type="text/css" />
     <link href="../../css/offers.css?v=1.0" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../css/HeadFoot.css">
+    <link rel="stylesheet" type="text/css" href="../../css/headFoot.css">
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript">

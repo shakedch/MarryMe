@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../../css/Login.css">
+    <link rel="stylesheet" type="text/css" href="../../css/login.css">
     <link rel="stylesheet" type="text/css" href="./css/general.css">
 
 </head>
