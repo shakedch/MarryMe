@@ -8,13 +8,38 @@
 }
 
 #search_form {
-  margin: auto ;
+  margin: auto;
   text-align: center;
   margin-bottom: 50px;
 }
 
-.no-offers{
-  margin:auto;
+/* alert for wishlist */
+.alertWish {
+  padding: 1rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  width: 30%;
+  margin: auto auto 2rem auto;
+}
+
+.alertSuccessWish {
+  color: #0f5132 !important;
+  background-color: white !important;
+  border-color: #badbcc !important;
+  text-align: center;
+  font-weight: 800;
+}
+
+.alertDangerWish {
+  color: #842029 !important;
+  background-color: white !important;
+  border-color: #e26875 !important;
+  text-align: center;
+  font-weight: 800;
+}
+
+.no-offers {
+  margin: auto;
   text-align: center;
 }
 
