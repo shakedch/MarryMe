@@ -176,7 +176,7 @@ $user->find_user_by_id($session->id);
     $weddingDate = $user->date_of_wedding;
     $weddingHour = $user->hour_of_wedding;
     $combinedDT = $weddingDate . ' ' . $weddingHour;
-    date_default_timezone_set('UTC');
+    date_default_timezone_set('Asia/Jerusalem');
     $now = date("Y-m-d H:i:s");
     ?>
     <script>

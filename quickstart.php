@@ -83,11 +83,11 @@ $event = new Google_Service_Calendar_Event(array(
     'description' => $_SESSION['description'],
     'start' => array(
         'dateTime' => $_SESSION['start_date'],
-        'timeZone' => 'UTC',
+        'timeZone' => '',
     ),
     'end' => array(
         'dateTime' => $_SESSION['due_date'],
-        'timeZone' => 'UTC',
+        'timeZone' => '',
     ),
 
     'reminders' => array(
