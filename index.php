@@ -131,7 +131,7 @@ if ($session->signed_in) {
                 // If there are no user or vendor that log in
             ?>
             <div id='wrapper'>
-                <!-- TODO: Video here -->
+                <!-- Video -->
                 <header>
                     <div class="overlay"></div>
                     <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
@@ -145,24 +145,22 @@ if ($session->signed_in) {
                                 <h1 class="display-3"><img style="width:25rem;height:25rem;"
                                         src="./assets/img/logo_transparent.png" alt="Logo"></h1>
                                 <!-- <h1 class="display-3">Marry Me</h1> -->
-                                <!-- TODO: Change this line ! -->
                                 <p class="lead mb-0">Manage you wedding with us!</p>
                             </div>
                         </div>
                     </div>
                 </header>
             </div>
-            <!-- TODO: Out story div here (with lot of text) here -->
+            <!-- Out story text -->
             <div class='divWrapper'>
                 <div class='aboutUs'>
                     <h2>About us</h2>
-                    <p id="ourStoryText"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lacus turpis,
-                        commodo
-                        vitae elit eu, finibus convallis elit. Vivamus vulputate lobortis rutrum. Sed viverra, elit nec
-                        luctus
-                        convallis, nunc massa bibendum nulla, sit amet dictum justo erat ut metus. Integer porttitor
-                        sagittis
-                        justo, eget pulvinar orci dictum eget. </p>
+                    <p id="ourStoryText"> Marry Me is a website for managing wedding tasks for customers and suppliers.
+                        We all know that wedding management is a complex, expensive process and requires in-depth planning.
+                        Our platform enables a direct connection between the supplier and the customer in order to enable ongoing task management,
+                        While controlling the budget efficiently and conveniently. </p>
+                        <br>
+                    <h3>Marry Me - Smile all the way to the canopy</h3>
                 </div>
             </div>
             <!-- TODO: Some image in full width here -->
@@ -173,23 +171,23 @@ if ($session->signed_in) {
                 <div class='textOffers'>
                     <div class='textOfferBox'>
                         <h3>Offer to regular user</h3>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lacus turpis, commodo vitae
-                            elit eu,
-                            finibus convallis elit. Vivamus vulputate lobortis rutrum. Sed viverra, elit nec luctus
-                            convallis,
-                            nunc massa bibendum nulla, sit amet dictum justo erat ut metus. Integer porttitor sagittis
-                            justo,
-                            eget pulvinar orci dictum eget.</p>
+                        <ul>
+                        <li>Managing tasks and viewing a calendar that centralizes them</li> 
+                        <br>
+                        <li>Managing expense registration for the wedding</li>
+                        <br>
+                        <li>Manage a list of vendors that the couple is interested in</li>
+                        </ul>
                     </div>
                     <div class='textOfferBox'>
                         <h3>Offer to vendor user</h3>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lacus turpis, commodo vitae
-                            elit eu,
-                            finibus convallis elit. Vivamus vulputate lobortis rutrum. Sed viverra, elit nec luctus
-                            convallis,
-                            nunc massa bibendum nulla, sit amet dictum justo erat ut metus. Integer porttitor sagittis
-                            justo,
-                            eget pulvinar orci dictum eget.</p>
+                        <ul>
+                        <li>View a list of potential customers</li>
+                        <br>
+                        <li>Product management, data and location sharing</li>
+                        <br>
+                        <li>Opportunity to self-advertise on a website dedicated to engaged couples</li>
+                        </ul>
                     </div>
                 </div>
                 <div class='joinUs'>
