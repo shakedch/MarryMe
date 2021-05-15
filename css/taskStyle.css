@@ -320,7 +320,15 @@ select:-webkit-autofill:focus {
   }
 }
 
-@media screen and (max-width: 890px) {
+@media screen and (max-width: 898px) {
+  .alert {
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    width: 28%;
+    margin: auto;
+  }
   .cardLists {
     width: 17rem;
     box-shadow: 0px 0px 9px 4px #00000057;
@@ -414,6 +422,15 @@ select:-webkit-autofill:focus {
   .addIcon {
     font-size: 27px;
   }
+
+  .alert {
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    width: 35%;
+    margin: auto;
+  }
 }
 
 @media screen and (max-width: 680px) {
@@ -456,14 +473,54 @@ select:-webkit-autofill:focus {
   }
 }
 
+@media screen and (max-width: 580px) {
+  .alert {
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    width: 42%;
+    margin: auto;
+  }
+}
+
 @media screen and (max-width: 480px) {
   #myTasksTitle {
     font-size: 80px !important;
+  }
+
+  .alert {
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    width: 51%;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 386px) {
+  .alert {
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    width: 65%;
+    margin: auto;
   }
 }
 
 @media screen and (max-width: 320px) {
   #myTasksTitle {
     font-size: 70px !important;
+  }
+
+  .alert {
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    width: 73%;
+    margin: auto;
   }
 }
