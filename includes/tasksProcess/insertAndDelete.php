@@ -31,8 +31,8 @@ if (isset($_POST["save"])) {
     $status = $_POST["status"];
 
 
-    $fullStartDate = $startDate . ':00' . 'Z';
-    $fullDueDate = $dueDate . ':00' . 'Z';
+    $fullStartDate = $startDate . ':00' . '+03:00';
+    $fullDueDate = $dueDate . ':00' . '+03:00';
 
     $_SESSION['start_date'] = $fullStartDate;
 
