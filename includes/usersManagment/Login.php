@@ -58,7 +58,7 @@ if (isset($_POST['submit'])) {
 
 <body>
     <!-- show if the conection is good or no -->
-    <p id="error"><?php echo $error ?></p>
+
     <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
         <div class="container">
             <div class="card login-card">
@@ -73,13 +73,11 @@ if (isset($_POST['submit'])) {
                             <form method="post">
                                 <div class="form-group">
                                     <label for="email" class="sr-only">Email</label>
-                                    <input type="email" name="email" id="email" class="form-control"
-                                        placeholder="Email address">
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="Email address">
                                 </div>
                                 <div class="form-group mb-4">
                                     <label for="password" class="sr-only">Password</label>
-                                    <input type="password" name="password" id="password" class="form-control"
-                                        placeholder="***********">
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="***********">
                                 </div>
                                 <div class="form-group mb-4">
                                     <label>Role:</label>
@@ -88,11 +86,10 @@ if (isset($_POST['submit'])) {
                                     <input type="radio" id="role2" name="role" value="Vendor">
                                     <label for="Vendor">Vendor</label>
                                 </div>
-                                <input name="submit" id="login" class="btn btn-block login-btn mb-4" type="submit"
-                                    value="Sign in">
+                                <p id="error"><?php echo $error ?></p>
+                                <input name="submit" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Sign in">
                             </form>
-                            <p class="login-card-footer-text">Don't have an account? <a href="./signUP.php"
-                                    class="text-reset">Register here</a></p>
+                            <p class="login-card-footer-text">Don't have an account? <a href="./signUP.php" class="text-reset">Register here</a></p>
                         </div>
                     </div>
                 </div>
