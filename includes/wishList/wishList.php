@@ -16,7 +16,6 @@ $user = new User();
 $user->find_user_by_id($session->id);
 ?>
 <!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -118,10 +117,10 @@ $user->find_user_by_id($session->id);
                             <h3><?php echo $offer->name ?></h3>
                         </li>
                         <li>
-                            <h2><?php echo $vendor->company_name ?><h2>
+                            <h3><?php echo $vendor->company_name ?><h3>
                         </li>
                         <li>
-                            <h2><?php echo $offer->price ?>&#8362;</h2>
+                            <h3><?php echo $offer->price ?>&#8362;</h3>
                         </li>
                     </ul>
 
