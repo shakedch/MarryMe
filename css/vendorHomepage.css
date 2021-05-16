@@ -1,43 +1,92 @@
-.dashboard{
-    display: flex;
+.dashboard {
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   text-align: center;
 }
 
 .dashboard > div {
-    width: 30%;
-    background-color: rgb(255, 255, 255);
-    margin-bottom: 50px !important;
-    text-align: center;
-    margin: auto;
-    box-shadow:1px 1px 2px 3px rgb(208, 212, 211);
-  }
+  width: 30%;
+  background-color: rgb(255, 255, 255);
+  margin-bottom: 50px !important;
+  text-align: center;
+  margin: auto;
+  box-shadow: 1px 1px 2px 3px rgb(208, 212, 211);
+}
 
-  #pieChartContainer{
-    height: 370px;
-  }
+#pieChartContainer {
+  height: 370px;
+}
 
-  #barChartContainer{
-    height: 370px;
-  }
+#barChartContainer {
+  height: 370px;
+}
 
-  #lineChartContainer{
-    height: 370px; 
-    width: 80%;
-  }
+#lineChartContainer {
+  height: 370px;
+  width: 80%;
+}
 
-  #horizontalBarChartContainer{
-    width: 100%;
-  }
+#horizontalBarChartContainer {
+  width: 90%;
+  min-height: 370px;
+}
 
-  .num-of-offers span{
-    font-family: 'Itim', cursive;
-    color: rgb(160, 54, 86);
-    font-size: 200px;
-  }
+.num-of-offers span {
+  font-family: "Itim", cursive;
+  color: rgb(160, 54, 86);
+  font-size: 200px;
+  font-weight: bold;
+}
 
-  .num-of-offers{
-      font-size: 36px;
-      font-weight: bold;
+.num-of-offers p {
+  font-size: 36px;
+  font-weight: bold;
+}
+.num-of-offers {
+  position: relative;
+  height: 370px;
+}
+
+.num-of-offers .text-wrapper {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.num-of-offers .letter {
+  display: inline-block;
+  line-height: 0px !important;
+}
+
+.short-valid-offers {
+  width: 75%;
+  margin: auto;
+  padding: 10px;
+  background: linear-gradient(-45deg, #ee7752, #f389b2, #aed7f8, #92d1a1);
+  background-size: 400% 400%;
+  animation: gradient 12s ease infinite;
+  box-shadow: 1px 1px 2px 3px rgb(208, 212, 211);
+}
+
+.short-valid-offers span {
+  font-family: "Itim", cursive;
+  color: rgb(160, 54, 86);
+  font-size: 100px;
+  font-weight: bold;
+}
+.short-valid-offers h2 {
+  text-align: center;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
   }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
