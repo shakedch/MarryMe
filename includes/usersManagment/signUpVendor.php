@@ -5,27 +5,27 @@ global $session; //Makes class variables global for use on each page
 $error = '';
 //if vendor make Registration 
 if (isset($_POST['submit'])) {
-	if ($_POST) {
-		$error1 = NULL;
-		$error2 = NULL;
-		$user = new User(); // Create an empty object
-		$vendor = new Vendor(); // Create an empty object
-		$error1 = $user->find_email($_POST['email']); //A function that aims to check that there is no registered email like the email that the new customer entered
-		$error2 = $vendor->find_email($_POST['email']); //A function that aims to check that there is no registered email like the email that the new customer entered
-		if ($error1 == null && $error2 == null) { // If there is no email already registered
-			//Function for adding a vendor
-			$error = Vendor::add_Vendor($_POST['email'], $_POST['password'], $_POST['company_name'], $_POST['phone_num'], $_POST['kind_of_business'], $_POST['web_url'], $_POST['address']);
-			echo '<script>alert("Vendor was Created")</script>';
-			header('Location: login.php');
-		} else {
-			//If the function found a registered email already
-			echo '<script>alert("The email you entered is already in use")</script>';
-			$error = 'The email you entered is already in use';
-		}
-	} else {
-		// if vendor make Registration but there was a error
-		$error = 'something is worng';
-	}
+    if ($_POST) {
+        $error1 = NULL;
+        $error2 = NULL;
+        $user = new User(); // Create an empty object
+        $vendor = new Vendor(); // Create an empty object
+        $error1 = $user->find_email($_POST['email']); //A function that aims to check that there is no registered email like the email that the new customer entered
+        $error2 = $vendor->find_email($_POST['email']); //A function that aims to check that there is no registered email like the email that the new customer entered
+        if ($error1 == null && $error2 == null) { // If there is no email already registered
+            //Function for adding a vendor
+            $error = Vendor::add_Vendor($_POST['email'], $_POST['password'], $_POST['company_name'], $_POST['phone_num'], $_POST['kind_of_business'], $_POST['web_url'], $_POST['address']);
+            echo '<script>alert("Vendor was Created")</script>';
+            header('Location: login.php');
+        } else {
+            //If the function found a registered email already
+            echo '<script>alert("The email you entered is already in use")</script>';
+            $error = 'The email you entered is already in use';
+        }
+    } else {
+        // if vendor make Registration but there was a error
+        $error = 'something is worng';
+    }
 }
 ?>
 <!DOCTYPE html>
