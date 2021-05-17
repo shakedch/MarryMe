@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Update Form for couples</title>
-    <link rel="stylesheet" type="text/css" href="../../css/signUp.css">
+    <link rel="stylesheet" type="text/css" href="../../css/signup.css">
     <link rel="shortcut icon" href="../../assets/img/tab_logo.png" type="image/png">
 
 </head>
@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
 <body>
     <p id="error"><?php echo $error ?></p>
     <div class="login-box">
-        <h1>Update for <?php echo $session->email ?></h1>
+        <h2>Update:<?php echo $session->email ?></h2>
         <!-- form for update  -->
         <form method="post">
             <div class="textbox">
