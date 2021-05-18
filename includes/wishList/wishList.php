@@ -45,38 +45,9 @@ $user->find_user_by_id($session->id);
 
 <body>
 
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark p-md-3">
-        <div class="container">
-            <a class="navbar-brand" href="#">Wedding</a>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="../../index.php">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="<?php echo $where0 ?>"><?php echo $one_n ?></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="<?php echo $where3 ?>"><?php echo $sec_n ?></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="<?php echo $where4 ?>"><?php echo $thr_n ?></a>
-                </li>
-            </ul>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <div class="mx-auto"></div>
-                <span class="navbar-text text-black"><?php echo $user->full_name1; ?> &
-                    <?php echo $user->full_name2; ?></span>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link text-primary" href="<?php echo $where1 ?>"><?php echo $inout ?></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-primary" href="<?php echo $where2 ?>"><?php echo $SeeCre ?></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <header id="nav">
+        <?php include('../navbarTemplate.php') ?>
+    </header>
 
     <div class="header">
         <div class="img-holder" data-image="../../assets/img/parallax_wishlist.png">
@@ -90,24 +61,24 @@ $user->find_user_by_id($session->id);
         <section class="offer-list">
 
             <?php
-      $wishlist = wishtlist::fetch_wishtlist($session->id);
-      if (!isset($wishlist)) {
-        echo "there are no product";
-      } else {
-        for ($i = 0; $i < sizeof($wishlist); $i++) {
-          $offer = new offer();
-          $offer->find_my_offer($wishlist[$i]->offer_id);
-          $vendor = new Vendor();
-          $vendor->find_user_by_id($wishlist[$i]->vendor_id);
+            $wishlist = wishtlist::fetch_wishtlist($session->id);
+            if (!isset($wishlist)) {
+                echo "there are no product";
+            } else {
+                for ($i = 0; $i < sizeof($wishlist); $i++) {
+                    $offer = new offer();
+                    $offer->find_my_offer($wishlist[$i]->offer_id);
+                    $vendor = new Vendor();
+                    $vendor->find_user_by_id($wishlist[$i]->vendor_id);
 
-      ?>
+            ?>
 
             <div class="offer">
                 <!-- Uploading photo -->
                 <div class="image">
                     <?php echo
-              "<img src='../../assets/img/offersUploads/" . (($offer->img == '') || ($offer->img == '.') ? 'no-image-available.png' : $offer->img) . "' />";
-              ?>
+                            "<img src='../../assets/img/offersUploads/" . (($offer->img == '') || ($offer->img == '.') ? 'no-image-available.png' : $offer->img) . "' />";
+                            ?>
                 </div>
 
 
@@ -141,9 +112,9 @@ $user->find_user_by_id($session->id);
 
             </div>
             <?php
-        }
-      }
-      ?>
+                }
+            }
+            ?>
         </section>
     </main>
 

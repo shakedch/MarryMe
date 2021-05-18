@@ -12,8 +12,8 @@ $where2 = "../usersManagment/myAccount.php";
 
 
 $error = '';
-$user = new Vendor();
-$error = $user->find_user_by_email($session->email);
+$vendor = new Vendor();
+$error = $vendor->find_user_by_email($session->email);
 
 $mysqli = new mysqli("localhost", "root", "", "marryme") or die(mysqli_error(($mysqli)));
 
@@ -93,7 +93,8 @@ while ($row = $resultWishlistPerOffer->fetch_assoc()) {
     <script src="https://kit.fontawesome.com/90569433a0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
     <!-- tab view -->
     <link rel="shortcut icon" href="../../assets/img/tab_logo.png" type="image/png">
@@ -101,160 +102,140 @@ while ($row = $resultWishlistPerOffer->fetch_assoc()) {
     <!-- general fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap"
+        rel="stylesheet">
 
     <!-- numbers font -->
     <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 
 
     <script>
-        window.onload = function() {
-            // Wrap every letter in a span - offers number
-            var textWrapper = document.querySelector('.num-of-offers .letters');
-            textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+    window.onload = function() {
+        // Wrap every letter in a span - offers number
+        var textWrapper = document.querySelector('.num-of-offers .letters');
+        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-            anime.timeline({
-                    loop: false
-                })
-                .add({
-                    targets: '.num-of-offers .letter',
-                    translateY: ["1.1em", 0],
-                    translateZ: 0,
-                    duration: 3000,
-                    delay: (el, i) => 50 * i
-                }).add({
-                    targets: '.ml6',
-                    opacity: 0,
-                    duration: 1000,
-                    easing: "easeOutExpo",
-                    delay: 1000
-                });
-
-            //pie chart 
-            var pieChart = new CanvasJS.Chart("pieChartContainer", {
-                theme: "light2",
-                animationEnabled: true,
-                exportEnabled: true,
-                title: {
-                    text: "My Offers"
-                },
-                subtitles: [{
-                    text: "<?php echo date("l jS \of F Y "); ?>"
-                }],
-                data: [{
-                    type: "pie",
-                    yValueFormatString: "#,##0.00\"%\"",
-                    indexLabel: "{label} ({y})",
-                    dataPoints: <?php echo json_encode($pieDataPoints, JSON_NUMERIC_CHECK); ?>
-                }]
-            });
-            pieChart.render();
-
-            //bar chart
-            CanvasJS.addColorSet("columnShades",
-                [ //colorSet Array
-
-                    "#ffa366",
-                    "#80e5ff"
-
-                ]);
-
-            var barChart = new CanvasJS.Chart("barChartContainer", {
-                animationEnabled: true,
-                exportEnabled: true,
-                theme: "light2",
-                colorSet: "columnShades",
-                title: {
-                    text: "Mention of Offers in Wishlists"
-                },
-                axisY: {
-                    includeZero: true
-                },
-                data: [{
-                    type: "column",
-                    indexLabel: "{y}", //Shows y value on all Data Points
-                    indexLabelFontColor: "#5A5757",
-                    indexLabelPlacement: "outside",
-                    dataPoints: <?php echo json_encode($barDataPoints, JSON_NUMERIC_CHECK); ?>
-                }]
-            });
-            barChart.render();
-
-            //line chart
-            var lineChart = new CanvasJS.Chart("lineChartContainer", {
-                theme: "light2",
-                animationEnabled: true,
-                exportEnabled: true,
-                title: {
-                    text: "Last Month offers "
-                },
-                axisY: {
-                    title: "number of offers"
-                },
-                data: [{
-                    type: "spline",
-                    dataPoints: <?php echo json_encode($lineDataPoints, JSON_NUMERIC_CHECK); ?>
-                }]
+        anime.timeline({
+                loop: false
+            })
+            .add({
+                targets: '.num-of-offers .letter',
+                translateY: ["1.1em", 0],
+                translateZ: 0,
+                duration: 3000,
+                delay: (el, i) => 50 * i
+            }).add({
+                targets: '.ml6',
+                opacity: 0,
+                duration: 1000,
+                easing: "easeOutExpo",
+                delay: 1000
             });
 
-            lineChart.render();
+        //pie chart 
+        var pieChart = new CanvasJS.Chart("pieChartContainer", {
+            theme: "light2",
+            animationEnabled: true,
+            exportEnabled: true,
+            title: {
+                text: "My Offers"
+            },
+            subtitles: [{
+                text: "<?php echo date("l jS \of F Y "); ?>"
+            }],
+            data: [{
+                type: "pie",
+                yValueFormatString: "#,##0.00\"%\"",
+                indexLabel: "{label} ({y})",
+                dataPoints: <?php echo json_encode($pieDataPoints, JSON_NUMERIC_CHECK); ?>
+            }]
+        });
+        pieChart.render();
 
-            //horizontal bar chart
-            var horizontalBarchart = new CanvasJS.Chart("horizontalBarChartContainer", {
-                theme: "light2",
-                animationEnabled: true,
-                exportEnabled: true,
-                title: {
-                    text: "Offers in Wishlists"
-                },
-                axisY: {
-                    title: "number of references in wishlists",
-                    includeZero: true,
+        //bar chart
+        CanvasJS.addColorSet("columnShades",
+            [ //colorSet Array
 
-                },
-                data: [{
-                    type: "bar",
-                    indexLabel: "{y}",
-                    indexLabelPlacement: "inside",
-                    indexLabelFontWeight: "bolder",
-                    indexLabelFontColor: "white",
-                    dataPoints: <?php echo json_encode($horizontalBardataPoints, JSON_NUMERIC_CHECK); ?>
-                }]
-            });
-            horizontalBarchart.render();
+                "#ffa366",
+                "#80e5ff"
 
-        }
+            ]);
+
+        var barChart = new CanvasJS.Chart("barChartContainer", {
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "light2",
+            colorSet: "columnShades",
+            title: {
+                text: "Mention of Offers in Wishlists"
+            },
+            axisY: {
+                includeZero: true
+            },
+            data: [{
+                type: "column",
+                indexLabel: "{y}", //Shows y value on all Data Points
+                indexLabelFontColor: "#5A5757",
+                indexLabelPlacement: "outside",
+                dataPoints: <?php echo json_encode($barDataPoints, JSON_NUMERIC_CHECK); ?>
+            }]
+        });
+        barChart.render();
+
+        //line chart
+        var lineChart = new CanvasJS.Chart("lineChartContainer", {
+            theme: "light2",
+            animationEnabled: true,
+            exportEnabled: true,
+            title: {
+                text: "Last Month offers "
+            },
+            axisY: {
+                title: "number of offers"
+            },
+            data: [{
+                type: "spline",
+                dataPoints: <?php echo json_encode($lineDataPoints, JSON_NUMERIC_CHECK); ?>
+            }]
+        });
+
+        lineChart.render();
+
+        //horizontal bar chart
+        var horizontalBarchart = new CanvasJS.Chart("horizontalBarChartContainer", {
+            theme: "light2",
+            animationEnabled: true,
+            exportEnabled: true,
+            title: {
+                text: "Offers in Wishlists"
+            },
+            axisY: {
+                title: "number of references in wishlists",
+                includeZero: true,
+
+            },
+            data: [{
+                type: "bar",
+                indexLabel: "{y}",
+                indexLabelPlacement: "inside",
+                indexLabelFontWeight: "bolder",
+                indexLabelFontColor: "white",
+                dataPoints: <?php echo json_encode($horizontalBardataPoints, JSON_NUMERIC_CHECK); ?>
+            }]
+        });
+        horizontalBarchart.render();
+
+    }
     </script>
 
 </head>
 
 <body>
 
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark p-md-3">
-        <div class="container">
-            <a class="navbar-brand" href="#">Wedding</a>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="../../index.php">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="<?php echo $where0 ?>"><?php echo $one_n ?></a>
-                </li>
-            </ul>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <div class="mx-auto"></div>
-                <span class="navbar-text text-black"><?php echo $user->company_name; ?></span>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link text-primary" href="<?php echo $where1 ?>"><?php echo $inout ?></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-primary" href="<?php echo $where2 ?>"><?php echo $SeeCre ?></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <header id="nav">
+        <?php include('../navbarTemplate.php') ?>
+    </header>
 
 
     <div class="header">
@@ -295,26 +276,29 @@ while ($row = $resultWishlistPerOffer->fetch_assoc()) {
             //print offers
             while ($rowOffersExpireInAWeek = $resultOffersExpireInAWeek->fetch_assoc()) : ?>
 
-                <div>
-                    <h3><?php echo $rowOffersExpireInAWeek['name'] ?></h3>
-                    <p><i class="far fa-calendar-alt"></i>
-                        <?php echo $rowOffersExpireInAWeek['valid_date'] ?></p>
-                    <hr>
-                </div>
+        <div>
+            <h3><?php echo $rowOffersExpireInAWeek['name'] ?></h3>
+            <p><i class="far fa-calendar-alt"></i>
+                <?php echo $rowOffersExpireInAWeek['valid_date'] ?></p>
+            <hr>
+        </div>
 
         <?php
             endwhile;
         } ?>
 
         <div class="d-flex justify-content-center">
-            <button type="button" id="manage-offers" onclick="location.href = 'offers.php';" class="btn btn-info pr-5 pl-5">Manage offers</button>
+            <button type="button" id="manage-offers" onclick="location.href = 'offers.php';"
+                class="btn btn-info pr-5 pl-5">Manage offers</button>
         </div>
 
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://rawgithub.com/pederan/Parallax-ImageScroll/master/jquery.imageScroll.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://rawgithub.com/pederan/Parallax-ImageScroll/master/jquery.imageScroll.min.js"
+        type="text/javascript"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src="../general.js"></script>
 

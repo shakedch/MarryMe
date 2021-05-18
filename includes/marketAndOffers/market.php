@@ -47,38 +47,9 @@ $user->find_user_by_id($session->id);
 </head>
 
 <body>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark p-md-3">
-        <div class="container">
-            <a class="navbar-brand" href="#">Wedding</a>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="../../index.php">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="<?php echo $where0 ?>"><?php echo $one_n ?></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="<?php echo $where3 ?>"><?php echo $sec_n ?></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="<?php echo $where4 ?>"><?php echo $thr_n ?></a>
-                </li>
-            </ul>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <div class="mx-auto"></div>
-                <span class="navbar-text text-black"><?php echo $user->full_name1; ?> &
-                    <?php echo $user->full_name2; ?></span>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link text-primary" href="<?php echo $where1 ?>"><?php echo $inout ?></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-primary" href="<?php echo $where2 ?>"><?php echo $SeeCre ?></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <header id="nav">
+        <?php include('../navbarTemplate.php') ?>
+    </header>
 
     <div class="container">
 

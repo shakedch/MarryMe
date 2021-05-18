@@ -32,7 +32,8 @@ $vendor->find_user_by_id($session->id);
     <script src="https://kit.fontawesome.com/90569433a0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
     <!-- tab view -->
     <link rel="shortcut icon" href="../../assets/img/tab_logo.png" type="image/png">
@@ -40,37 +41,17 @@ $vendor->find_user_by_id($session->id);
     <!-- general fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap"
+        rel="stylesheet">
 
 </head>
 
 <body>
 
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark p-md-3">
-        <div class="container">
-            <a class="navbar-brand" href="#">Wedding</a>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="../../index.php">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="<?php echo $where0 ?>"><?php echo $one_n ?></a>
-                </li>
-            </ul>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <div class="mx-auto"></div>
-                <span class="navbar-text text-black"><?php echo $vendor->company_name; ?></span>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link text-primary" href="<?php echo $where1 ?>"><?php echo $inout ?></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-primary" href="<?php echo $where2 ?>"><?php echo $SeeCre ?></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <header id="nav">
+        <?php include('../navbarTemplate.php') ?>
+    </header>
 
     <div class="header">
         <div class="img-holder" data-image="../../assets/img/parallax_offers.png">
@@ -82,12 +63,12 @@ $vendor->find_user_by_id($session->id);
 
     <div class="container">
         <?php if (isset($_SESSION['message'])) : ?>
-            <div class="alert alert-<?= $_SESSION['msg_type'] ?> ">
-                <?php
+        <div class="alert alert-<?= $_SESSION['msg_type'] ?> ">
+            <?php
                 echo $_SESSION['message'];
                 unset($_SESSION['message']);
                 ?>
-            </div>
+        </div>
         <?php endif ?>
         <form name="search_form" action="offers.php" id="search_form" method="POST">
             <input type="text" id="offer_name" name="offer_name" placeholder="search offer">
@@ -131,27 +112,29 @@ $vendor->find_user_by_id($session->id);
             <?php
             while ($row = $result->fetch_assoc()) : ?>
 
-                <div class="card mb-3 offers " style="width: 80%;">
-                    <div class="row">
+            <div class="card mb-3 offers " style="width: 80%;">
+                <div class="row">
 
-                        <div class="col-3 my-auto"><?php
+                    <div class="col-3 my-auto"><?php
                                                     echo
                                                     "<td class='photoUpload'><img class='centerPic' src='../../assets/img/offersUploads/" . (($row["img"] == '') || ($row["img"] == '.') ? 'no-image-available.png' : $row["img"]) . "' align='center' height='65' /></td>";
                                                     ?><br></div>
-                        <div class="col-7">
-                            <h2 class="card-title"><?php echo $row['name'] ?></h2>
-                            <p class="card-text">&#8362;<?php echo $row['price'] ?></p>
-                            <p class="card-text"><small class="text-muted">
-                                    <?php echo $row['description'] ?>
-                                </small></p>
-                        </div>
+                    <div class="col-7">
+                        <h2 class="card-title"><?php echo $row['name'] ?></h2>
+                        <p class="card-text">&#8362;<?php echo $row['price'] ?></p>
+                        <p class="card-text"><small class="text-muted">
+                                <?php echo $row['description'] ?>
+                            </small></p>
+                    </div>
 
-                        <div class="col-2 text-right mt-2 ">
-                            <a href="offersProcess.php?delete=<?php echo $row['offer_id']; ?>" class="btn btn-danger"> <i class="fas fa-trash"></i></a>
-                            <a href="offers.php?edit=<?php echo $row['offer_id']; ?>" class="btn btn-info"> <i class="fas fa-edit"></i></a>
-                        </div>
+                    <div class="col-2 text-right mt-2 ">
+                        <a href="offersProcess.php?delete=<?php echo $row['offer_id']; ?>" class="btn btn-danger"> <i
+                                class="fas fa-trash"></i></a>
+                        <a href="offers.php?edit=<?php echo $row['offer_id']; ?>" class="btn btn-info"> <i
+                                class="fas fa-edit"></i></a>
                     </div>
                 </div>
+            </div>
 
             <?php endwhile; ?>
         </div>
@@ -163,12 +146,14 @@ $vendor->find_user_by_id($session->id);
         <button id="close" onclick="parent.location='offers.php'">&#10008;</button>
         <h3>Add New Offer</h3>
         <div class="row pr-5 pl-5 ">
-            <form name="offers_form" action="offersProcess.php" id="offers_form" method="POST" enctype="multipart/form-data">
+            <form name="offers_form" action="offersProcess.php" id="offers_form" method="POST"
+                enctype="multipart/form-data">
                 <input type="hidden" name="offer_id" value="<?php echo $offer_id; ?>">
 
                 <div class="form-group ">
                     <lable>offer name</lable>
-                    <input type="text" id="name" name="name" class="form-control" maxlength="55" value="<?php echo $name; ?>" placeholder="Enter the offer name">
+                    <input type="text" id="name" name="name" class="form-control" maxlength="55"
+                        value="<?php echo $name; ?>" placeholder="Enter the offer name">
                     <i class="fas fa-check-circle"></i>
                     <i class="fas fa-exclamation-circle"></i>
                     <small>Error message</small>
@@ -176,7 +161,8 @@ $vendor->find_user_by_id($session->id);
 
                 <div class="form-group">
                     <lable>valid date</lable>
-                    <input type="datetime-local" id="valid_date" name="valid_date" class="form-control" value="<?php echo $valid_date; ?>">
+                    <input type="datetime-local" id="valid_date" name="valid_date" class="form-control"
+                        value="<?php echo $valid_date; ?>">
                     <i class="fas fa-check-circle"></i>
                     <i class="fas fa-exclamation-circle"></i>
                     <small>Error message</small>
@@ -184,7 +170,8 @@ $vendor->find_user_by_id($session->id);
 
                 <div class="form-group">
                     <lable>description</lable>
-                    <input type="text" id="description" name="description" class="form-control" maxlength="255" placeholder="Enter the description of the offer" value="<?php echo $description; ?>">
+                    <input type="text" id="description" name="description" class="form-control" maxlength="255"
+                        placeholder="Enter the description of the offer" value="<?php echo $description; ?>">
                     <i class="fas fa-check-circle"></i>
                     <i class="fas fa-exclamation-circle"></i>
                     <small>Error message</small>
@@ -192,7 +179,8 @@ $vendor->find_user_by_id($session->id);
 
                 <div class="form-group ">
                     <lable>price</lable>
-                    <input type="text" id="price" name="price" class="form-control" maxlength="255" min="1" placeholder="XXX &#8362;" value="<?php echo $price; ?>">
+                    <input type="text" id="price" name="price" class="form-control" maxlength="255" min="1"
+                        placeholder="XXX &#8362;" value="<?php echo $price; ?>">
                     <i class="fas fa-check-circle"></i>
                     <i class="fas fa-exclamation-circle"></i>
                     <small>Error message</small>
@@ -200,7 +188,8 @@ $vendor->find_user_by_id($session->id);
 
                 <div class="form-group">
                     <lable>relevant image</lable>
-                    <input type="file" id="img" name="img" class="form-control" accept="image/png, image/jpeg" placeholder="Enter a relevant image for the offer" multiple value="<?php echo $img; ?>">
+                    <input type="file" id="img" name="img" class="form-control" accept="image/png, image/jpeg"
+                        placeholder="Enter a relevant image for the offer" multiple value="<?php echo $img; ?>">
 
                 </div>
 
@@ -208,10 +197,10 @@ $vendor->find_user_by_id($session->id);
                     <?php
                     if ($update == true) : ?>
 
-                        <button type="submit" name="update" class="btn btn-info">Update</button>
+                    <button type="submit" name="update" class="btn btn-info">Update</button>
                     <?php
                     else : ?>
-                        <button type="submit" name="save" class="btn btn-primary">Save</button>
+                    <button type="submit" name="save" class="btn btn-primary">Save</button>
                     <?php
                     endif; ?>
                 </div>
@@ -225,11 +214,13 @@ $vendor->find_user_by_id($session->id);
 
     <button class="add-offer" onclick="window.dialog.showModal();">+</button>
     <script>
-        if ((window.location.href).includes("edit")) document.getElementById("myDialog").showModal();
+    if ((window.location.href).includes("edit")) document.getElementById("myDialog").showModal();
     </script>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://rawgithub.com/pederan/Parallax-ImageScroll/master/jquery.imageScroll.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://rawgithub.com/pederan/Parallax-ImageScroll/master/jquery.imageScroll.min.js"
+        type="text/javascript"></script>
     <script src="../general.js"></script>
     <script src="offers.js"></script>
 
