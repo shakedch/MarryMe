@@ -41,15 +41,12 @@ if (isset($_POST['submit'])) {
     <script src="https://kit.fontawesome.com/90569433a0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <!-- BS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
     <!-- BS -->
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
     <!-- tab view -->
     <link rel="shortcut icon" href="../../assets/img/tab_logo.png" type="image/png">
@@ -57,9 +54,7 @@ if (isset($_POST['submit'])) {
     <!-- general fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700&amp;display=swap" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../css/general.css" />
     <link rel="stylesheet" href="../../css/signUp.css" />
 </head>
@@ -78,21 +73,17 @@ if (isset($_POST['submit'])) {
                             <!-- form for log in  -->
                             <form method="post">
                                 <div class="form-group">
-                                    <input class="form-control" type="email" placeholder="Example@gmail.com"
-                                        name="email" required>
+                                    <input class="form-control" type="email" placeholder="Example@gmail.com" name="email" required>
                                 </div>
                                 <div class="form-group mb-4">
-                                    <input class="form-control" type="password" placeholder="password" name="password"
-                                        required>
+                                    <input class="form-control" type="password" placeholder="password" name="password" required>
                                 </div>
                                 <div class="form-group mb-4">
-                                    <input class="form-control" type="text" placeholder="Enter your Company name"
-                                        name="company_name" required>
+                                    <input class="form-control" type="text" placeholder="Enter your Company name" name="company_name" required>
                                 </div>
 
                                 <div class="form-group mb-4">
-                                    <input class="form-control" type="text" placeholder="phone number"
-                                        pattern="[0-9]{10}" name="phone_num" required>
+                                    <input class="form-control" type="text" placeholder="phone number" pattern="[0-9]{10}" name="phone_num" required>
                                 </div>
                                 <div class="form-group mb-4">
                                     <select class="form-select" name="kind_of_business" id="kind_of_business">
@@ -112,16 +103,13 @@ if (isset($_POST['submit'])) {
                                     </select>
                                 </div>
                                 <div class="form-group mb-4">
-                                    <input class="form-control" type="text" placeholder="Enter your web url"
-                                        name="web_url" required>
+                                    <input class="form-control" type="text" placeholder="Enter your web url" name="web_url" required>
                                 </div>
                                 <div class="form-group mb-4">
-                                    <input class="form-control" type="text" placeholder="Enter address" name="address"
-                                        required>
+                                    <input class="form-control" type="text" placeholder="Enter address" name="address" required>
                                 </div>
                                 <p id="error"><?php echo $error ?></p>
-                                <input class="btn btn-block registerForm-btn mb-4" type="submit" name="submit"
-                                    value="Registration">
+                                <input class="btn btn-block registerForm-btn mb-4" type="submit" name="submit" value="Registration">
                             </form>
                             <p> Already have an account? <a href="login.php">Sign-In</a></p>
                         </div>

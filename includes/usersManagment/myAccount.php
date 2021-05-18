@@ -95,8 +95,8 @@ if ($role == $temp) {
         href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap"
         rel="stylesheet">
     <!-- css files -->
-    <link rel="stylesheet" type="text/css" href="../../css/headFoot.css">
     <link rel="stylesheet" type="text/css" href="../../css/general.css">
+    <link rel="stylesheet" type="text/css" href="../../css/headFoot.css">
     <link rel="stylesheet" type="text/css" href="../../css/myAccount.css">
 </head>
 
@@ -210,7 +210,7 @@ if ($role == $temp) {
     </tr>
     </tbody>
     </table>
-    <div id="clear"></div>
+    <!-- <div id="clear"></div> -->
     <?php
         } else {
             $error = '';
@@ -222,8 +222,8 @@ if ($role == $temp) {
         <div class="panel-body inf-content">
             <div class="row">
                 <div class="col-md-5">
-                    <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip"
-                        src="../../assets/img/REvendor.jpg" data-original-title="Usuario">
+                    <img alt="" class="imgProfile" title="" class="img-circle img-thumbnail isTooltip"
+                        src="../../assets/img/myAccountVendor.jpg" data-original-title="Usuario">
                 </div>
                 <div class="col-md-6">
                     <strong>Information</strong><br>
@@ -231,7 +231,7 @@ if ($role == $temp) {
                         <table class="table table-user-information">
                             <tbody>
                                 <tr>
-                                    <td>
+                                    <td class="vendorTD">
                                         <strong>
                                             <span class="glyphicon glyphicon-user  text-primary"></span>
                                             Company name
@@ -242,7 +242,7 @@ if ($role == $temp) {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="vendorTD">
                                         <strong>
                                             <span class="glyphicon glyphicon-phone text-primary"></span>
                                             Phone number
@@ -254,7 +254,7 @@ if ($role == $temp) {
                                 </tr>
 
                                 <tr>
-                                    <td>
+                                    <td class="vendorTD">
                                         <strong>
                                             <span class="glyphicon glyphicon-bookmark text-primary"></span>
                                             Kind of business
@@ -267,7 +267,7 @@ if ($role == $temp) {
 
 
                                 <tr>
-                                    <td>
+                                    <td class="vendorTD">
                                         <strong>
                                             <span class="glyphicon glyphicon-cloud text-primary"></span>
                                             Web Url
@@ -278,7 +278,7 @@ if ($role == $temp) {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="vendorTD">
                                         <strong>
                                             <span class="glyphicon glyphicon-envelope text-primary"></span>
                                             Email
@@ -289,7 +289,7 @@ if ($role == $temp) {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="vendorTD">
                                         <strong>
                                             <span class="glyphicon glyphicon-globe text-primary"></span>
                                             Adress
@@ -318,7 +318,12 @@ if ($role == $temp) {
     ?>
     </div>
 
-
+    <!-- Necessary scripts-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://rawgithub.com/pederan/Parallax-ImageScroll/master/jquery.imageScroll.min.js"
+        type="text/javascript"></script>
+    <script src="general.js"></script>
 
 </body>
 
