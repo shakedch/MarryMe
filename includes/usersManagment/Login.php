@@ -91,7 +91,7 @@ if (isset($_POST['submit'])) {
                                 <input name="submit" id="login" class="btn btn-block login-btn mb-4" type="submit"
                                     value="Sign in">
                             </form>
-                            <p class="login-card-footer-text">Don't have an account? <a href="./signUP.php"
+                            <p class="login-card-footer-text">Don't have an account? <a href="./signUp.php"
                                     class="text-reset">Register here</a></p>
                         </div>
                     </div>
