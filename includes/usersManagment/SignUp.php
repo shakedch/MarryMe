@@ -41,7 +41,7 @@ $error = '';
         rel="stylesheet">
 
     <link rel="stylesheet" href="../../css/general.css" />
-    <link rel="stylesheet" href="../../css/registernew.css" />
+    <link rel="stylesheet" href="../../css/register.css" />
 </head>
 
 <body>
