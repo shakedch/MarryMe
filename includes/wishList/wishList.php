@@ -44,7 +44,6 @@ $user->find_user_by_id($session->id);
 </head>
 
 <body>
-
     <header id="nav">
         <?php include('../navbarTemplate.php') ?>
     </header>

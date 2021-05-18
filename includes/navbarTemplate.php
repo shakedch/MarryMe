@@ -1,6 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top px-2">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top px-2" style="
+    height: inherit;
+">
 
-    <a class="navbar-brand" href="../../index.php">
+    <a class="navbar-brand" href="../../index.php" style="display: flex;justify-content: center;align-items: center;">
         <img width="35px" src="../../assets/img/tab_logo.png" alt="logo" />
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"

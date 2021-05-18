@@ -1,0 +1,48 @@
+.inf-content {
+  border: 1px solid #dddddd;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.3);
+  background-color: white;
+}
+
+.userInfoWrapper {
+  width: 70%;
+  margin: 3rem auto;
+}
+
+.updateBtn {
+  display: flex;
+  margin: auto;
+}
+
+.updateBtn > a {
+  color: white;
+}
+
+.imgProfile {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 500px) {
+  .userInfoWrapper {
+    width: 80%;
+    margin: 3rem auto;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .userInfoWrapper {
+    width: 90%;
+    margin: 3rem auto;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .userInfoWrapper {
+    width: 97%;
+    margin: 3rem auto;
+  }
+}
