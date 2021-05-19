@@ -1,6 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top px-2">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top px-2" style="
+    height: inherit;
+">
 
-    <a class="navbar-brand" href="../../index.php">
+    <a class="navbar-brand" href="../../index.php" style="display: flex;justify-content: center;align-items: center;">
         <img width="35px" src="../../assets/img/tab_logo.png" alt="logo" />
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -40,9 +42,7 @@
                 <a class="nav-link text-primary" href="<?php echo $where2 ?>"><?php echo $SeeCre ?></a>
             </li>
         </ul>
-
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+        </script>
 </nav>
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-</script>

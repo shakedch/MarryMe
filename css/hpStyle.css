@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap");
 
-#wrapper {
+.hpWrapper {
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .typographyH1 {
   display: flex;
@@ -49,17 +51,11 @@ header .overlay {
   z-index: 1;
 }
 
-@media (pointer: coarse) and (hover: none) {
-  header {
-    background: url("https://source.unsplash.com/XT5OInaElMw/1600x900") black
-      no-repeat center center scroll;
-  }
-  header video {
-    display: none;
-  }
-}
 /* Video header END */
 .divWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 25rem;
   background-color: #fff9f1;
@@ -67,7 +63,7 @@ header .overlay {
 }
 
 .aboutUs {
-  margin: 0px 20rem;
+  margin: 0 auto;
 }
 
 .textOffers {
@@ -92,6 +88,10 @@ header .overlay {
   margin: 1rem 5rem;
 }
 
+ul {
+  list-style: none;
+}
+
 .iDoLink > button {
   outline: none;
   display: flex;
@@ -113,8 +113,6 @@ header .overlay {
 
 .iDoLink > button:hover {
   opacity: 0.8;
-
-  /* background-color: #da7ed8; */
   border: 3px solid #fff;
 }
 
@@ -144,8 +142,6 @@ header .overlay {
   color: #7a9fbb;
 }
 
-/* !!! Change from general.css file !!! */
-
 .img-holder {
   display: block !important;
   margin-bottom: 0 !important;
@@ -153,7 +149,6 @@ header .overlay {
 
 h1 {
   background: none !important;
-  /* background: rgba(240, 237, 237, 0.2) !important; */
 }
 
 @media only screen and (max-width: 767.98px) {
@@ -161,17 +156,7 @@ h1 {
     height: max-content;
   }
 
-  .aboutUs {
-    margin: 0 15rem;
-  }
-
   .textOffers {
     flex-direction: column;
-  }
-}
-
-@media only screen and (max-width: 575.98px) {
-  .aboutUs {
-    margin: auto;
   }
 }

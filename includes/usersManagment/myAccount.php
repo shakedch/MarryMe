@@ -4,6 +4,28 @@ require_once('../../conection/init.php');
 global $session; //Makes class variables global for use on each page
 $role = $_SESSION['role'];
 $temp = 'couple';
+function dateFormatter($val)
+{
+    $dateArray = (explode('-', $val));
+    $y = $dateArray[0];
+    $m = $dateArray[1];
+    $d = $dateArray[2];
+
+    $formatted = $d . '-' . $m . '-' . $y;
+    return $formatted;
+}
+
+function hourFormatter($val)
+{
+    $hourArray = (explode(':', $val));
+    $hour = $hourArray[0];
+    $minute = $hourArray[1];
+
+
+    $formatted = $hour . ':' . $minute;
+
+    return $formatted;
+}
 if ($role == $temp) {
     // for navbar for user
     $one_n = "My Task";
@@ -73,55 +95,16 @@ if ($role == $temp) {
         href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap"
         rel="stylesheet">
     <!-- css files -->
-    <link rel="stylesheet" type="text/css" href="../../css/headFoot.css">
     <link rel="stylesheet" type="text/css" href="../../css/general.css">
-
-    <style>
-    .inf-content {
-        border: 1px solid #DDDDDD;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        border-radius: 10px;
-        box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.3);
-    }
-    </style>
-
+    <link rel="stylesheet" type="text/css" href="../../css/headFoot.css">
+    <link rel="stylesheet" type="text/css" href="../../css/myAccount.css">
 </head>
 
 <body>
 
-    <!-- navbar by variables -->
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark p-md-3">
-        <div class="container">
-            <a class="navbar-brand" href="#">Wedding</a>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="../../index.php">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="<?php echo $where0 ?>"><?php echo $one_n ?></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="<?php echo $where3 ?>"><?php echo $sec_n ?></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="<?php echo $where4 ?>"><?php echo $thr_n ?></a>
-                </li>
-            </ul>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <div class="mx-auto"></div>
-                <span class="navbar-text text-black"><?php echo $whoi; ?></span>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link text-primary" href="<?php echo $where1 ?>"><?php echo $inout ?></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-primary" href="<?php echo $where2 ?>"><?php echo $SeeCre ?></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <header id="nav" style="height: 8rem;">
+        <?php include('../navbarTemplate.php') ?>
+    </header>
 
     <?php
     if ($session->signed_in) {
@@ -129,21 +112,15 @@ if ($role == $temp) {
             $error = '';
             $user = new User(); // Create an empty object
             $error = $user->find_user_by_email($session->email);    // Inserting data into an object		
-
-
     ?>
 
     <!-- table with user data -->
-    <div class="container bootstrap snippets bootdey">
+    <div class="userInfoWrapper">
         <div class="panel-body inf-content">
             <div class="row">
-                <div class="col-md-4">
-
-                    <!-- <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="https://bootdey.com/img/Content/avatar/avatar7.png" data-original-title="Usuario">  -->
-                    <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip"
+                <div class="col-md-5">
+                    <img class="imgProfile" alt="" title="" class="img-circle img-thumbnail isTooltip"
                         src="../../assets/img/hp_img_two.jpg" data-original-title="Usuario">
-
-
                 </div>
                 <div class="col-md-6">
                     <strong>Information</strong><br>
@@ -181,7 +158,7 @@ if ($role == $temp) {
                                         </strong>
                                     </td>
                                     <td class="text-primary">
-                                        <?php echo $user->date_of_wedding; ?>
+                                        <?php echo dateFormatter($user->date_of_wedding); ?>
                                     </td>
                                 </tr>
 
@@ -194,7 +171,7 @@ if ($role == $temp) {
                                         </strong>
                                     </td>
                                     <td class="text-primary">
-                                        <?php echo $user->hour_of_wedding; ?>
+                                        <?php echo hourFormatter($user->hour_of_wedding); ?>
                                     </td>
                                 </tr>
                                 <tr>
@@ -219,7 +196,6 @@ if ($role == $temp) {
                                         <?php echo $user->budget; ?>
                                     </td>
                                 </tr>
-
                             </tbody>
                         </table>
                     </div>
@@ -229,12 +205,12 @@ if ($role == $temp) {
     </div>
     <!-- button to change data -->
     <tr>
-        <button type="button" class="btn btn-outline-danger btn-md"><a href="updateUser.php">Update Data
+        <button type="button" class="updateBtn btn btn-info"><a href="updateUser.php">Update your profile >>
             </a></button>
     </tr>
     </tbody>
     </table>
-    <div id="clear"></div>
+    <!-- <div id="clear"></div> -->
     <?php
         } else {
             $error = '';
@@ -242,14 +218,12 @@ if ($role == $temp) {
             $error = $user->find_user_by_email($session->email);    // Inserting data into an object	
         ?>
     <!-- table with user data -->
-    <div class="container bootstrap snippets bootdey">
+    <div class="userInfoWrapper">
         <div class="panel-body inf-content">
             <div class="row">
-                <div class="col-md-4">
-                    <!-- <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="https://bootdey.com/img/Content/avatar/avatar7.png" data-original-title="Usuario">  -->
-                    <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip"
-                        src="../../assets/img/REvendor.jpg" data-original-title="Usuario">
-
+                <div class="col-md-5">
+                    <img alt="" class="imgProfile" title="" class="img-circle img-thumbnail isTooltip"
+                        src="../../assets/img/myAccountVendor.jpg" data-original-title="Usuario">
                 </div>
                 <div class="col-md-6">
                     <strong>Information</strong><br>
@@ -257,7 +231,7 @@ if ($role == $temp) {
                         <table class="table table-user-information">
                             <tbody>
                                 <tr>
-                                    <td>
+                                    <td class="vendorTD">
                                         <strong>
                                             <span class="glyphicon glyphicon-user  text-primary"></span>
                                             Company name
@@ -268,7 +242,7 @@ if ($role == $temp) {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="vendorTD">
                                         <strong>
                                             <span class="glyphicon glyphicon-phone text-primary"></span>
                                             Phone number
@@ -280,7 +254,7 @@ if ($role == $temp) {
                                 </tr>
 
                                 <tr>
-                                    <td>
+                                    <td class="vendorTD">
                                         <strong>
                                             <span class="glyphicon glyphicon-bookmark text-primary"></span>
                                             Kind of business
@@ -293,7 +267,7 @@ if ($role == $temp) {
 
 
                                 <tr>
-                                    <td>
+                                    <td class="vendorTD">
                                         <strong>
                                             <span class="glyphicon glyphicon-cloud text-primary"></span>
                                             Web Url
@@ -304,7 +278,7 @@ if ($role == $temp) {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="vendorTD">
                                         <strong>
                                             <span class="glyphicon glyphicon-envelope text-primary"></span>
                                             Email
@@ -315,7 +289,7 @@ if ($role == $temp) {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="vendorTD">
                                         <strong>
                                             <span class="glyphicon glyphicon-globe text-primary"></span>
                                             Adress
@@ -333,7 +307,7 @@ if ($role == $temp) {
         </div>
     </div>
     <!-- button to change data -->
-    <button type="button" class="btn btn-outline-danger btn-md"><a href="updateVendor.php">Update Data
+    <button type="button" class="updateBtn btn btn-info"><a href="updateVendor.php">Update your profile >>
         </a></button>
     </tr>
     </tbody>
@@ -344,7 +318,12 @@ if ($role == $temp) {
     ?>
     </div>
 
-
+    <!-- Necessary scripts-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://rawgithub.com/pederan/Parallax-ImageScroll/master/jquery.imageScroll.min.js"
+        type="text/javascript"></script>
+    <script src="general.js"></script>
 
 </body>
 
