@@ -47,7 +47,7 @@ $user->find_user_by_id($session->id);
 </head>
 
 <body>
-    <header  class="fixed-top" id="nav">
+    <header class="fixed-top" id="nav">
         <?php include('../navbarTemplate.php') ?>
     </header>
 
@@ -87,27 +87,27 @@ $user->find_user_by_id($session->id);
                         <div class="info">
                             <ul>
                                 <li>
-                                    <h3><?php echo $offer->name ?></h3>
+                                    <h2><?php echo $offer->name ?></h2>
                                 </li>
                                 <li>
                                     <h3><?php echo $vendor->company_name ?><h3>
                                 </li>
                                 <li>
-                                    <h3><?php echo $offer->price ?>&#8362;</h3>
+                                    <p><?php echo $offer->price ?>&#8362;</p>
                                 </li>
                             </ul>
 
                             <div class="description">
+                                <hr>
                                 <p><?php echo $offer->description ?></p>
                             </div>
                         </div>
 
                         <div class="controls">
                             <p>Get Offer</p>
-                            <button><a href="update_wishList.php?id=<?php echo $wishlist[$i]->whistlist_id; ?>">send
+                            <button><a class="btn btn-primary" href="update_wishList.php?id=<?php echo $wishlist[$i]->whistlist_id; ?>">send
                                     email</a></button>
-                            <a href="delet_wishList.php?id=<?php echo $wishlist[$i]->whistlist_id; ?>"><img class="trash-span" src="https://img.icons8.com/carbon-copy/100/000000/delete--v1.png" width="50px" /></a>
-
+                            <a href="delet_wishList.php?id=<?php echo $wishlist[$i]->whistlist_id; ?>" class="btn trash-span mx-2 mt-2 " style="color:#b12531;"> <i class="fas fa-trash"></i></a>
                         </div>
 
 
