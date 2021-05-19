@@ -45,13 +45,15 @@ if (isset($_POST['submit'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Login Form</title>
     <!-- connection css and bootstrap -->
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../../css/login.css">
     <link rel="shortcut icon" href="../../assets/img/tab_logo.png" type="image/png">
+     <!-- tab view -->
+     <link rel="shortcut icon" href="../../assets/img/tab_logo.png" type="image/png">
+    <title> Marry Me - Login</title>
 
 </head>
 

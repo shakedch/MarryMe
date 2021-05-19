@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
     </script>
     <!-- tab view -->
     <link rel="shortcut icon" href="../../assets/img/tab_logo.png" type="image/png">
-    <title> Update Your Profile</title>
+    <title> Marry Me - Update Profile</title>
     <!-- general fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700&amp;display=swap" rel="stylesheet">
