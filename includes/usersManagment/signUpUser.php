@@ -61,9 +61,9 @@ if (isset($_POST['submit'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
-    <!-- tab view -->
-    <link rel="shortcut icon" href="../../assets/img/tab_logo.png" type="image/png">
-    <title> Registration Couple</title>
+     <!-- tab view -->
+     <link rel="shortcut icon" href="../../assets/img/tab_logo.png" type="image/png">
+    <title> Marry Me -  Registration Couple</title>
     <!-- general fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700&amp;display=swap" rel="stylesheet">

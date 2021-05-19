@@ -3,7 +3,7 @@ require_once('../../conection/init.php');
 require_once('../tasksProcess/insertAndDelete.php');
 global $session;
 $role = $_SESSION['role'];
-$one_n = "My_Task";
+$one_n = "My Tasks";
 $sec_n = "Market";
 $thr_n = "wishlist";
 $inout = "Log Out";
@@ -60,7 +60,7 @@ $user->find_user_by_id($session->id);
     <!-- tab view -->
     <link rel="shortcut icon" href="../../assets/img/tab_logo.png" type="image/png" />
     <!-- tab view -->
-    <title>MarryMe-Homepage</title>
+    <title>Marry Me - Homepage</title>
     <!-- google chart -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -120,7 +120,7 @@ $user->find_user_by_id($session->id);
 
 <body>
 
-    <header id="nav">
+    <header  class="fixed-top" id="nav">
         <?php include('../navbarTemplate.php') ?>
     </header>
     <!-- img-header -->
