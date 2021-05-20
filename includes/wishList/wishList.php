@@ -21,10 +21,9 @@ $user->find_user_by_id($session->id);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/wishList.css">
-    <link rel="stylesheet" type="text/css" href="../../css/headFoot.css">
+
     <link rel="shortcut icon" href="../../assets/img/tab_logo.png" type="image/png">
-    <link href="../../css/general.css?v=1.0" rel="stylesheet" type="text/css" />
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript">
     </script>
     <script src="https://kit.fontawesome.com/90569433a0.js" crossorigin="anonymous"></script>
@@ -45,7 +44,9 @@ $user->find_user_by_id($session->id);
     <link
         href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap"
         rel="stylesheet">
-
+    <link href="../../css/general.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../css/wishList.css">
+    <link rel="stylesheet" type="text/css" href="../../css/headFoot.css">
 
 
 </head>
@@ -89,14 +90,14 @@ $user->find_user_by_id($session->id);
 
 
                 <div class="info">
-                    <ul>
-                        <li>
+                    <ul class="infolist">
+                        <li class="infolistitem">
                             <h2><?php echo $offer->name ?></h2>
                         </li>
-                        <li>
-                            <h3><?php echo $vendor->company_name ?><h3>
+                        <li class="infolistitem">
+                            <h3><?php echo $vendor->company_name ?></h3>
                         </li>
-                        <li>
+                        <li class="infolistitem">
                             <p><?php echo $offer->price ?>&#8362;</p>
                         </li>
                     </ul>
