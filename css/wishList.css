@@ -139,66 +139,6 @@ main .offer-list .offer .controls .switch .slider.round:before {
   border-radius: 50%;
 }
 
-@media screen and (max-width: 1023px) {
-  main .offer-list .offer {
-    min-width: 770px;
-  }
-
-  main .offer-list .offer .info .description {
-    max-width: 510px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  main .offer-list {
-    gap: 200px;
-    padding: 150px 20px;
-  }
-
-  main .offer-list .offer {
-    position: relative;
-    flex-direction: column;
-    min-width: 0;
-    padding: 0 5px;
-  }
-
-  main .offer-list .offer > img {
-    width: 255px;
-    height: 170px;
-    position: absolute;
-    top: -90px;
-    right: 80px;
-    border-radius: 25px;
-  }
-
-  main .offer-list .offer .info {
-    width: 100%;
-    margin-left: 0;
-    margin-top: 140px;
-  }
-
-  main .offer-list .offer .info ul {
-    display: flex;
-  }
-
-  main .offer-list .offer .info .description {
-    max-width: 415px;
-  }
-
-  main .offer-list .offer .controls {
-    width: 100%;
-  }
-
-  main .offer-list .offer .controls .switch {
-    margin-bottom: 20px;
-  }
-
-  main .offer-list .offer .controls .trash-span {
-    top: 25px;
-    right: 20px;
-  }
-}
-
 .image img {
   width: 200px !important;
   height: 200px !important;

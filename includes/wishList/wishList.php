@@ -30,8 +30,10 @@ $user->find_user_by_id($session->id);
     <script src="https://kit.fontawesome.com/90569433a0.js" crossorigin="anonymous"></script>
 
     <!-- BS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
 
     <!-- tab view -->
@@ -40,7 +42,9 @@ $user->find_user_by_id($session->id);
     <!-- general fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap"
+        rel="stylesheet">
 
 
 
@@ -75,43 +79,45 @@ $user->find_user_by_id($session->id);
 
             ?>
 
-                    <div class="offer">
-                        <!-- Uploading photo -->
-                        <div class="image">
-                            <?php echo
+            <div class="offer">
+                <!-- Uploading photo -->
+                <div class="image">
+                    <?php echo
                             "<img src='../../assets/img/offersUploads/" . (($offer->img == '') || ($offer->img == '.') ? 'no-image-available.png' : $offer->img) . "' />";
                             ?>
-                        </div>
+                </div>
 
 
-                        <div class="info">
-                            <ul>
-                                <li>
-                                    <h2><?php echo $offer->name ?></h2>
-                                </li>
-                                <li>
-                                    <h3><?php echo $vendor->company_name ?><h3>
-                                </li>
-                                <li>
-                                    <p><?php echo $offer->price ?>&#8362;</p>
-                                </li>
-                            </ul>
+                <div class="info">
+                    <ul>
+                        <li>
+                            <h2><?php echo $offer->name ?></h2>
+                        </li>
+                        <li>
+                            <h3><?php echo $vendor->company_name ?><h3>
+                        </li>
+                        <li>
+                            <p><?php echo $offer->price ?>&#8362;</p>
+                        </li>
+                    </ul>
 
-                            <div class="description">
-                                <hr>
-                                <p><?php echo $offer->description ?></p>
-                            </div>
-                        </div>
-
-                        <div class="controls">
-                            <p>Get Offer</p>
-                            <button><a class="btn btn-primary" href="update_wishList.php?id=<?php echo $wishlist[$i]->whistlist_id; ?>">send
-                                    email</a></button>
-                            <a href="delet_wishList.php?id=<?php echo $wishlist[$i]->whistlist_id; ?>" class="btn trash-span mx-2 mt-2 " style="color:#b12531;"> <i class="fas fa-trash"></i></a>
-                        </div>
-
-
+                    <div class="description">
+                        <hr>
+                        <p><?php echo $offer->description ?></p>
                     </div>
+                </div>
+
+                <div class="controls">
+                    <p>Get Offer</p>
+                    <button class="btn btn-primary"><a
+                            href="update_wishList.php?id=<?php echo $wishlist[$i]->whistlist_id; ?>"></a>send
+                        email</button>
+                    <a href="delet_wishList.php?id=<?php echo $wishlist[$i]->whistlist_id; ?>"
+                        class="btn trash-span mx-2 mt-2 " style="color:#b12531;"> <i class="fas fa-trash"></i></a>
+                </div>
+
+
+            </div>
             <?php
                 }
             }
@@ -120,10 +126,13 @@ $user->find_user_by_id($session->id);
     </main>
 
     <!-- Necessary scripts-->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://rawgithub.com/pederan/Parallax-ImageScroll/master/jquery.imageScroll.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://rawgithub.com/pederan/Parallax-ImageScroll/master/jquery.imageScroll.min.js"
+        type="text/javascript"></script>
     <script src="../general.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
 
 
