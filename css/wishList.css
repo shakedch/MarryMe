@@ -1,19 +1,4 @@
-* {
-  box-sizing: border-box;
-}
-
-html {
-  height: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  margin: 0;
-  overflow-x: hidden;
-}
-
-ul,
-ol {
+ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -30,8 +15,8 @@ main .offer-list {
 
 main .offer-list .offer {
   display: flex;
-  width: 80%;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  width: 85%;
+  box-shadow: rgb(0 0 0 / 10%) 0px 4px 12px;
   background-color: #ffffff;
 }
 
@@ -46,8 +31,6 @@ main .offer-list .offer .info {
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
-  padding: 15px 0;
-  gap: 20px;
 }
 
 main .offer-list .offer .info ul li {
@@ -62,10 +45,10 @@ main .offer-list .offer .info ul li:first-child {
 main .offer-list .offer .info .description {
   text-align: center;
   max-width: 690px;
-  min-height: 100px;
   width: auto;
   height: auto;
   padding: 0 10px;
+  line-break: anywhere;
 }
 
 main .offer-list .offer .controls {
@@ -139,68 +122,149 @@ main .offer-list .offer .controls .switch .slider.round:before {
   border-radius: 50%;
 }
 
-@media screen and (max-width: 1023px) {
-  main .offer-list .offer {
-    min-width: 770px;
-  }
-
-  main .offer-list .offer .info .description {
-    max-width: 510px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  main .offer-list {
-    gap: 200px;
-    padding: 150px 20px;
-  }
-
-  main .offer-list .offer {
-    position: relative;
-    flex-direction: column;
-    min-width: 0;
-    padding: 0 5px;
-  }
-
-  main .offer-list .offer > img {
-    width: 255px;
-    height: 170px;
-    position: absolute;
-    top: -90px;
-    right: 80px;
-    border-radius: 25px;
-  }
-
-  main .offer-list .offer .info {
-    width: 100%;
-    margin-left: 0;
-    margin-top: 140px;
-  }
-
-  main .offer-list .offer .info ul {
-    display: flex;
-  }
-
-  main .offer-list .offer .info .description {
-    max-width: 415px;
-  }
-
-  main .offer-list .offer .controls {
-    width: 100%;
-  }
-
-  main .offer-list .offer .controls .switch {
-    margin-bottom: 20px;
-  }
-
-  main .offer-list .offer .controls .trash-span {
-    top: 25px;
-    right: 20px;
-  }
-}
-
 .image img {
   width: 200px !important;
   height: 200px !important;
   object-fit: cover !important;
+}
+
+.infolist,
+.infolistitem {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  text-align: center;
+  flex-direction: row;
+}
+
+/* responsive */
+
+@media screen and (max-width: 1095px) {
+  main .offer-list .offer {
+    width: 90%;
+  }
+
+  main .offer-list .offer .info {
+    width: 53%;
+  }
+
+  main .offer-list .offer .info ul li {
+    margin: 0 20px;
+  }
+}
+
+@media screen and (max-width: 888px) {
+  main .offer-list .offer {
+    width: 100%;
+  }
+
+  main .offer-list .offer .info ul li {
+    margin: 0 17px;
+  }
+
+  main .offer-list .offer .info {
+    width: 49%;
+  }
+
+  .infolist,
+  .infolistitem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .image img {
+    width: 150px !important;
+    height: 150px !important;
+    object-fit: cover !important;
+  }
+  h2 {
+    font-size: 44px !important;
+  }
+
+  h3 {
+    font-size: 1.5rem !important;
+  }
+
+  .btn {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.5rem;
+  }
+
+  p {
+    margin-bottom: 0rem;
+    font-size: 0.8rem;
+  }
+
+  main .offer-list {
+    padding: 35px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  main .offer-list .offer {
+    width: 110%;
+  }
+
+  main .offer-list .offer .info {
+    width: 42%;
+  }
+
+  main .offer-list .offer .info ul li {
+    margin: 0 10px;
+  }
+}
+
+@media screen and (max-width: 435px) {
+  main .offer-list .offer .info {
+    margin-left: 0px;
+  }
+
+  h2 {
+    font-size: 35px !important;
+  }
+
+  h3 {
+    font-size: 1.2rem !important;
+  }
+
+  main .offer-list {
+    padding: 29px;
+  }
+
+  h1 {
+    font-size: 74px !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  main .offer-list {
+    padding: 23px;
+  }
+
+  .image img {
+    width: 100px !important;
+    height: 100px !important;
+    object-fit: cover !important;
+  }
+
+  main .offer-list .offer .info {
+    width: 48%;
+  }
+
+  main .offer-list .offer .info ul li {
+    margin: 0 0px;
+  }
+
+  main .offer-list .offer {
+    width: 115%;
+  }
+
+  main .offer-list .offer .controls {
+    width: 26%;
+  }
 }
