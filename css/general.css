@@ -49,3 +49,7 @@ h3 {
   margin-bottom: 15px;
   display: inline-block;
 }
+
+.navbar {
+  background-color: #e8e4e5;
+}

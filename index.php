@@ -71,7 +71,6 @@ if ($session->signed_in) {
     <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@500&family=Niconne&display=swap" rel="stylesheet">
 
     <link rel="shortcut icon" href="./assets/img/tab_logo.png" type="image/png">
-    <link rel="stylesheet" type="text/css" href="./css/headFoot.css">
     <link rel="stylesheet" type="text/css" href="./css/hpStyle.css">
     <link rel="stylesheet" type="text/css" href="./css/general.css">
     <!-- tab view -->
@@ -95,16 +94,16 @@ if ($session->signed_in) {
 
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link text-black" href="index.php">Home</a>
+                        <a class="nav-link" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-black" href="<?php echo $where0 ?>"><?php echo $one_n ?></a>
+                        <a class="nav-link" href="<?php echo $where0 ?>"><?php echo $one_n ?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-black" href="<?php echo $where3 ?>"><?php echo $sec_n ?></a>
+                        <a class="nav-link " href="<?php echo $where3 ?>"><?php echo $sec_n ?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-black" href="<?php echo $where4 ?>"><?php echo $thr_n ?></a>
+                        <a class="nav-link " href="<?php echo $where4 ?>"><?php echo $thr_n ?></a>
                     </li>
                 </ul>
                 <div class="mx-auto"></div>
@@ -201,6 +200,11 @@ if ($session->signed_in) {
             <!-- TODO: Some image in full width here -->
             <div class="img-holder" data-image="./assets/img/hp_img_down.png">
             </div>
+
+            <footer>
+                <?php include('includes/footer.php') ?>
+            </footer>
+
             <!-- Necessary scripts-->
             <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
             <script src="https://rawgithub.com/pederan/Parallax-ImageScroll/master/jquery.imageScroll.min.js" type="text/javascript"></script>

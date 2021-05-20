@@ -33,7 +33,6 @@ if (isset($_POST['send_vendor'])) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" type="text/css" href="../../css/headFoot.css">
     <link rel="stylesheet" type="text/css" href="../../css/general.css" />
     <link rel="stylesheet" type="text/css" href="../../css/vendorDetails.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript">
@@ -140,6 +139,10 @@ if (isset($_POST['send_vendor'])) {
         <div class="swiper-button-prev"></div>
         <div class="swiper-pagination"></div>
     </div>
+
+    <footer>
+        <?php include('../footer.php') ?>
+    </footer>
 
     <?php
     //check if to display loop of offers
