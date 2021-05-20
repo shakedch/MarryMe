@@ -9,18 +9,18 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link text-black" href="../../index.php">Home</a>
+                <a class="nav-link " href="../../index.php">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-black" href="<?php echo $where0 ?>"><?php echo $one_n ?></a>
+                <a class="nav-link " href="<?php echo $where0 ?>"><?php echo $one_n ?></a>
             </li>
             <?php if ($role == 'couple') { ?>
 
                 <li class="nav-item">
-                    <a class="nav-link text-black" href="<?php echo $where3 ?>"><?php echo $sec_n ?></a>
+                    <a class="nav-link " href="<?php echo $where3 ?>"><?php echo $sec_n ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-black" href="<?php echo $where4 ?>"><?php echo $thr_n ?></a>
+                    <a class="nav-link " href="<?php echo $where4 ?>"><?php echo $thr_n ?></a>
                 </li>
             <?php } ?>
         </ul>
@@ -28,10 +28,10 @@
         <div class="mx-auto"></div>
         <?php
         if ($role == 'couple') {
-            echo "<span class='navbar-text text-black '>$user->full_name1  &
+            echo "<span class='navbar-text'>$user->full_name1  &
         $user->full_name2</span>";
         } else {
-            echo "<span class='navbar-text text-black'> $vendor->company_name</span>";
+            echo "<span class='navbar-text '> $vendor->company_name</span>";
         } ?>
 
         <ul class="navbar-nav">

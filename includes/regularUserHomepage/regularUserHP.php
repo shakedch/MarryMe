@@ -51,7 +51,6 @@ $user->find_user_by_id($session->id);
     <script src="https://kit.fontawesome.com/90569433a0.js" crossorigin="anonymous"></script>
 
     <!-- our import files -->
-    <link rel="stylesheet" type="text/css" href="../../css/headFoot.css">
     <link rel="stylesheet" href="../../css/general.css" />
     <link rel="stylesheet" href="../../css/coupleHomepage.css" />
 
@@ -64,6 +63,9 @@ $user->find_user_by_id($session->id);
     <!-- google chart -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
+        google.load('visualization', '1.0', {
+            'packages': ['corechart']
+        });
         google.charts.load('current', {
             'packages': ['corechart']
         });
@@ -120,7 +122,7 @@ $user->find_user_by_id($session->id);
 
 <body>
 
-    <header  class="fixed-top" id="nav">
+    <header class="fixed-top" id="nav">
         <?php include('../navbarTemplate.php') ?>
     </header>
     <!-- img-header -->
@@ -300,6 +302,9 @@ $user->find_user_by_id($session->id);
         <!-- update board -->
 
     </div>
+    <footer>
+        <?php include('../footer.php') ?>
+    </footer>
 
 
     <!-- Necessary scripts-->
