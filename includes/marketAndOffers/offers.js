@@ -6,9 +6,11 @@ const price = document.getElementById("price");
 const description = document.getElementById("description");
 const validDate = document.getElementById("valid_date");
 
-form.addEventListener("submit", (e) => {
-  checkInputs(e);
-});
+if (form) {
+  form.addEventListener("submit", (e) => {
+    checkInputs(e);
+  });
+}
 
 function checkInputs(e) {
   // trim to remove the whitespaces
