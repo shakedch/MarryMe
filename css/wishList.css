@@ -137,6 +137,10 @@ main .offer-list .offer .controls .switch .slider.round:before {
   flex-direction: row;
 }
 
+.offerDisabled {
+  cursor: not-allowed !important;
+  pointer-events: visible !important;
+}
 /* responsive */
 
 @media screen and (max-width: 1095px) {

@@ -48,6 +48,14 @@ $user->find_user_by_id($session->id);
     <link rel="stylesheet" href="../../css/wishList.css">
     <link rel="stylesheet" type="text/css" href="../../css/headFoot.css">
 
+    <script>
+    function disableBtn(id) {
+        var btnSendEmail = document.getElementById(id);
+        btnSendEmail.innerHTML = 'you sent email';
+        btnSendEmail.disabled = true;
+    }
+    </script>
+
 
 </head>
 
@@ -77,6 +85,8 @@ $user->find_user_by_id($session->id);
                     $offer->find_my_offer($wishlist[$i]->offer_id);
                     $vendor = new Vendor();
                     $vendor->find_user_by_id($wishlist[$i]->vendor_id);
+
+
 
             ?>
 
@@ -110,11 +120,22 @@ $user->find_user_by_id($session->id);
 
                 <div class="controls">
                     <p>Get Offer</p>
-                    <button class="btn btn-primary"><a
-                            href="update_wishList.php?id=<?php echo $wishlist[$i]->whistlist_id; ?>"></a>send
-                        email</button>
+                    <?php if ($wishlist[$i]->is_contact_supplier == '0') : ?>
+                    <a
+                        href="update_wishList.php?id=<?php echo $wishlist[$i]->whistlist_id; ?>&wishlist=<?php echo $wishlist[$i]->is_contact_supplier; ?>&vendor_email=<?php echo $vendor->email; ?>&offer_name=<?php echo $offer->name; ?>"><button
+                            class="btn btn-primary" id="sendEmailBtn<?php echo $i ?>">send
+                            email</button>
+                    </a>
+                    <?php else : ?>
+                    <button type="button" class="btn btn-success offerDisabled" disabled
+                        id="sendEmailBtn<?php echo $i ?>">Already
+                        sent</button>
+
+                    <?php endif ?>
+
                     <a href="delet_wishList.php?id=<?php echo $wishlist[$i]->whistlist_id; ?>"
                         class="btn trash-span mx-2 mt-2 " style="color:#b12531;"> <i class="fas fa-trash"></i></a>
+
                 </div>
 
 
