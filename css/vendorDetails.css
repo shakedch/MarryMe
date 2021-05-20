@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 14px;
+}
 .vendor_address {
   margin-top: 60px;
 }
@@ -5,12 +11,6 @@
 #vendor-offers {
   margin: auto !important;
   text-align: center !important;
-}
-
-html,
-body {
-  position: relative;
-  height: 100%;
 }
 
 body {
@@ -42,4 +42,30 @@ body {
   height: 200px;
   object-fit: cover;
   margin: auto;
+}
+
+@media screen and (max-width: 780px) {
+  .container {
+    text-align: center;
+  }
+  #vendor_det {
+    display: inline-block !important;
+    margin: auto !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header h1 {
+    font-size: 76px !important;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .vendor_address iframe {
+    width: 250px;
+    height: 250px;
+  }
+  .swiper-slide {
+    width: 250px !important;
+  }
 }

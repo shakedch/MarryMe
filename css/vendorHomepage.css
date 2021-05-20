@@ -1,3 +1,7 @@
+body {
+  margin: auto;
+  text-align: center;
+}
 .dashboard {
   display: flex;
   flex-wrap: wrap;
@@ -88,5 +92,84 @@
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .num-of-offers {
+    width: 20%;
+  }
+  .num-of-offers p {
+    font-size: 20px;
+  }
+  #pieChartContainer {
+    width: 33%;
+  }
+  #barChartContainer {
+    width: 33%;
+  }
+}
+@media screen and (max-width: 780px) {
+  .num-of-offers {
+    width: 70% !important;
+    height: 200px;
+  }
+  .num-of-offers span {
+    font-size: 96px !important;
+  }
+
+  #pieChartContainer {
+    width: 45% !important;
+  }
+  #barChartContainer {
+    width: 45% !important;
+  }
+  .short-valid-offers h2 {
+    font-size: 42px !important;
+  }
+}
+@media screen and (max-width: 600px) {
+  #pieChartContainer {
+    width: 60% !important;
+  }
+  #barChartContainer {
+    width: 60% !important;
+  }
+  .header h1 {
+    font-size: 76px !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #pieChartContainer {
+    width: 70% !important;
+    height: 300px !important;
+  }
+  #barChartContainer {
+    width: 70% !important;
+    height: 300px !important;
+  }
+  .header h1 {
+    font-size: 68px !important;
+  }
+  .short-valid-offers span {
+    font-size: 42px !important;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  #pieChartContainer {
+    width: 90% !important;
+  }
+  #barChartContainer {
+    width: 90% !important;
+  }
+  #lineChartContainer {
+    width: 90% !important;
+  }
+  .header h1 {
+    font-size: 58px !important;
+  }
+  .short-valid-offers {
+    width: 90% !important;
   }
 }

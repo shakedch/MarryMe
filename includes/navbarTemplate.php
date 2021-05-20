@@ -1,4 +1,4 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-light px-2" style="height: inherit;">
+<nav class="navbar sticky-top navbar-expand-md navbar-light px-2" style="height: inherit;">
 
     <a class="navbar-brand" href="../../index.php" style="display: flex;justify-content: center;align-items: center;">
         <img width="45px" src="../../assets/img/‏‏logo_navbar.png" alt="logo" />
