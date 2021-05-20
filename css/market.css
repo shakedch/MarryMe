@@ -118,22 +118,48 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .market-item h2 {
+  .market-item h3 {
     font-size: 18px;
-    font-weight: bold;
-    height: 60px;
+  }
+  #offer-frame {
+    width: 35%;
   }
 }
 
 @media screen and (max-width: 768px) {
   #offer-frame {
-    margin: 20px;
-    width: 40%;
+    width: 80%;
+  }
+  .market-item {
+    width: 80%;
+    margin: auto;
+  }
+  .item-description {
+    width: 80%;
   }
 }
 
 @media screen and (max-width: 420px) {
-  #offer-frame {
-    width: 80%;
+  .market-item {
+    width: 100%;
+    margin: auto;
+  }
+  .item-description {
+    width: 100%;
+  }
+  .header h1 {
+    font-size: 76px !important;
+  }
+  #offer_name {
+    width: 80% !important;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  #wishlist {
+    font-size: 10px;
+  }
+  .market-item img {
+    height: 200px;
   }
 }

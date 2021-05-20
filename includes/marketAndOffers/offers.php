@@ -62,82 +62,82 @@ $vendor->find_user_by_id($session->id);
         </div>
     </div>
 
-    <div class="container">
-        <?php if (isset($_SESSION['message'])) : ?>
-            <div class="alert alert-<?= $_SESSION['msg_type'] ?> ">
-                <?php
-                echo $_SESSION['message'];
-                unset($_SESSION['message']);
-                ?>
-            </div>
-        <?php endif ?>
-        <form name="search_form" action="offers.php" id="search_form" method="POST">
-            <input type="text" id="offer_name" name="offer_name" placeholder="search offer">
-            <button type="submit" name="search" class="btn btn-primary"><i class="fa fa-search"></i></button>
-            <button type="submit" name="all_offers" class="btn btn-outline-primary">show all my offers</button>
-        </form>
-        <hr>
+
+    <?php if (isset($_SESSION['message'])) : ?>
+        <div class="alert alert-<?= $_SESSION['msg_type'] ?> ">
+            <?php
+            echo $_SESSION['message'];
+            unset($_SESSION['message']);
+            ?>
+        </div>
+    <?php endif ?>
+    <form name="search_form" action="offers.php" id="search_form" method="POST">
+        <input type="text" id="offer_name" name="offer_name" placeholder="search offer">
+        <button type="submit" name="search" class="btn btn-primary mt-1"><i class="fa fa-search"></i></button>
+        <button type="submit" name="all_offers" class="btn btn-outline-primary mt-1">show all my offers</button>
+    </form>
+    <hr style="width:80%; margin:auto; margin-bottom:20px;">
+
+    <?php
+    $mysqli = new mysqli("localhost", "root", "", "marryme") or die(mysqli_error(($mysqli)));
+    $offer_name = '';
+
+    function offer_name_to_find()
+    {
+        $offer_name = $_POST["offer_name"];
+        return $offer_name;
+    }
+    if (isset($_POST['search'])) {
+        $offer_name = offer_name_to_find();
+    }
+
+    if (isset($_POST['all_offers'])) {
+        $offer_name = '';
+    }
+
+    if ($offer_name === '') {
+        $result = $mysqli->query("SELECT * FROM offers WHERE vendor_id='" . $session->id . "' ") or die($mysqli->error);
+    } else {
+        $result = $mysqli->query("SELECT * FROM offers WHERE vendor_id='" . $session->id . "' AND name LIKE '%" . $offer_name . "%'") or die($mysqli->error);
+    }
+
+    if (mysqli_num_rows($result) < 1) {
+        echo "<div class='no-offers'><h3> OFFERS NOT YET BEEN ADDED </h3><p>please add new offers.... </p></div><hr>";
+    }
+    ?>
+
+
+    <div class="row justify-content-center" style="width: 95%; margin:auto;">
+
 
         <?php
-        $mysqli = new mysqli("localhost", "root", "", "marryme") or die(mysqli_error(($mysqli)));
-        $offer_name = '';
+        while ($row = $result->fetch_assoc()) : ?>
 
-        function offer_name_to_find()
-        {
-            $offer_name = $_POST["offer_name"];
-            return $offer_name;
-        }
-        if (isset($_POST['search'])) {
-            $offer_name = offer_name_to_find();
-        }
+            <div id="offer" class="card mb-3 offers">
+                <div class="row">
 
-        if (isset($_POST['all_offers'])) {
-            $offer_name = '';
-        }
+                    <div class="col-3 my-auto"><?php
+                                                echo
+                                                "<td class='photoUpload'><img class='centerPic' src='../../assets/img/offersUploads/" . (($row["img"] == '') || ($row["img"] == '.') ? 'no-image-available.png' : $row["img"]) . "' align='center' height='65' /></td>";
+                                                ?><br></div>
+                    <div class="col-7">
+                        <h2 class="card-title"><?php echo $row['name'] ?></h2>
+                        <p class="card-text">&#8362;<?php echo $row['price'] ?></p>
+                        <p class="card-text"><small class="text-muted">
+                                <?php echo $row['description'] ?>
+                            </small></p>
+                    </div>
 
-        if ($offer_name === '') {
-            $result = $mysqli->query("SELECT * FROM offers WHERE vendor_id='" . $session->id . "' ") or die($mysqli->error);
-        } else {
-            $result = $mysqli->query("SELECT * FROM offers WHERE vendor_id='" . $session->id . "' AND name LIKE '%" . $offer_name . "%'") or die($mysqli->error);
-        }
-
-        if (mysqli_num_rows($result) < 1) {
-            echo "<div class='no-offers'><h3> OFFERS NOT YET BEEN ADDED </h3><p>please add new offers.... </p></div><hr>";
-        }
-        ?>
-
-
-        <div class="row justify-content-center">
-
-
-            <?php
-            while ($row = $result->fetch_assoc()) : ?>
-
-                <div class="card mb-3 offers " style="width: 80%;">
-                    <div class="row">
-
-                        <div class="col-3 my-auto"><?php
-                                                    echo
-                                                    "<td class='photoUpload'><img class='centerPic' src='../../assets/img/offersUploads/" . (($row["img"] == '') || ($row["img"] == '.') ? 'no-image-available.png' : $row["img"]) . "' align='center' height='65' /></td>";
-                                                    ?><br></div>
-                        <div class="col-7">
-                            <h2 class="card-title"><?php echo $row['name'] ?></h2>
-                            <p class="card-text">&#8362;<?php echo $row['price'] ?></p>
-                            <p class="card-text"><small class="text-muted">
-                                    <?php echo $row['description'] ?>
-                                </small></p>
-                        </div>
-
-                        <div class="col-2 text-right mt-2 ">
-                            <a href="offersProcess.php?delete=<?php echo $row['offer_id']; ?>" class="btn btn-danger"> <i class="fas fa-trash"></i></a>
-                            <a href="offers.php?edit=<?php echo $row['offer_id']; ?>" class="btn btn-info"> <i class="fas fa-edit"></i></a>
-                        </div>
+                    <div class="col-2 text-right mt-2">
+                        <a href="offersProcess.php?delete=<?php echo $row['offer_id']; ?>" class="btn btn-danger"> <i class="fas fa-trash"></i></a>
+                        <a href="offers.php?edit=<?php echo $row['offer_id']; ?>" class="btn btn-info"> <i class="fas fa-edit"></i></a>
                     </div>
                 </div>
+            </div>
 
-            <?php endwhile; ?>
-        </div>
+        <?php endwhile; ?>
     </div>
+
 
 
     <dialog id="myDialog">

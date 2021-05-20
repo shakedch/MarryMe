@@ -57,7 +57,7 @@ if (isset($_POST['send_vendor'])) {
 </head>
 
 <body>
-    <header  class="fixed-top" id="nav">
+    <header class="fixed-top" id="nav">
         <?php include('../navbarTemplate.php') ?>
     </header>
 
@@ -81,7 +81,7 @@ if (isset($_POST['send_vendor'])) {
         $resultOffers = $mysqli->query("SELECT * FROM offers WHERE vendor_id=$vendor_id AND valid_date>NOW() ") or die($mysqli->error);
         ?>
 
-        <div class="d-flex justify-content-around info">
+        <div id="vendor_det" class="d-flex justify-content-around info">
 
             <?php
             while ($row = $result->fetch_assoc()) : ?>

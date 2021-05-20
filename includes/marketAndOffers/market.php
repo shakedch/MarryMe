@@ -29,11 +29,6 @@ $user->find_user_by_id($session->id);
     <link href="../../css/market.css?v=1.0" rel="stylesheet" type="text/css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript">
     </script>
-    <!-- BS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
-    </script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.5.0/mdb.min.css" integrity="sha512-ENnX3mn8eIEmPp8XJ30lCs82Ux76IHv3ZeK9Z4TGzmBDEyYmYodgeqFIw7207m3f1Lhl9t1nMzPxHF6p+YD5Pw==" crossorigin="anonymous" />
     <script src="https://kit.fontawesome.com/90569433a0.js" crossorigin="anonymous"></script>
@@ -49,11 +44,14 @@ $user->find_user_by_id($session->id);
     <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/materia/bootstrap.min.css">
+    <!-- BS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 </head>
 
 <body>
 
-    <header  class="fixed-top" id="nav">
+    <header class="fixed-top" id="nav">
         <?php include('../navbarTemplate.php') ?>
     </header>
 
@@ -68,8 +66,8 @@ $user->find_user_by_id($session->id);
         </div>
         <form name="search_form" action="market.php" id="search_form" method="POST">
             <input type="text" id="offer_name" name="offer_name" placeholder="search offer name ">
-            <button type="submit" name="search" class="btn btn-primary"><i class="fa fa-search"></i></button>
-            <button type="submit" name="all_offers" class="btn btn-outline-primary">show all offers</button>
+            <button type="submit" name="search" class="btn btn-primary mt-1"><i class="fa fa-search"></i></button>
+            <button type="submit" name="all_offers" class="btn btn-outline-primary mt-1">show all offers</button>
         </form>
         <hr>
 
@@ -159,7 +157,7 @@ $user->find_user_by_id($session->id);
                                         <form method="post" action="wishlist.inc.php">
                                             <input type="hidden" name="Vid" value="<?php echo $row['vendor_id']; ?>">
                                             <input type="hidden" name="Oid" value="<?php echo $row['offer_id']; ?>">
-                                            <button class="market-item-button" type="submit" name='wishlist'>ADD TO WISHLIST
+                                            <button class="market-item-button" type="submit" id="wishlist" name='wishlist'>ADD TO WISHLIST
                                                 &#8594 </button>
                                         </form>
 
